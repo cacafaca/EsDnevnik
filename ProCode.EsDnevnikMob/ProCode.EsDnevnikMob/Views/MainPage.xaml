@@ -4,12 +4,12 @@
              x:Class="ProCode.EsDnevnikMob.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+    <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" >
         <Label Text="Korisničko ime" />
-        <Editor Text="{Binding Username}" HorizontalOptions="FillAndExpand"/>
+        <Entry Text="{Binding Username}"  />
 
         <Label Text="Lozinka" />
-        <Editor Text="{Binding Password}"/>
+        <Entry Text="{Binding Password}" IsPassword="True"/>
 
         <Button Text="Prijavi se"/>
     </StackLayout>
