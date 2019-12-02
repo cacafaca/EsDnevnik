@@ -14,9 +14,14 @@ namespace ProCode.EsDnevnik.BL
         #region Constructors
         public EsDnevnik(UserCredential userCredential)
         {
-            this.userCredential = userCredential;
-            client = new HttpClient();
-            uriDictionary = new UriDictionary();
+            if (userCredential != null)
+            {
+                this.userCredential = userCredential;
+                client = new HttpClient();
+                uriDictionary = new UriDictionary();
+            }
+            else
+                throw new ArgumentNullException(nameof(userCredential));
         }
         #endregion
 
