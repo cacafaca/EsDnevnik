@@ -11,12 +11,10 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void LoadLoginData()
         {
-            string testVAlue = ConfigurationManager.AppSettings["testkey"];
-            Assert.IsNotNull(testVAlue);
-
-            string username = ConfigurationManager.AppSettings.Get("username");
+            var userCredential = Config.GetUserCredentials();
+            string username = userCredential.GetUsername();
             Assert.IsNotNull(username, "Can''t read username.");
-            string password = ConfigurationManager.AppSettings.Get("password");
+            SecureString password = userCredential.GetPassword();
             Assert.IsNotNull(password, "Can''t read password.");
         }
 
