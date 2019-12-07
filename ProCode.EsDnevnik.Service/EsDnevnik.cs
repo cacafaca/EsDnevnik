@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace ProCode.EsDnevnik.BL
+namespace ProCode.EsDnevnik.Service
 {
     public class EsDnevnik
     {

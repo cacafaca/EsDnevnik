@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProCode.EsDnevnik.BL
+namespace ProCode.EsDnevnik.Service
 {
     public class UserCredential
     {
