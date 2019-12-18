@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProCode.EsDnevnik.Model;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Security;
 using System.Threading.Tasks;
@@ -36,6 +38,17 @@ namespace ProCode.EsDnevnik.ServiceTest
             {
                 Assert.ThrowsException<Exception>(() => throw ex);
             }
+        }
+
+        [TestMethod]
+        public void GetStudents()
+        {
+            var userCredential = Config.GetUserCredentials();
+            Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+            esd.LoginAsync().Wait();
+            IList<Student> students = esd.GetStudentsAsync().Result;
+            Assert.IsNotNull(students);
+            Assert.AreNotEqual(0, students.Count);
         }
     }
 }

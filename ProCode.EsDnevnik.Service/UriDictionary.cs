@@ -21,5 +21,10 @@ namespace ProCode.EsDnevnik.Service
         {
             return baseUri;
         }
+
+        internal Uri GetStudentsUri()
+        {
+            return new Uri(baseUri, "/api/students");
+        }
     }
 }

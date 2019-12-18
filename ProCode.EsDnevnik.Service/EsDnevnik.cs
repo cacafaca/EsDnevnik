@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Net;
+using ProCode.EsDnevnik.Model;
+using System.Collections.Generic;
 
 namespace ProCode.EsDnevnik.Service
 {
@@ -13,6 +15,7 @@ namespace ProCode.EsDnevnik.Service
         UserCredential userCredential;
         HttpClient client;
         private UriDictionary uriDictionary;
+        private string studentsResponseCache;
         #endregion 
 
         #region Constructors
@@ -32,17 +35,18 @@ namespace ProCode.EsDnevnik.Service
         #region Public methods
         public async Task LoginAsync()
         {
-            HttpResponseMessage responseMsg;
-            string responseContent;
+            // Get token id, to compose login content.
             string token = await GetTokenAsync();
-
             string content = $"_token={token}&username={Uri.EscapeDataString(userCredential.GetUsername())}&password={userCredential.GetPassword().ToString()}";
             HttpContent loginContent = new StringContent(content);
             loginContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");   // This is important!
-            responseMsg = await client.PostAsync(uriDictionary.GetLoginUri(), loginContent);
+
+            // Send POST command.
+            HttpResponseMessage responseMsg = await client.PostAsync(uriDictionary.GetLoginUri(), loginContent);
+
             if (responseMsg.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                responseContent = await responseMsg.Content.ReadAsStringAsync();
+                string responseContent = await responseMsg.Content.ReadAsStringAsync();
 
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
                 doc.LoadHtml(responseContent);
@@ -60,6 +64,39 @@ namespace ProCode.EsDnevnik.Service
             {
                 throw new LoginException(responseMsg.StatusCode, "Ne mogu da se prijavim na moj.esdnevnik.rs. Greška: " + responseMsg.ReasonPhrase);
             }
+        }
+        /// <summary>
+        /// Get students for logged parent.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<Student>> GetStudentsAsync()
+        {
+            IList<Student> students = new List<Student>();
+
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetStudentsUri());
+            if (responseMsg.StatusCode == HttpStatusCode.OK)
+            {
+                studentsResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                var studentsResponseObj = Newtonsoft.Json.Linq.JObject.Parse(studentsResponseCache);
+                var data = studentsResponseObj.SelectToken("$.data", true);
+                foreach(var studentToken in data.Children())
+                {
+                    Student newStudent = new Student()
+                    {
+                        Id = int.Parse(studentToken["id"].ToString()),
+                        FullName = studentToken["fullName"].ToString(),
+                        Jmbg = studentToken["jmbg"].ToString(),
+                        Gender = studentToken["gender"].ToString()
+                    };
+                    students.Add(newStudent);
+                }
+            }
+            else
+            {
+                throw new Exception("Can't read students info.");
+            }
+
+            return students;
         }
         #endregion
 
