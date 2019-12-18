@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Configuration;
 using System.Security;
+using System.Threading.Tasks;
 
 namespace ProCode.EsDnevnik.ServiceTest
 {
@@ -12,10 +13,14 @@ namespace ProCode.EsDnevnik.ServiceTest
         public void LoadLoginData()
         {
             var userCredential = Config.GetUserCredentials();
+
             string username = userCredential.GetUsername();
             Assert.IsNotNull(username, "Can''t read username.");
-            SecureString password = userCredential.GetPassword();
+            Assert.AreNotEqual(string.Empty, username);
+
+            string password = userCredential.GetPassword();
             Assert.IsNotNull(password, "Can''t read password.");
+            Assert.AreNotEqual(0, password.Length);
         }
 
         [TestMethod]
@@ -23,14 +28,13 @@ namespace ProCode.EsDnevnik.ServiceTest
         {
             try
             {
-                string username = ConfigurationManager.AppSettings.Get("username");
-                string password = ConfigurationManager.AppSettings.Get("password");
-                Service.EsDnevnik esd = new Service.EsDnevnik(null);
-                esd.LoginAsync();
+                var userCredential = Config.GetUserCredentials();
+                Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+                esd.LoginAsync().Wait();
             }
             catch (Exception ex)
             {
-                throw new AssertFailedException("Nije uspeo.", ex);
+                Assert.ThrowsException<Exception>(() => throw ex);
             }
         }
     }

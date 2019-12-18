@@ -16,5 +16,10 @@ namespace ProCode.EsDnevnik.Service
             
             return new Uri(baseUri, "/login");
         }
+
+        internal Uri GetBase()
+        {
+            return baseUri;
+        }
     }
 }
