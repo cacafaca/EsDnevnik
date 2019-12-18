@@ -11,7 +11,7 @@
         <Label Text="Lozinka" />
         <Entry Text="{Binding Password}" IsPassword="True"/>
 
-        <Button Text="Prijavi se"/>
+        <Button Text="Prijavi se" Command="{Binding NavigateCommand}"/>
     </StackLayout>
 
 </ContentPage>
