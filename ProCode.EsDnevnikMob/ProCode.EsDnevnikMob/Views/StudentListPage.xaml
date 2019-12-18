@@ -7,16 +7,19 @@
              Title="{Binding Title}">
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ListView ItemsSource="{Binding Students}"
-                  SeparatorVisibility="Default"
-                  >
+                  SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding Id}"/>
-                            <Label Text="{Binding FullName}"/>
-                            <Label Text="{Binding Jmbg}"/>
-                            <Label Text="{Binding Gender}"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FullName}"/>
+                                <Label Text="{Binding Jmbg}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Id}"/>
+                                <Label Text="{Binding Gender}"/>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

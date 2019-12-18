@@ -24,10 +24,35 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             var esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
-            Task<IList<Student>> studentsTask = esdService.GetStudentsAsync();
-            Students = studentsTask.Result;
+            //Task<IList<Student>> studentsTask = esdService.GetStudentsAsync();
+            //Students = studentsTask.Result;
+            Students = new List<Student>()
+            {
+                new Student()
+                {
+                    Id = 1,
+                    FullName = "Tea",
+                    Jmbg = "123",
+                    Gender = "F"
+                },
+                new Student()
+                {
+                    Id = 2,
+                    FullName = "Stefa",
+                    Jmbg = "456",
+                    Gender = "M"
+                }
+            };
         }
 
-        public IList<EsDnevnik.Model.Student> Students { get; private set; }
+        private IList<EsDnevnik.Model.Student> _students;
+        public IList<EsDnevnik.Model.Student> Students
+        {
+            get { return _students; }
+            set
+            {
+                SetProperty(ref _students, value);
+            }
+        }
     }
 }

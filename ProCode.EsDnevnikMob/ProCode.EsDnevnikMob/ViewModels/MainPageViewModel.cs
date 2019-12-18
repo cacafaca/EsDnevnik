@@ -39,6 +39,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public DelegateCommand NavigateCommand => navigateCommand ?? (navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
         async void ExecuteNavigateCommand()
         {
+            /*
             if (string.IsNullOrWhiteSpace(_username))
             {
                 await dialogService.DisplayAlertAsync("Greška?", "Unesi korisničko ime.", "Uredu");
@@ -57,12 +58,15 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 securePassword.AppendChar(c);
             }
             var esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(_username, securePassword));
+            */
             try
             {
-                await esdService.LoginAsync();
-                var param = new NavigationParameters();
-                param.Add(nameof(esdService), esdService);
-                await NavigationService.NavigateAsync("StudentListPage", param);
+                //await esdService.LoginAsync();
+                //var param = new NavigationParameters();
+                //param.Add(nameof(esdService), esdService);
+                //await NavigationService.NavigateAsync("StudentListPage", param);
+
+                await NavigationService.NavigateAsync("StudentListPage");
             }
             catch (Exception ex)
             {
