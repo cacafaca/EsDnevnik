@@ -4,7 +4,13 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
+             xmlns:local="clr-namespace:ProCode.EsDnevnikMob"
              Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:GenderConverter x:Key="genderConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ListView ItemsSource="{Binding Students}"
                   SeparatorVisibility="Default">
@@ -13,12 +19,24 @@
                     <ViewCell>
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding FullName}"/>
-                                <Label Text="{Binding Jmbg}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Ime:"/>
+                                    <Label Text="{Binding FullName}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    <Label Text="JMBG:" />
+                                    <Label Text="{Binding Jmbg}"/>
+                                </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Id}"/>
-                                <Label Text="{Binding Gender}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Id:" />
+                                    <Label Text="{Binding Id}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    <Label Text="Pol:" />
+                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}"/>
+                                </StackLayout>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

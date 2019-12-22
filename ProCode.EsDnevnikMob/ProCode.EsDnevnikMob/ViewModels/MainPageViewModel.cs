@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
@@ -17,61 +18,83 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             Title = "Elektronski dnevnik";
             this.dialogService = dialogService;
+
+            IsLogging = false;
+            Username = userSettings.GetUsernameAsync().Result;
+            Password = userSettings.GetPasswordAsync().Result;
         }
 
         private IPageDialogService dialogService;
+        private UserSettings userSettings = new UserSettings();
 
-        private string _username;
+        private string username;
         public string Username
         {
-            get { return _username; }
-            set { SetProperty(ref _username, value); }
+            get { return username; }
+            set { SetProperty(ref username, value); }
         }
 
-        private string _password;
+        private string password;
         public string Password
         {
-            get { return _password; }
-            set { SetProperty(ref _password, value); }
+            get { return password; }
+            set { SetProperty(ref password, value); }
         }
 
         private DelegateCommand navigateCommand;
         public DelegateCommand NavigateCommand => navigateCommand ?? (navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
         async void ExecuteNavigateCommand()
         {
-            /*
-            if (string.IsNullOrWhiteSpace(_username))
+
+            if (string.IsNullOrWhiteSpace(Username))
             {
                 await dialogService.DisplayAlertAsync("Greška?", "Unesi korisničko ime.", "Uredu");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(_password))
+            if (string.IsNullOrWhiteSpace(Password))
             {
                 await dialogService.DisplayAlertAsync("Greška?", "Unesi lozinku.", "Uredu");
                 return;
             }
 
-
             var securePassword = new System.Security.SecureString();
-            foreach (var c in _password)
+            foreach (var c in Password)
             {
                 securePassword.AppendChar(c);
             }
-            var esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(_username, securePassword));
-            */
+            var esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
+
             try
             {
-                //await esdService.LoginAsync();
-                //var param = new NavigationParameters();
-                //param.Add(nameof(esdService), esdService);
-                //await NavigationService.NavigateAsync("StudentListPage", param);
+                IsLogging = true;
+                await esdService.LoginAsync();
 
-                await NavigationService.NavigateAsync("StudentListPage");
+                // Store user credentials.
+                await userSettings.SetUsernameAsync(Username);
+                await userSettings.SetPasswordAsync(Password);
+
+                var param = new NavigationParameters();
+                param.Add(nameof(esdService), esdService);
+                await NavigationService.NavigateAsync("StudentListPage", param);
+                IsLogging = false;
+
+                //await NavigationService.NavigateAsync("StudentListPage");
             }
             catch (Exception ex)
             {
+                IsLogging = false;
                 await dialogService.DisplayAlertAsync("Greška?", ex.Message, "Uredu");
             }
+
+
+
+        }
+
+        private bool isLogging;
+        public bool IsLogging
+        {
+            get { return isLogging; }
+            set { isLogging = value; }
         }
     }
 }

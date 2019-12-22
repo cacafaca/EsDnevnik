@@ -5,6 +5,8 @@
              Title="{Binding Title}">
 
     <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" >
+        <ActivityIndicator IsRunning="{Binding IsLogging}"/>
+        
         <Label Text="Korisničko ime" />
         <Entry Text="{Binding Username}"  />
 

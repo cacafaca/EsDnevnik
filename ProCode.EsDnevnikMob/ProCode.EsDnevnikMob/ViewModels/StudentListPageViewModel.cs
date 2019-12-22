@@ -4,6 +4,7 @@ using Prism.Navigation;
 using ProCode.EsDnevnik.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public StudentListPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Moja deca";
+            students = new ObservableCollection<Student>();
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -21,37 +23,32 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        EsDnevnik.Service.EsDnevnik esdService = null;
+
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            var esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
-            //Task<IList<Student>> studentsTask = esdService.GetStudentsAsync();
-            //Students = studentsTask.Result;
-            Students = new List<Student>()
+            esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
+
+            var students = await esdService.GetStudentsAsync();
+            foreach (var stud in students)
             {
-                new Student()
-                {
-                    Id = 1,
-                    FullName = "Tea",
-                    Jmbg = "123",
-                    Gender = "F"
-                },
-                new Student()
-                {
-                    Id = 2,
-                    FullName = "Stefa",
-                    Jmbg = "456",
-                    Gender = "M"
-                }
-            };
+                Students.Add(stud);
+            }
+
+            //Students.Add(new Student() { Id = 1 });
+            //Students.Add(new Student() { Id = 2 });
+            //Students.Add(new Student() { Id = 3 });
+            //Students.Add(new Student() { Id = 4 });
+            //Students.Add(new Student() { Id = 5 });
         }
 
-        private IList<EsDnevnik.Model.Student> _students;
-        public IList<EsDnevnik.Model.Student> Students
+        private ObservableCollection<Student> students;
+        public ObservableCollection<Student> Students
         {
-            get { return _students; }
+            get { return students; }
             set
             {
-                SetProperty(ref _students, value);
+                SetProperty(ref students, value);
             }
         }
     }
