@@ -79,7 +79,7 @@ namespace ProCode.EsDnevnik.Service
                 studentsResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 var studentsResponseObj = Newtonsoft.Json.Linq.JObject.Parse(studentsResponseCache);
                 var data = studentsResponseObj.SelectToken("$.data", true);
-                foreach(var studentToken in data.Children())
+                foreach (var studentToken in data.Children())
                 {
                     Student newStudent = new Student()
                     {
@@ -98,6 +98,30 @@ namespace ProCode.EsDnevnik.Service
 
             return students;
         }
+        // For testing. Return two students.
+        public IList<Student> GetStudentsFakeAsync()
+        {
+            IList<Student> students = new List<Student>()
+            {
+                new Student()
+                {
+                    Id = 123456,
+                    FullName = "Bojan Bojanić",
+                    Gender = "m",
+                    Jmbg = "0101009710123"
+                },
+                new Student()
+                {
+                    Id = 123456,
+                    FullName = "Bojana Bojanić",
+                    Gender = "f",
+                    Jmbg = "0101009710123"
+                },
+            };
+            return students;
+        }
+        IList<Student> students = new List<Student>();
+
         #endregion
 
         #region Private methods

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
@@ -30,16 +31,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
             esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
 
             var students = await esdService.GetStudentsAsync();
+            //var students = esdService.GetStudentsFakeAsync();
             foreach (var stud in students)
             {
                 Students.Add(stud);
             }
-
-            //Students.Add(new Student() { Id = 1 });
-            //Students.Add(new Student() { Id = 2 });
-            //Students.Add(new Student() { Id = 3 });
-            //Students.Add(new Student() { Id = 4 });
-            //Students.Add(new Student() { Id = 5 });
         }
 
         private ObservableCollection<Student> students;
@@ -51,5 +47,14 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 SetProperty(ref students, value);
             }
         }
+
+        private Student selectedStudent;
+
+        public Student SelectedStudent
+        {
+            get { return selectedStudent; }
+            set { selectedStudent = value; }
+        }
+
     }
 }

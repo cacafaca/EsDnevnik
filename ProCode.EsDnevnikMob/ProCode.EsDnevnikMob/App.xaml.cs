@@ -31,6 +31,7 @@ namespace ProCode.EsDnevnikMob
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<StudentListPage, StudentListPageViewModel>();
+            containerRegistry.RegisterForNavigation<PrismTabbedPage1, PrismTabbedPage1ViewModel>();
         }
     }
 }

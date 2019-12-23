@@ -13,7 +13,8 @@
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ListView ItemsSource="{Binding Students}"
-                  SeparatorVisibility="Default">
+                  SeparatorVisibility="Default"
+                  SelectedItem="{Binding SelectedStudent}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

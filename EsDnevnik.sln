@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCode.EsDnevnikMob.Androi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProCode.EsDnevnik.ServiceTest2", "ProCode.EsDnevnik.ServiceTest2\ProCode.EsDnevnik.ServiceTest2.csproj", "{DDCF861C-6601-4B1C-9A53-D1B0EDF00BA8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{2F99ECCF-FCD2-4799-9747-F7059B7C540E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
