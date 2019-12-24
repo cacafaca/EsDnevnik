@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="http://prismlibrary.com"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
+            Title="{Binding Title}">
+    
+    <!-- Events -->
+    <ContentPage Title="Dogadjaji">
+        <ContentPage.Content>
+            <ListView x:Name="timeLine">
+                
+            </ListView>
+        </ContentPage.Content>
+    </ContentPage>
+    
+    <!-- Grades -->
+    <ContentPage Title="Ocene">
+    </ContentPage>
+</TabbedPage>

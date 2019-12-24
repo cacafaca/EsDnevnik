@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;DebugFake</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,7 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\PrismTabbedPage1.xaml">
+    <Compile Update="Views\StudentOverviewPage.xaml.cs">
+      <DependentUpon>StudentOverviewPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\StudentOverviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentListPage.xaml">

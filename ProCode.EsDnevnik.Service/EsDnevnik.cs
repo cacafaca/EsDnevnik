@@ -6,17 +6,21 @@ using System.Net.Http.Headers;
 using System.Net;
 using ProCode.EsDnevnik.Model;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace ProCode.EsDnevnik.Service
 {
     public class EsDnevnik
     {
         #region Private Properties
-        UserCredential userCredential;
+        readonly UserCredential userCredential;
         HttpClient client;
-        private UriDictionary uriDictionary;
+        private readonly UriDictionary uriDictionary;
+        
+        // Cached vars.
         private string studentsResponseCache;
-        #endregion 
+        private string timeLineResponseCache;
+        #endregion
 
         #region Constructors
         public EsDnevnik(UserCredential userCredential)
@@ -33,6 +37,7 @@ namespace ProCode.EsDnevnik.Service
         #endregion
 
         #region Public methods
+
         public async Task LoginAsync()
         {
             // Get token id, to compose login content.
@@ -65,6 +70,26 @@ namespace ProCode.EsDnevnik.Service
                 throw new LoginException(responseMsg.StatusCode, "Ne mogu da se prijavim na moj.esdnevnik.rs. Greška: " + responseMsg.ReasonPhrase);
             }
         }
+
+        public IList<TimeLine> GetTimeLineFake()
+        {
+            return new List<TimeLine>
+            {
+                new TimeLine
+                {
+                    EventDate = new DateTime(2019, 12, 2),
+                },
+                new TimeLine
+                {
+                    EventDate = new DateTime(2019, 12, 3),
+                },
+                new TimeLine
+                {
+                    EventDate = new DateTime(2019, 12, 10),
+                }
+            };
+        }
+
         /// <summary>
         /// Get students for logged parent.
         /// </summary>
@@ -88,13 +113,17 @@ namespace ProCode.EsDnevnik.Service
                         Jmbg = studentToken["jmbg"].ToString(),
                         Gender = studentToken["gender"].ToString()
                     };
-                    foreach(var school in studentToken["schoolName"].Children())
+                    foreach (var school in studentToken["schools"].Children())
                     {
-                        var newSchool = new School()
+                        if (school is JProperty schoolProp)
                         {
-                            Id = int.Parse(school["id"].ToString()),
-                            SchoolName = school["id"].ToString()
-                        };
+                            var newSchool = new School()
+                            {
+                                Id = int.Parse(schoolProp.Name),
+                                SchoolName = schoolProp.Value["schoolName"]?.ToString()
+                            };
+                            newStudent.Schools.Add(newSchool);
+                        }
                     }
                     students.Add(newStudent);
                 }
@@ -106,8 +135,12 @@ namespace ProCode.EsDnevnik.Service
 
             return students;
         }
-        // For testing. Return two students.
-        public IList<Student> GetStudentsFakeAsync()
+
+        /// <summary>
+        ///  For testing. Return two students.        
+        /// </summary>
+        /// <returns></returns>
+        public IList<Student> GetStudentsFake()
         {
             IList<Student> students = new List<Student>()
             {
@@ -128,8 +161,33 @@ namespace ProCode.EsDnevnik.Service
             };
             return students;
         }
-        IList<Student> students = new List<Student>();
 
+        /// <summary>
+        /// Get time line.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<TimeLine>> GetTimeLineAsync()
+        {
+            IList<TimeLine> timeLine = new List<TimeLine>();
+
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetStudentsUri());
+            if (responseMsg.StatusCode == HttpStatusCode.OK)
+            {
+                timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                var timeLineResponseObj = Newtonsoft.Json.Linq.JObject.Parse(timeLineResponseCache);
+                var data = timeLineResponseObj.SelectToken("$.data", true);
+                foreach (var timeLineToken in data.Children())
+                {
+
+                }
+            }
+            else
+            {
+                throw new Exception("Can't read time line.");
+            }
+
+            return timeLine;
+        }
         #endregion
 
         #region Private methods
@@ -156,9 +214,11 @@ namespace ProCode.EsDnevnik.Service
         }
         private HttpClient GetNewClient()
         {
-            var handler = new HttpClientHandler();
-            handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            handler.CookieContainer = new CookieContainer();
+            var handler = new HttpClientHandler
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                CookieContainer = new CookieContainer()
+            };
             client = new HttpClient(handler);
 
             client.DefaultRequestHeaders.Clear();

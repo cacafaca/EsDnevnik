@@ -10,6 +10,12 @@
     <Company>ProCode</Company>
 
     <Product>esDnevnik za Android</Product>
+
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+
+    <FileVersion>1.0.0.1</FileVersion>
+
+    <Configurations>Debug;Release;DebugFake</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,9 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="LoginDetails.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

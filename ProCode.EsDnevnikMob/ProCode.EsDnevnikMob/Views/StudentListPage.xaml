@@ -14,8 +14,13 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ListView ItemsSource="{Binding Students}"
                   SeparatorVisibility="Default"
-                  SelectedItem="{Binding SelectedStudent}"
+                  SelectedItem="{Binding SelectedStudent}"                         
                   x:Name="studentsList">
+            <ListView.Behaviors>
+                <prism:EventToCommandBehavior EventName="ItemTapped"
+                                              Command="{Binding ItemTappedCommand}"
+                                              CommandParameter="{x:Reference studentsList}"/>
+            </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -40,10 +45,15 @@
                                     <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelPol"/>
                                 </StackLayout>
                             </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Škola:" x:Name="labelSkolaText"/>
+                                <Label Text="{Binding CurrentSchool}" x:Name="labelSkola"/>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
         </ListView>
     </StackLayout>
 </ContentPage>

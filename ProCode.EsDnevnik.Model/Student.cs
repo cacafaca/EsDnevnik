@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace ProCode.EsDnevnik.Model
 {
@@ -14,6 +15,14 @@ namespace ProCode.EsDnevnik.Model
         public Student()
         {
             Schools = new List<School>();
+        }
+        public string CurrentSchool
+        {
+            get
+            {
+                return "test";
+                return Schools.FirstOrDefault().SchoolName;
+            }
         }
     }
 }

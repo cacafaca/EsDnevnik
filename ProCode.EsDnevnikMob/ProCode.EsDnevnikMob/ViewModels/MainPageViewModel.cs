@@ -67,18 +67,18 @@ namespace ProCode.EsDnevnikMob.ViewModels
             try
             {
                 IsLogging = true;
+#if !DEBUGFAKE
                 await esdService.LoginAsync();
-
+#else
+#endif
                 // Store user credentials.
                 await userSettings.SetUsernameAsync(Username);
                 await userSettings.SetPasswordAsync(Password);
 
                 var param = new NavigationParameters();
                 param.Add(nameof(esdService), esdService);
-                await NavigationService.NavigateAsync("StudentListPage", param);
+                await NavigationService.NavigateAsync(nameof(Views.StudentListPage), param);
                 IsLogging = false;
-
-                //await NavigationService.NavigateAsync("StudentListPage");
             }
             catch (Exception ex)
             {

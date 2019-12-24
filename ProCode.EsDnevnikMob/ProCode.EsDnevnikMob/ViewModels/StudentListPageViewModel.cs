@@ -19,22 +19,26 @@ namespace ProCode.EsDnevnikMob.ViewModels
             students = new ObservableCollection<Student>();
         }
 
-        public override void OnNavigatedFrom(INavigationParameters parameters)
-        {
-
-        }
-
         EsDnevnik.Service.EsDnevnik esdService = null;
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
+            if (esdService == null)
+                esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
 
-            var students = await esdService.GetStudentsAsync();
-            //var students = esdService.GetStudentsFakeAsync();
-            foreach (var stud in students)
+            // Skip if already fetched.
+            if (Students.Count == 0)
             {
-                Students.Add(stud);
+                IList<Student> students = null;
+#if !DEBUGFAKE
+            students = await esdService.GetStudentsAsync();
+#else
+                await Task.Run(() => { students = esdService.GetStudentsFake(); });
+#endif
+                foreach (var stud in students)
+                {
+                    Students.Add(stud);
+                }
             }
         }
 
@@ -42,10 +46,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public ObservableCollection<Student> Students
         {
             get { return students; }
-            set
-            {
-                SetProperty(ref students, value);
-            }
+            set { SetProperty(ref students, value); }
         }
 
         private Student selectedStudent;
@@ -56,5 +57,20 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { selectedStudent = value; }
         }
 
+        private DelegateCommand itemTappedCommand;
+        public DelegateCommand ItemTappedCommand => itemTappedCommand ?? (itemTappedCommand = new DelegateCommand(ExecuteItemTappedCommand));
+
+        private async void ExecuteItemTappedCommand()
+        {
+            var param = new NavigationParameters();
+            param.Add(nameof(esdService), esdService);
+            param.Add(nameof(SelectedStudent), SelectedStudent);
+            await NavigationService.NavigateAsync(nameof(Views.StudentOverviewPage), param);
+        }
+
+        public static string GetEsdServiceParamName()
+        {
+            return nameof(esdService);
+        }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace ProCode.EsDnevnikMob.Views
 {
-    public partial class PrismTabbedPage1 : TabbedPage
+    public partial class StudentOverviewPage : TabbedPage
     {
-        public PrismTabbedPage1()
+        public StudentOverviewPage()
         {
             InitializeComponent();
         }
