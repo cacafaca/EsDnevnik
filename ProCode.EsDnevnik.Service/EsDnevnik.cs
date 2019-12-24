@@ -16,7 +16,7 @@ namespace ProCode.EsDnevnik.Service
         readonly UserCredential userCredential;
         HttpClient client;
         private readonly UriDictionary uriDictionary;
-        
+
         // Cached vars.
         private string studentsResponseCache;
         private string timeLineResponseCache;
@@ -71,21 +71,67 @@ namespace ProCode.EsDnevnik.Service
             }
         }
 
-        public IList<TimeLine> GetTimeLineFake()
+        public IList<TimeLineEvent> GetTimeLineFake()
         {
-            return new List<TimeLine>
+            return new List<TimeLineEvent>
             {
-                new TimeLine
+                new TimeLineEventAbsent
                 {
-                    EventDate = new DateTime(2019, 12, 2),
+                    Type = TimeLineEventType.Absent,
+                    Date = new DateTime(2019, 12, 2),
+                    CreateTime = new DateTime(2019, 12, 2, 10, 53, 12),
+                    SchoolHour = 1,
+                    WorkHourNote = "62. Pridevi",
+                    ClassMasterNote = "Učešće na takmičenju.",
+                    AbsentType = "dozvola",
+                    Status = "opravdan",
+                    StatusId = 2,
+                    Course = "Srpski",
+                    ClassCourseId = 1234,
+                    SchoolClass = "III 1",
+                    School = "Đura"
                 },
-                new TimeLine
+                new TimeLineEventGrade
                 {
-                    EventDate = new DateTime(2019, 12, 3),
+                    Type = TimeLineEventType.FinalGrade,
+                    Date = new DateTime(2019, 12, 3),
+                    CreateTime = new DateTime(2019, 12, 3, 11, 53, 12),
+                    FullGrade = "odličan (5)",
+                    Grade = new Grade
+                    {
+                        Id = 5,
+                        GradeTypeId = 2,
+                        Name = "odličan",
+                        Value = 5,
+                        Sequence = 5
+                    },
+                    GradeCategory = "Usmeno",
+                    Note = "Prošlost i tragovi prošlosti.",
+                    Course = "Priroda i društvo",
+                    ClassCourseId = 2222,
+                    SchoolClass = "III 1",
+                    School = "Đura"
                 },
-                new TimeLine
+                new TimeLineEventGrade
                 {
-                    EventDate = new DateTime(2019, 12, 10),
+                    Type = TimeLineEventType.FinalGrade,
+                    Date = new DateTime(2019, 12, 10),
+                    CreateTime = new DateTime(2019, 12, 10, 12, 53, 12),
+                    FullGrade = "odličan (5)",
+                    Grade = new Grade
+                    {
+                        Id = 5,
+                        GradeTypeId = 2,
+                        Name = "odličan",
+                        Value = 5,
+                        Sequence = 5
+                    },
+                    GradeCategory = "Usmeno",
+                    Note = "Jednačine.",
+                    Course = "Математика",
+                    ClassCourseId = 3333,
+                    SchoolClass = "III 1",
+                    School = "Đura"
                 }
             };
         }
@@ -146,17 +192,17 @@ namespace ProCode.EsDnevnik.Service
             {
                 new Student()
                 {
-                    Id = 123456,
-                    FullName = "Bojan Bojanić",
+                    Id = 11111,
+                    FullName = "Petar Petrović",
                     Gender = "m",
                     Jmbg = "0101009710123"
                 },
                 new Student()
                 {
-                    Id = 123456,
+                    Id = 22222,
                     FullName = "Bojana Bojanić",
                     Gender = "f",
-                    Jmbg = "0101009710123"
+                    Jmbg = "3112009710123"
                 },
             };
             return students;
@@ -166,9 +212,9 @@ namespace ProCode.EsDnevnik.Service
         /// Get time line.
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<TimeLine>> GetTimeLineAsync()
+        public async Task<IList<TimeLineEvent>> GetTimeLineAsync()
         {
-            IList<TimeLine> timeLine = new List<TimeLine>();
+            IList<TimeLineEvent> timeLine = new List<TimeLineEvent>();
 
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetStudentsUri());
             if (responseMsg.StatusCode == HttpStatusCode.OK)

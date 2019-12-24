@@ -5,16 +5,25 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}">
-    
+
     <!-- Events -->
     <ContentPage Title="Dogadjaji">
         <ContentPage.Content>
-            <ListView x:Name="timeLine">
-                
+            <ListView x:Name="timeLine"
+                      ItemsSource="{Binding TimeLineEvents}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding Summary}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </ContentPage.Content>
     </ContentPage>
-    
+
     <!-- Grades -->
     <ContentPage Title="Ocene">
     </ContentPage>

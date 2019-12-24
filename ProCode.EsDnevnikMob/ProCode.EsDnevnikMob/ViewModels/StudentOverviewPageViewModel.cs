@@ -11,13 +11,13 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public StudentOverviewPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Pregled za dete";
-            timeLine = new ObservableCollection<TimeLine>();
+            timeLineEvents = new ObservableCollection<TimeLineEvent>();
         }
-        private ObservableCollection<TimeLine> timeLine;
-        public ObservableCollection<TimeLine> TimeLine
+        private ObservableCollection<TimeLineEvent> timeLineEvents;
+        public ObservableCollection<TimeLineEvent> TimeLineEvents
         {
-            get { return timeLine; }
-            set { SetProperty(ref timeLine, value); }
+            get { return timeLineEvents; }
+            set { SetProperty(ref timeLineEvents, value); }
         }
 
         EsDnevnik.Service.EsDnevnik esdService;
@@ -33,9 +33,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 Title = Student.FullName;
             }
 
-            if (TimeLine.Count == 0)
+            if (TimeLineEvents.Count == 0)
             {
-                IList<TimeLine> timeLine = null;
+                IList<TimeLineEvent> timeLine = null;
 #if !DEBUGFAKE
             timeLine = await esdService.GetTimeLineAsync();
 #else
@@ -43,7 +43,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
 #endif
                 foreach (var eventInTimeLine in timeLine)
                 {
-                    TimeLine.Add(eventInTimeLine);
+                    TimeLineEvents.Add(eventInTimeLine);
                 }
             }
         }
