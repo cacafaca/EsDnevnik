@@ -7,13 +7,13 @@
     <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" >
         <ActivityIndicator IsRunning="{Binding IsLogging}"/>
         
-        <Label Text="Korisničko ime" />
-        <Entry Text="{Binding Username}"  />
+        <Label Text="Korisničko ime" x:Name="labelUsername"/>
+        <Entry Text="{Binding Username}" x:Name="entryUsername"/>
 
-        <Label Text="Lozinka" />
-        <Entry Text="{Binding Password}" IsPassword="True"/>
+        <Label Text="Lozinka" x:Name="labelPassword"/>
+        <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword"/>
 
-        <Button Text="Prijavi se" Command="{Binding NavigateCommand}"/>
+        <Button Text="Prijavi se" Command="{Binding NavigateCommand}" x:Name="buttonLogin"/>
     </StackLayout>
 
 </ContentPage>

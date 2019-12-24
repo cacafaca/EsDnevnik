@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ProCode.EsDnevnik.Model
@@ -9,5 +10,10 @@ namespace ProCode.EsDnevnik.Model
         public string FullName { get; set; }
         public string Jmbg { get; set; }
         public string Gender { get; set; }
+        public IList<School> Schools { get; set; }
+        public Student()
+        {
+            Schools = new List<School>();
+        }
     }
 }

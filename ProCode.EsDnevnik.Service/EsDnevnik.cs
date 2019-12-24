@@ -88,6 +88,14 @@ namespace ProCode.EsDnevnik.Service
                         Jmbg = studentToken["jmbg"].ToString(),
                         Gender = studentToken["gender"].ToString()
                     };
+                    foreach(var school in studentToken["schoolName"].Children())
+                    {
+                        var newSchool = new School()
+                        {
+                            Id = int.Parse(school["id"].ToString()),
+                            SchoolName = school["id"].ToString()
+                        };
+                    }
                     students.Add(newStudent);
                 }
             }

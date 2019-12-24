@@ -14,29 +14,30 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ListView ItemsSource="{Binding Students}"
                   SeparatorVisibility="Default"
-                  SelectedItem="{Binding SelectedStudent}">
+                  SelectedItem="{Binding SelectedStudent}"
+                  x:Name="studentsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Ime:"/>
-                                    <Label Text="{Binding FullName}"/>
+                                    <Label Text="Ime:" x:Name="labelNameText"/>
+                                    <Label Text="{Binding FullName}" x:Name="labelName"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Label Text="JMBG:" />
-                                    <Label Text="{Binding Jmbg}"/>
+                                    <Label Text="JMBG:" x:Name="labelJmbgText"/>
+                                    <Label Text="{Binding Jmbg}" x:Name="labelJmbg"/>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Id:" />
-                                    <Label Text="{Binding Id}"/>
+                                    <Label Text="Id:" x:Name="labelIdText"/>
+                                    <Label Text="{Binding Id}" x:Name="labelId"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Pol:" />
-                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}"/>
+                                    <Label Text="Pol:" x:Name="labelPolText"/>
+                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelPol"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
