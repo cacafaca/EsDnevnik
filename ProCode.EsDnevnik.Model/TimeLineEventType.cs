@@ -2,6 +2,7 @@
 {
     public enum TimeLineEventType
     {
+        Unknown,
         Grade,
         Absent,
         FinalGrade

@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using Prism.Navigation;
 using System.Collections.Generic;
+#if DEBUGFAKE
 using System.Threading.Tasks;
+#endif
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
@@ -37,7 +39,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             {
                 IList<TimeLineEvent> timeLine = null;
 #if !DEBUGFAKE
-            timeLine = await esdService.GetTimeLineAsync();
+                timeLine = await esdService.GetTimeLineEventsAsync(Student);
 #else
                 await Task.Run(() => { timeLine = esdService.GetTimeLineFake(); });
 #endif

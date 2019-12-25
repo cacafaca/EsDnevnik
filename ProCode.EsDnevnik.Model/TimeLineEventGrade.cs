@@ -20,5 +20,10 @@ namespace ProCode.EsDnevnik.Model
         public string FullGrade { get; set; }
         public string GradeCategory { get; set; }
         public string Note { get; set; }
+        public TimeLineEventGrade()
+        {
+            Grade = new Grade();
+        }
+        public int ClassCourseId { get; set; }
     }
 }

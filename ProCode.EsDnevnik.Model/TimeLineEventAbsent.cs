@@ -18,5 +18,6 @@ namespace ProCode.EsDnevnik.Model
         {
             return $"Izostanak dana {Date}. Čas {SchoolHour}. {Course}. Status {Status}.";
         }
+        public int ClassCourseId { get; set; }
     }
 }

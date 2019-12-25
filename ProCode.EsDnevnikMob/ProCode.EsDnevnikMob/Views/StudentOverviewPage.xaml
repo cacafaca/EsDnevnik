@@ -7,7 +7,7 @@
             Title="{Binding Title}">
 
     <!-- Events -->
-    <ContentPage Title="Dogadjaji">
+    <ContentPage Title="Dogadjaji" x:Name="tabEvents">
         <ContentPage.Content>
             <ListView x:Name="timeLine"
                       ItemsSource="{Binding TimeLineEvents}">
@@ -15,7 +15,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Summary}"/>
+                                <Label Text="{Binding Summary}" x:Name="labelSummary"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -25,6 +25,6 @@
     </ContentPage>
 
     <!-- Grades -->
-    <ContentPage Title="Ocene">
+    <ContentPage Title="Ocene" x:Name="tabGrades">
     </ContentPage>
 </TabbedPage>

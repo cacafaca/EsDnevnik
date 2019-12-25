@@ -3,6 +3,7 @@ using ProCode.EsDnevnik.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 
@@ -49,6 +50,24 @@ namespace ProCode.EsDnevnik.ServiceTest
             IList<Student> students = esd.GetStudentsAsync().Result;
             Assert.IsNotNull(students);
             Assert.AreNotEqual(0, students.Count);
+        }
+
+        [TestMethod]
+        public void GetTimeLineEvents()
+        {
+            var userCredential = Config.GetUserCredentials();
+            Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+            esd.LoginAsync().Wait();
+
+            // Get students.
+            IList<Student> students = esd.GetStudentsAsync().Result;
+            Assert.IsNotNull(students);
+            Assert.AreNotEqual(0, students.Count, "No students.");
+
+            // Get events.
+            IList<TimeLineEvent> timeLineEvents = esd.GetTimeLineEventsAsync(students.First()).Result;
+            Assert.IsNotNull(timeLineEvents);
+            Assert.AreNotEqual(0, timeLineEvents.Count, "No events.");
         }
     }
 }

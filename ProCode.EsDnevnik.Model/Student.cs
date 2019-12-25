@@ -16,13 +16,14 @@ namespace ProCode.EsDnevnik.Model
         {
             Schools = new List<School>();
         }
-        public string CurrentSchool
+        public School CurrentSchool
         {
             get
             {
-                return "test";
-                return Schools.FirstOrDefault().SchoolName;
+                //return "test";
+                return Schools.FirstOrDefault();
             }
         }
+
     }
 }

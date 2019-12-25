@@ -41,13 +41,13 @@
                                     <Label Text="{Binding Id}" x:Name="labelId"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Pol:" x:Name="labelPolText"/>
-                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelPol"/>
+                                    <Label Text="Pol:" x:Name="labelGenderText"/>
+                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelGender"/>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Škola:" x:Name="labelSkolaText"/>
-                                <Label Text="{Binding CurrentSchool}" x:Name="labelSkola"/>
+                                <Label Text="Škola:" x:Name="labelSchoolText"/>
+                                <Label Text="{Binding CurrentSchool}" x:Name="labelSchool"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

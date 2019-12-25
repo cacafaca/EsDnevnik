@@ -10,7 +10,6 @@ namespace ProCode.EsDnevnik.Model
         public DateTime Date { get; set; }
         public DateTime CreateTime { get; set; }
         public string Course { get; set; }
-        public int ClassCourseId { get; set; }
         public string SchoolClass { get; set; }
         public string School { get; set; }
         public string Summary { get { return GetSummary(); } }

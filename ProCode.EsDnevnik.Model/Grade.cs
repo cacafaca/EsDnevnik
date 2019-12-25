@@ -11,5 +11,9 @@ namespace ProCode.EsDnevnik.Model
         public string Name { get; set; }
         public byte Value { get; set; }
         public int Sequence { get; set; }
+        public Grade()
+        {
+            Name = string.Empty;
+        }
     }
 }
