@@ -31,7 +31,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             {
                 IList<Student> students = null;
 #if !DEBUGFAKE
-            students = await esdService.GetStudentsAsync();
+                students = await esdService.GetStudentsAsync();
 #else
                 await Task.Run(() => { students = esdService.GetStudentsFake(); });
 #endif
