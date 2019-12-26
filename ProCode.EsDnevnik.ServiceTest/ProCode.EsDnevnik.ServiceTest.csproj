@@ -15,7 +15,7 @@
 
     <FileVersion>1.0.0.1</FileVersion>
 
-    <Configurations>Debug;Release;DebugFake</Configurations>
+    <Configurations>Debug;Release;DebugFake;ReleaseInstant</Configurations>
 
     <UserSecretsId>457ed2c5-e1f7-4a9b-b55b-22448ca78b26</UserSecretsId>
   </PropertyGroup>

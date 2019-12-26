@@ -6,6 +6,16 @@
 	<Application.Resources>
 
 		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="MainPageLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Body"/>
+                <Setter Property="FontAttributes" Value="None"/>
+                <Setter Property="TextColor" Value="Gray"/>
+            </Style>
+            <Style x:Key="MainPageEntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+        </ResourceDictionary>
 
 	</Application.Resources>
 </prism:PrismApplication>

@@ -6,12 +6,12 @@
 
     <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" >
         <ActivityIndicator IsRunning="{Binding IsLogging}"/>
-        
-        <Label Text="Korisničko ime" x:Name="labelUsername"/>
-        <Entry Text="{Binding Username}" x:Name="entryUsername"/>
 
-        <Label Text="Lozinka" x:Name="labelPassword"/>
-        <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword"/>
+        <Label Text="Korisničko ime" x:Name="labelUsername" Style="{StaticResource MainPageLabelStyle}"/>
+        <Entry Text="{Binding Username}" x:Name="entryUsername" Style="{StaticResource MainPageEntryStyle}"/>
+
+        <Label Text="Lozinka" x:Name="labelPassword" Style="{StaticResource MainPageLabelStyle}"/>
+        <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword" Style="{StaticResource MainPageEntryStyle}"/>
 
         <Button Text="Prijavi se" Command="{Binding NavigateCommand}" x:Name="buttonLogin"/>
     </StackLayout>
