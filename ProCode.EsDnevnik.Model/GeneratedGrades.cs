@@ -4,24 +4,13 @@ using System.Text;
 
 namespace ProCode.EsDnevnik.Model.GeneratedGrades
 {
+
     public class Rootobject
     {
-        public JSON[] JSON { get; set; }
-        public ResponsePayload ResponsePayload { get; set; }
+        public Class1[] Property1 { get; set; }
     }
 
-    public class ResponsePayload
-    {
-        public EDITOR_CONFIG EDITOR_CONFIG { get; set; }
-    }
-
-    public class EDITOR_CONFIG
-    {
-        public string text { get; set; }
-        public string mode { get; set; }
-    }
-
-    public class JSON
+    public class Class1
     {
         public string course { get; set; }
         public int classCourseId { get; set; }
@@ -62,5 +51,4 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public object final { get; set; }
         public int average { get; set; }
     }
-
 }

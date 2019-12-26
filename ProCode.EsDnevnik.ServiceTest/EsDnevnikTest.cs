@@ -29,15 +29,16 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void Login()
         {
+            var userCredential = Config.GetUserCredentials();
+            Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+
             try
             {
-                var userCredential = Config.GetUserCredentials();
-                Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
                 esd.LoginAsync().Wait();
             }
-            catch (Exception ex)
+            finally
             {
-                Assert.ThrowsException<Exception>(() => throw ex);
+                esd.LogoutAsync().Wait();
             }
         }
 
@@ -46,10 +47,18 @@ namespace ProCode.EsDnevnik.ServiceTest
         {
             var userCredential = Config.GetUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
-            esd.LoginAsync().Wait();
-            IList<Student> students = esd.GetStudentsAsync().Result;
-            Assert.IsNotNull(students);
-            Assert.AreNotEqual(0, students.Count);
+
+            try
+            {
+                esd.LoginAsync().Wait();
+                IList<Student> students = esd.GetStudentsAsync().Result;
+                Assert.IsNotNull(students);
+                Assert.AreNotEqual(0, students.Count);
+            }
+            finally
+            {
+                esd.LogoutAsync().Wait();
+            }
         }
 
         [TestMethod]
@@ -57,17 +66,52 @@ namespace ProCode.EsDnevnik.ServiceTest
         {
             var userCredential = Config.GetUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
-            esd.LoginAsync().Wait();
 
-            // Get students.
-            IList<Student> students = esd.GetStudentsAsync().Result;
-            Assert.IsNotNull(students);
-            Assert.AreNotEqual(0, students.Count, "No students.");
+            try
+            {
+                esd.LoginAsync().Wait();
 
-            // Get events.
-            IList<TimeLineEvent> timeLineEvents = esd.GetTimeLineEventsAsync(students.First()).Result;
-            Assert.IsNotNull(timeLineEvents);
-            Assert.AreNotEqual(0, timeLineEvents.Count, "No events.");
+                // Get students.
+                IList<Student> students = esd.GetStudentsAsync().Result;
+                Assert.IsNotNull(students);
+                Assert.AreNotEqual(0, students.Count, "No students.");
+
+                // Get events.
+                IList<TimeLineEvent> timeLineEvents = esd.GetTimeLineEventsAsync(students.First()).Result;
+                Assert.IsNotNull(timeLineEvents);
+                Assert.AreNotEqual(0, timeLineEvents.Count, "No events.");
+            }
+            finally
+            {
+                esd.LogoutAsync().Wait();
+            }
+        }
+
+        [TestMethod]
+        public void GetGrades()
+        {
+            var userCredential = Config.GetUserCredentials();
+            Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+
+            try
+            {
+                esd.LoginAsync().Wait();
+
+                // Get students.
+                IList<Student> students = esd.GetStudentsAsync().Result;
+                Assert.IsNotNull(students);
+                Assert.AreNotEqual(0, students.Count, "No students.");
+
+                // Get events.
+                Model.GeneratedGrades.Rootobject gradesRoot = esd.GetGradesAsync(students.First()).Result;
+                Assert.IsNotNull(gradesRoot);
+                Assert.IsNotNull(gradesRoot.Property1);
+                Assert.AreNotEqual(0, gradesRoot.Property1.Length, "No grades.");
+            }
+            finally
+            {
+                esd.LogoutAsync().Wait();
+            }
         }
     }
 }

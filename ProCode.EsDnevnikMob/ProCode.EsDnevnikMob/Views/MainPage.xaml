@@ -4,7 +4,7 @@
              x:Class="ProCode.EsDnevnikMob.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" >
+    <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsEnabled="{Binding !IsLogging}">
         <ActivityIndicator IsRunning="{Binding IsLogging}"/>
 
         <Label Text="Korisničko ime" x:Name="labelUsername" Style="{StaticResource MainPageLabelStyle}"/>

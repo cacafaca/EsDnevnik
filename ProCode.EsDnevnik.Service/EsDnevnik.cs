@@ -20,6 +20,7 @@ namespace ProCode.EsDnevnik.Service
         // Cached vars.
         private string studentsResponseCache;
         private string timeLineResponseCache;
+        private string gradesResponseCache;
         private IList<Student> studentsCached;
         #endregion
 
@@ -72,6 +73,18 @@ namespace ProCode.EsDnevnik.Service
             }
         }
 
+        public async Task LogoutAsync()
+        {
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetLogoutUri());
+            if (responseMsg.StatusCode == HttpStatusCode.OK)
+            {
+            }
+            else
+            {
+                throw new Exception("Can't logout.");
+            }
+
+        }
         public IList<TimeLineEvent> GetTimeLineEventsFake()
         {
             return new List<TimeLineEvent>
@@ -355,22 +368,19 @@ namespace ProCode.EsDnevnik.Service
             return timeLine;
         }
 
-        public async Task<IList<TimeLineEvent>> GetGradesAsync(Student student)
+        public async Task<Model.GeneratedGrades.Rootobject> GetGradesAsync(Student student)
         {
-            IList<TimeLineEvent> timeLine = new List<TimeLineEvent>();
-
-            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student));
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetGradesUri(student));
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
-                timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
-                var timeLineResponseObj = Newtonsoft.Json.Linq.JObject.Parse(timeLineResponseCache);
-                var data = timeLineResponseObj.SelectToken("$.data", true);
-                foreach (var timeLineDateEventToken in data.Children())
+                gradesResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                return new Model.GeneratedGrades.Rootobject()
                 {
-                }
+                    Property1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.Class1[]>(gradesResponseCache)
+                };
             }
-
-            return timeLine;
+            else
+                return null;
         }
         #endregion
 

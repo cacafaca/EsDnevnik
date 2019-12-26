@@ -94,7 +94,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public bool IsLogging
         {
             get { return isLogging; }
-            set { isLogging = value; }
+            set { SetProperty(ref isLogging, value); }
         }
     }
 }

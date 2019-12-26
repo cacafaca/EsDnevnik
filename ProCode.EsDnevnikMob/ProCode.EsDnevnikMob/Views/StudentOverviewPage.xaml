@@ -5,13 +5,6 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}">
-    <TabbedPage.Resources>
-        <CollectionViewSource x:Key="cvs" Source="{Binding TimeLineEvents}">
-            <CollectionViewSource.SortDescriptions>
-                <scm:SortDescription PropertyName="MyItemName" Direction="Ascending"/>
-            </CollectionViewSource.SortDescriptions>
-        </CollectionViewSource>
-    </TabbedPage.Resources>
 
     <!-- Events -->
     <ContentPage Title="Dogadjaji" x:Name="tabEvents">
@@ -34,7 +27,11 @@
     <!-- Grades -->
     <ContentPage Title="Ocene" x:Name="tabGrades">
         <ContentPage.Content>
-            <ListView x:Name="gradesListView"
+
+            <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                <Label Text="Nije još dostupno."/>
+            </StackLayout>
+            <!--<ListView x:Name="gradesListView"
                       ItemsSource="{Binding }">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -49,7 +46,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </ContentPage.Content>
     </ContentPage>
 </TabbedPage>

@@ -15,8 +15,13 @@ namespace ProCode.EsDnevnik.Service
         }
         public Uri GetLoginUri()
         {
-            
+
             return new Uri(baseUri, "/login");
+        }
+
+        public Uri GetLogoutUri()
+        {
+            return new Uri(baseUri, "/logout");
         }
 
         internal Uri GetBase()
@@ -29,9 +34,20 @@ namespace ProCode.EsDnevnik.Service
             return new Uri(baseUri, "/api/students");
         }
 
-        internal Uri GetTimeLineEventsUri(Student student)
+        internal Uri GetTimeLineEventsUri(Student student, int elementsToFetch = 30)
         {
-            return new Uri(baseUri, $"/api/timeline/{student.Id}?take=100&page=1&school={student.CurrentSchool.Id}&class={student.CurrentSchool.GetCurrentClass().RecordId}");
+            return new Uri(baseUri, $"/api/timeline/{student.Id}?take={elementsToFetch}&page=1&school={student.CurrentSchool.Id}&class={student.CurrentSchool.GetCurrentClass().RecordId}");
+        }
+
+        /// <summary>
+        /// Get grades json.
+        /// </summary>
+        /// <param name="student"></param>
+        /// <param name="elementsToFetch"></param>
+        /// <returns></returns>
+        internal Uri GetGradesUri(Student student, int elementsToFetch = 30)
+        {
+            return new Uri(baseUri, $"/api/grades/{student.GetLastStudentClassId()}");
         }
     }
 }

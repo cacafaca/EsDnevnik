@@ -25,5 +25,14 @@ namespace ProCode.EsDnevnik.Model
             }
         }
 
+        public SchoolYear GetLastSchoolYear()
+        {
+            return Schools.FirstOrDefault()?.SchoolYears.OrderByDescending(sy => sy.Year).FirstOrDefault();
+        }
+
+        public int? GetLastStudentClassId()
+        {
+            return GetLastSchoolYear().Classes.OrderByDescending(classId => classId.RecordId).FirstOrDefault()?.StudentClassId;
+        }
     }
 }
