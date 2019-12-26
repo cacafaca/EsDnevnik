@@ -7,6 +7,8 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
+
+            <!-- Main page -->
             <Style x:Key="MainPageLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Body"/>
                 <Setter Property="FontAttributes" Value="None"/>

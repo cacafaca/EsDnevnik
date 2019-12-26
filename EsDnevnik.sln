@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCode.EsDnevnikMob.Androi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{2F99ECCF-FCD2-4799-9747-F7059B7C540E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCode.EsDnevnik.ModelTest", "ProCode.EsDnevnik.ModelTest\ProCode.EsDnevnik.ModelTest.csproj", "{DC0A6093-8655-4833-83FE-36FE71B7702D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,14 @@ Global
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.ReleaseInstant|Any CPU.Build.0 = ReleaseInstant|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.ReleaseInstant|Any CPU.Deploy.0 = ReleaseInstant|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugFake|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugFake|Any CPU.Build.0 = Debug|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.ReleaseInstant|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.ReleaseInstant|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

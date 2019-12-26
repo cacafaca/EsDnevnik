@@ -354,6 +354,24 @@ namespace ProCode.EsDnevnik.Service
 
             return timeLine;
         }
+
+        public async Task<IList<TimeLineEvent>> GetGradesAsync(Student student)
+        {
+            IList<TimeLineEvent> timeLine = new List<TimeLineEvent>();
+
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student));
+            if (responseMsg.StatusCode == HttpStatusCode.OK)
+            {
+                timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                var timeLineResponseObj = Newtonsoft.Json.Linq.JObject.Parse(timeLineResponseCache);
+                var data = timeLineResponseObj.SelectToken("$.data", true);
+                foreach (var timeLineDateEventToken in data.Children())
+                {
+                }
+            }
+
+            return timeLine;
+        }
         #endregion
 
         #region Private methods

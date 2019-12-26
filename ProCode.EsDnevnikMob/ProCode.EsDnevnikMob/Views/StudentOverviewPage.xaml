@@ -5,17 +5,24 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}">
+    <TabbedPage.Resources>
+        <CollectionViewSource x:Key="cvs" Source="{Binding TimeLineEvents}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="MyItemName" Direction="Ascending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </TabbedPage.Resources>
 
     <!-- Events -->
     <ContentPage Title="Dogadjaji" x:Name="tabEvents">
         <ContentPage.Content>
-            <ListView x:Name="timeLine"
+            <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Summary}" x:Name="labelSummary"/>
+                                <Label Text="{Binding Summary}" x:Name="labelTimeLineEventSummary"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -26,5 +33,23 @@
 
     <!-- Grades -->
     <ContentPage Title="Ocene" x:Name="tabGrades">
+        <ContentPage.Content>
+            <ListView x:Name="gradesListView"
+                      ItemsSource="{Binding }">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Summary}" x:Name="labelGradeBig"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Summary}" x:Name="labelCourse"/>
+                                    <Label Text="{Binding Summary}" x:Name="labelCourse"/>
+                                </StackLayout>                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage.Content>
     </ContentPage>
 </TabbedPage>
