@@ -15,7 +15,6 @@ namespace ProCode.EsDnevnik.Service
         }
         public Uri GetLoginUri()
         {
-
             return new Uri(baseUri, "/login");
         }
 

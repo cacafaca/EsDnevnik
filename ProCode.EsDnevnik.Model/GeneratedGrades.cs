@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,43 +13,46 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
 
     public class Class1
     {
-        public string course { get; set; }
-        public int classCourseId { get; set; }
-        public int classCourseGradeTypeId { get; set; }
-        public int sequence { get; set; }
-        public Parts parts { get; set; }
+        public string Course { get; set; }
+        public int ClassCourseId { get; set; }
+        public int ClassCourseGradeTypeId { get; set; }
+        public int Sequence { get; set; }
+        public Parts Parts { get; set; }
     }
 
     public class Parts
     {
-        public _1 _1 { get; set; }
-        public _2 _2 { get; set; }
+        [JsonProperty("1")]
+        public Part1 Part1Value { get; set; }
+        [JsonProperty("2")]
+        public Part2 Part2Value { get; set; }
     }
 
-    public class _1
+    public class Part1
     {
-        public Grade[] grades { get; set; }
-        public object final { get; set; }
-        public float average { get; set; }
+        public Grade[] Grades { get; set; }
+        public object Final { get; set; }
+        public float Average { get; set; }
     }
 
     public class Grade
     {
-        public bool descriptive { get; set; }
-        public string date { get; set; }
-        public string createTime { get; set; }
-        public string fullGrade { get; set; }
-        public int grade { get; set; }
-        public string gradeCategory { get; set; }
-        public string note { get; set; }
-        public object schoolyearPartId { get; set; }
-        public object evaluationElement { get; set; }
+        public bool Descriptive { get; set; }
+        public string Date { get; set; }
+        public string CreateTime { get; set; }
+        public string FullGrade { get; set; }
+        [JsonProperty("grade")]
+        public int GradeValue { get; set; }
+        public string GradeCategory { get; set; }
+        public string Note { get; set; }
+        public object SchoolyearPartId { get; set; }
+        public object EvaluationElement { get; set; }
     }
 
-    public class _2
+    public class Part2
     {
-        public object[] grades { get; set; }
-        public object final { get; set; }
-        public int average { get; set; }
+        public object[] Grades { get; set; }
+        public object Final { get; set; }
+        public int Average { get; set; }
     }
 }

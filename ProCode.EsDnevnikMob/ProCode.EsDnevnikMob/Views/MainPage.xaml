@@ -1,19 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProCode.EsDnevnikMob.Views.MainPage"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ProCode.EsDnevnikMob.Views.MainPage"             
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" IsEnabled="{Binding !IsLogging}">
+
+    <ContentPage.Behaviors>
+        <prism:EventToCommandBehavior EventName="Appearing"
+                                      Command="{Binding AppearingCommand}"/>
+    </ContentPage.Behaviors>
+
+    <StackLayout HorizontalOptions="Fill" VerticalOptions="Start" >
+        <StackLayout Orientation="Vertical">
+            <Label Text="Korisničko ime" x:Name="labelUsername" Style="{StaticResource MainPageLabelStyle}"/>
+            <Entry Text="{Binding Username}" x:Name="entryUsername" Style="{StaticResource MainPageEntryStyle}" IsEnabled="{Binding IsNotLogging}"/>
+
+            <Label Text="Lozinka" x:Name="labelPassword" Style="{StaticResource MainPageLabelStyle}"/>
+            <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword" Style="{StaticResource MainPageEntryStyle}" IsEnabled="{Binding IsNotLogging}"/>
+
+            <Button Text="Prijavi se" Command="{Binding LoginNavigateCommand}" x:Name="buttonLogin" IsEnabled="{Binding IsNotLogging}"/>
+        </StackLayout>
         <ActivityIndicator IsRunning="{Binding IsLogging}"/>
-
-        <Label Text="Korisničko ime" x:Name="labelUsername" Style="{StaticResource MainPageLabelStyle}"/>
-        <Entry Text="{Binding Username}" x:Name="entryUsername" Style="{StaticResource MainPageEntryStyle}"/>
-
-        <Label Text="Lozinka" x:Name="labelPassword" Style="{StaticResource MainPageLabelStyle}"/>
-        <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword" Style="{StaticResource MainPageEntryStyle}"/>
-
-        <Button Text="Prijavi se" Command="{Binding NavigateCommand}" x:Name="buttonLogin"/>
     </StackLayout>
 
 </ContentPage>

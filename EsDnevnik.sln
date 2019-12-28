@@ -15,12 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCode.EsDnevnikMob.Androi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{2F99ECCF-FCD2-4799-9747-F7059B7C540E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCode.EsDnevnik.ModelTest", "ProCode.EsDnevnik.ModelTest\ProCode.EsDnevnik.ModelTest.csproj", "{DC0A6093-8655-4833-83FE-36FE71B7702D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProCode.EsDnevnik.ModelTest", "ProCode.EsDnevnik.ModelTest\ProCode.EsDnevnik.ModelTest.csproj", "{DC0A6093-8655-4833-83FE-36FE71B7702D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		DebugFake|Any CPU = DebugFake|Any CPU
+		DebugPhoneConnected|Any CPU = DebugPhoneConnected|Any CPU
 		Release|Any CPU = Release|Any CPU
 		ReleaseInstant|Any CPU = ReleaseInstant|Any CPU
 	EndGlobalSection
@@ -29,6 +30,8 @@ Global
 		{D470AD47-7F59-402E-8215-0BD63C988050}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D470AD47-7F59-402E-8215-0BD63C988050}.DebugFake|Any CPU.ActiveCfg = DebugFake|Any CPU
 		{D470AD47-7F59-402E-8215-0BD63C988050}.DebugFake|Any CPU.Build.0 = DebugFake|Any CPU
+		{D470AD47-7F59-402E-8215-0BD63C988050}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{D470AD47-7F59-402E-8215-0BD63C988050}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{D470AD47-7F59-402E-8215-0BD63C988050}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D470AD47-7F59-402E-8215-0BD63C988050}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D470AD47-7F59-402E-8215-0BD63C988050}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
@@ -37,6 +40,8 @@ Global
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.DebugFake|Any CPU.ActiveCfg = DebugFake|Any CPU
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.DebugFake|Any CPU.Build.0 = DebugFake|Any CPU
+		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08C9C276-DFC4-4B68-BC19-2C481774E30F}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
@@ -45,6 +50,8 @@ Global
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugFake|Any CPU.ActiveCfg = DebugFake|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugFake|Any CPU.Build.0 = DebugFake|Any CPU
+		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
@@ -53,6 +60,8 @@ Global
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.DebugFake|Any CPU.ActiveCfg = DebugFake|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.DebugFake|Any CPU.Build.0 = DebugFake|Any CPU
+		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
@@ -63,6 +72,9 @@ Global
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugFake|Any CPU.ActiveCfg = DebugFake|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugFake|Any CPU.Build.0 = DebugFake|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugFake|Any CPU.Deploy.0 = DebugFake|Any CPU
+		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
+		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.DebugPhoneConnected|Any CPU.Deploy.0 = DebugPhoneConnected|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DD9F592-BE11-4E33-878D-5EC7609E63E2}.Release|Any CPU.Deploy.0 = Release|Any CPU
@@ -73,6 +85,8 @@ Global
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugFake|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugFake|Any CPU.Build.0 = Debug|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
+		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.ReleaseInstant|Any CPU.ActiveCfg = Release|Any CPU

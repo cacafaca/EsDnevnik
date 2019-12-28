@@ -26,6 +26,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private IPageDialogService dialogService;
         private UserSettings userSettings = new UserSettings();
+        private EsDnevnik.Service.EsDnevnik esdService;
 
         private string username;
         public string Username
@@ -41,9 +42,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref password, value); }
         }
 
-        private DelegateCommand navigateCommand;
-        public DelegateCommand NavigateCommand => navigateCommand ?? (navigateCommand = new DelegateCommand(ExecuteNavigateCommand));
-        async void ExecuteNavigateCommand()
+        private DelegateCommand loginNavigateCommand;
+        public DelegateCommand LoginNavigateCommand => loginNavigateCommand ?? (loginNavigateCommand = new DelegateCommand(ExecuteLoginNavigateCommand));
+        async void ExecuteLoginNavigateCommand()
         {
 
             if (string.IsNullOrWhiteSpace(Username))
@@ -62,7 +63,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
             {
                 securePassword.AppendChar(c);
             }
-            var esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
+
+            if (esdService == null)
+                esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
 
             try
             {
@@ -82,19 +85,47 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
             catch (Exception ex)
             {
-                IsLogging = false;
                 await dialogService.DisplayAlertAsync("Greška?", ex.Message, "Uredu");
             }
-
-
-
+            finally
+            {
+                IsLogging = false;
+            }
         }
 
         private bool isLogging;
         public bool IsLogging
         {
             get { return isLogging; }
-            set { SetProperty(ref isLogging, value); }
+            set
+            {
+                SetProperty(ref isLogging, value);
+                if (isNotLogging == isLogging)
+                    IsNotLogging = !isLogging;
+            }
+        }
+
+        private bool isNotLogging;
+        public bool IsNotLogging
+        {
+            get { return isNotLogging; }
+            set
+            {
+                SetProperty(ref isNotLogging, value);
+                if (isLogging == isNotLogging)
+                    IsLogging = !isNotLogging;
+            }
+        }
+
+        private DelegateCommand appearingCommand;
+        public DelegateCommand AppearingCommand => appearingCommand ?? (appearingCommand = new DelegateCommand(ExecuteAppearingCommand));
+
+        private void ExecuteAppearingCommand()
+        {
+            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
+            {
+                ExecuteLoginNavigateCommand();
+            }
         }
     }
 }

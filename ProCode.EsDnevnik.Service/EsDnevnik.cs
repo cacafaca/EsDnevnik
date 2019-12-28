@@ -16,6 +16,7 @@ namespace ProCode.EsDnevnik.Service
         readonly UserCredential userCredential;
         HttpClient client;
         private readonly UriDictionary uriDictionary;
+        private bool isLoggedIn;
 
         // Cached vars.
         private string studentsResponseCache;
@@ -27,6 +28,7 @@ namespace ProCode.EsDnevnik.Service
         #region Constructors
         public EsDnevnik(UserCredential userCredential)
         {
+            isLoggedIn = false;
             if (userCredential != null)
             {
                 this.userCredential = userCredential;
@@ -60,7 +62,7 @@ namespace ProCode.EsDnevnik.Service
                 var linkNodeAppCss = doc.DocumentNode.SelectNodes("//link/@href")?.Where(node => node.Attributes["href"].Value.StartsWith("/css/app.css"))?.FirstOrDefault();
                 if (linkNodeAppCss != null)
                 {
-
+                    isLoggedIn = true;
                 }
                 else
                 {
@@ -78,6 +80,7 @@ namespace ProCode.EsDnevnik.Service
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetLogoutUri());
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
+                isLoggedIn = false;
             }
             else
             {
@@ -270,8 +273,7 @@ namespace ProCode.EsDnevnik.Service
 
                     if (timeLineDateEventToken is JProperty timeLineDateEventProp)
                     {
-                        JObject timeLineEventObject = timeLineDateEventProp.Children().First().Children().First() as JObject;
-                        if (timeLineEventObject != null)
+                        if (timeLineDateEventProp.Children().First().Children().First() is JObject timeLineEventObject)
                         {
                             TimeLineEventType eventType;
                             switch (timeLineEventObject["type"].ToString())
@@ -382,6 +384,11 @@ namespace ProCode.EsDnevnik.Service
             else
                 return null;
         }
+
+        public bool IsLoggedIn()
+        {
+            return isLoggedIn;
+        }
         #endregion
 
         #region Private methods
@@ -406,6 +413,7 @@ namespace ProCode.EsDnevnik.Service
 
             return token;
         }
+        
         private HttpClient GetNewClient()
         {
             var handler = new HttpClientHandler
@@ -428,7 +436,7 @@ namespace ProCode.EsDnevnik.Service
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("EsDnevnik-Unofficial", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()));
 
             return client;
-        }
+        }        
         #endregion
     }
 }

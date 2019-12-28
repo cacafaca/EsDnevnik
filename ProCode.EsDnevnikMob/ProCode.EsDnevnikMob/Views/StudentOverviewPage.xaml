@@ -6,7 +6,7 @@
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}">
 
-    <!-- Events -->
+    <!-- Time Line -->
     <ContentPage Title="Dogadjaji" x:Name="tabEvents">
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
@@ -29,7 +29,7 @@
         <ContentPage.Content>
 
             <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                <Label Text="Nije još dostupno."/>
+                <Label Text="Nije još dostupno." FontSize="Caption"/>
             </StackLayout>
             <!--<ListView x:Name="gradesListView"
                       ItemsSource="{Binding }">

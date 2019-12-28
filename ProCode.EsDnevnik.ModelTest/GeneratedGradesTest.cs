@@ -1,6 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
@@ -22,9 +24,12 @@ namespace ProCode.EsDnevnik.ModelTest
                 gradesJson = reader.ReadToEnd();
             }
 
-            Model.GeneratedGrades.Class1[] classArray = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.Class1[]>(gradesJson);
+            Model.GeneratedGrades.Class1[] classArray = JsonConvert.DeserializeObject<Model.GeneratedGrades.Class1[]>(gradesJson);
             Assert.IsNotNull(classArray);
             Assert.AreNotSame(0, classArray.Length);
+
+            Assert.AreEqual("Народна традиција (изборни)", classArray.First().Course);
+            Assert.AreEqual(5, classArray.First().Parts.Part1Value.Grades.First().GradeValue);
         }
     }
 }

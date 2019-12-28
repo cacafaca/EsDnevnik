@@ -13,7 +13,7 @@ namespace ProCode.EsDnevnik.ServiceTest
     public class EsDnevnikTest
     {
         [TestMethod]
-        public void LoadLoginData()
+        public void Load_Login_Data()
         {
             var userCredential = Config.GetUserCredentials();
 
@@ -27,7 +27,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         }
 
         [TestMethod]
-        public void Login()
+        public void Login_And_Logout()
         {
             var userCredential = Config.GetUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
@@ -43,7 +43,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         }
 
         [TestMethod]
-        public void GetStudents()
+        public void Login_Get_Students_Logout()
         {
             var userCredential = Config.GetUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
