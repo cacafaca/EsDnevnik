@@ -24,7 +24,7 @@ namespace ProCode.EsDnevnik.ModelTest
                 gradesJson = reader.ReadToEnd();
             }
 
-            Model.GeneratedGrades.Class1[] classArray = JsonConvert.DeserializeObject<Model.GeneratedGrades.Class1[]>(gradesJson);
+            Model.GeneratedGrades.GradesArray[] classArray = JsonConvert.DeserializeObject<Model.GeneratedGrades.GradesArray[]>(gradesJson);
             Assert.IsNotNull(classArray);
             Assert.AreNotSame(0, classArray.Length);
 

@@ -105,8 +105,8 @@ namespace ProCode.EsDnevnik.ServiceTest
                 // Get events.
                 Model.GeneratedGrades.Rootobject gradesRoot = esd.GetGradesAsync(students.First()).Result;
                 Assert.IsNotNull(gradesRoot);
-                Assert.IsNotNull(gradesRoot.Property1);
-                Assert.AreNotEqual(0, gradesRoot.Property1.Length, "No grades.");
+                Assert.IsNotNull(gradesRoot.Grades);
+                Assert.AreNotEqual(0, gradesRoot.Grades.Length, "No grades.");
             }
             finally
             {

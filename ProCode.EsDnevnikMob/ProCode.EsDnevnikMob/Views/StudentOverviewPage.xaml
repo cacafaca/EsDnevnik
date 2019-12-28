@@ -27,26 +27,31 @@
     <!-- Grades -->
     <ContentPage Title="Ocene" x:Name="tabGrades">
         <ContentPage.Content>
-
-            <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                <Label Text="Nije još dostupno." FontSize="Caption"/>
-            </StackLayout>
-            <!--<ListView x:Name="gradesListView"
-                      ItemsSource="{Binding }">
+            <ListView x:Name="gradesListView"
+                      ItemsSource="{Binding GeneratedGradesSimple}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Summary}" x:Name="labelGradeBig"/>
+                                <Label Text="{Binding Grade}" x:Name="labelGradeBig" 
+                                       FontSize="Title" 
+                                       FontAttributes="Bold" 
+                                       Margin="5, 2, 5, 2"
+                                       TextColor="Blue"/>
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Summary}" x:Name="labelCourse"/>
-                                    <Label Text="{Binding Summary}" x:Name="labelCourse"/>
-                                </StackLayout>                                
+                                    <Label Text="{Binding Course}" x:Name="labelGradeCourse" TextColor="Green"/>
+                                    <Label Text="{Binding GradeCategory}" x:Name="labelGradeCategory"/>
+                                    <Label Text="{Binding Note}" x:Name="labelGradeNote"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                    <Label Text="{Binding Date}" x:Name="labelGradeDate" LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding Average}" x:Name="labelGradeAverage"/>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
         </ContentPage.Content>
     </ContentPage>
 </TabbedPage>

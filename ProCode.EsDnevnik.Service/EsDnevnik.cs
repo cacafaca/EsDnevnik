@@ -378,11 +378,54 @@ namespace ProCode.EsDnevnik.Service
                 gradesResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 return new Model.GeneratedGrades.Rootobject()
                 {
-                    Property1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.Class1[]>(gradesResponseCache)
+                    Grades = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.GradesArray[]>(gradesResponseCache)
                 };
             }
             else
                 return null;
+        }
+        public Model.GeneratedGrades.Rootobject GetGradesFake()
+        {
+            return new Model.GeneratedGrades.Rootobject
+            {
+                Grades = new Model.GeneratedGrades.GradesArray[]
+                {
+                    new Model.GeneratedGrades.GradesArray
+                    {
+                        Course = "Srpski",
+                        ClassCourseId = 12345,
+                        ClassCourseGradeTypeId = 1,
+                        Sequence = 10,
+                        Parts = new Model.GeneratedGrades.Parts
+                        {
+                            Part1Value = new Model.GeneratedGrades.Part1
+                            {
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Odlican (5)",
+                                        GradeValue = 5,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                }
+                            },
+                            Part2Value = new Model.GeneratedGrades.Part2
+                            {
+                                Grades = null,
+                                Final = null,
+                                Average = 0
+                            }
+                        }
+                    }
+                }
+            };
         }
 
         public bool IsLoggedIn()
@@ -413,7 +456,7 @@ namespace ProCode.EsDnevnik.Service
 
             return token;
         }
-        
+
         private HttpClient GetNewClient()
         {
             var handler = new HttpClientHandler
@@ -436,7 +479,7 @@ namespace ProCode.EsDnevnik.Service
             client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("EsDnevnik-Unofficial", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()));
 
             return client;
-        }        
+        }
         #endregion
     }
 }

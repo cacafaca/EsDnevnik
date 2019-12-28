@@ -8,10 +8,10 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
 
     public class Rootobject
     {
-        public Class1[] Property1 { get; set; }
+        public GradesArray[] Grades { get; set; }
     }
 
-    public class Class1
+    public class GradesArray
     {
         public string Course { get; set; }
         public int ClassCourseId { get; set; }
