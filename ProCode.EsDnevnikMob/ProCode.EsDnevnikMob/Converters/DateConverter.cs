@@ -6,16 +6,23 @@ using Xamarin.Forms;
 
 namespace ProCode.EsDnevnikMob
 {
-    class GenderConverter : IValueConverter
+    class DateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((string)value).ToLower() == "f" ? "Žensko" : "Muško";
+            if (value is string valueStr)
+            {
+                DateTime.TryParse(valueStr, out DateTime result);
+                return result.ToString("dd.MM.yy");
+            }
+            else
+                return value;
+            
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((string)value).ToLower() == "Žensko" ? "f" : "m";
+            return null;
         }
     }
 }

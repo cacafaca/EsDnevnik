@@ -22,7 +22,6 @@ namespace ProCode.EsDnevnik.Service
         private string studentsResponseCache;
         private string timeLineResponseCache;
         private string gradesResponseCache;
-        private IList<Student> studentsCached;
         #endregion
 
         #region Constructors
@@ -223,7 +222,6 @@ namespace ProCode.EsDnevnik.Service
                 throw new Exception("Can't read students info.");
             }
 
-            studentsCached = students;
             return students;
         }
 
@@ -253,17 +251,25 @@ namespace ProCode.EsDnevnik.Service
             return students;
         }
 
+        private const int timeLineEventFirstPage = 1;
+        private int timeLineEventsPage = timeLineEventFirstPage;
+
         /// <summary>
         /// Get time line.
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<TimeLineEvent>> GetTimeLineEventsAsync(Student student)
+        public async Task<IList<TimeLineEvent>> GetTimeLineEventsAsync(Student student, bool resetTimleLineEventPage = false)
         {
             IList<TimeLineEvent> timeLine = new List<TimeLineEvent>();
 
-            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student));
+            if (resetTimleLineEventPage)
+                timeLineEventsPage = timeLineEventFirstPage;
+
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref timeLineEventsPage));
+            
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
+                timeLineEventsPage++;
                 timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 var timeLineResponseObj = Newtonsoft.Json.Linq.JObject.Parse(timeLineResponseCache);
                 var data = timeLineResponseObj.SelectToken("$.data", true);
@@ -353,7 +359,6 @@ namespace ProCode.EsDnevnik.Service
                                     }
                                     break;
                                 default:
-                                    eventType = TimeLineEventType.Unknown;
                                     break;
                             }
                             if (newTimeLineEvent != null)

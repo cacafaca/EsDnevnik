@@ -178,7 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProCode.EsDnevnikMob\ProCode.EsDnevnikMob.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}</Project>
       <Name>ProCode.EsDnevnikMob</Name>
     </ProjectReference>
   </ItemGroup>

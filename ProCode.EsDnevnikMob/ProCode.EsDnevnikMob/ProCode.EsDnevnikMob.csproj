@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Debug;Release;DebugFake;ReleaseInstant;DebugPhoneConnected</Configurations>
+    <AssemblyName>ProCode.EsDnevnikMob</AssemblyName>
+    <RootNamespace>ProCode.EsDnevnikMob</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

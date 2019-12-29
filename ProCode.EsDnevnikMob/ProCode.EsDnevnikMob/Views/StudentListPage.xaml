@@ -6,53 +6,60 @@
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
              xmlns:local="clr-namespace:ProCode.EsDnevnikMob"
              Title="{Binding Title}">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:GenderConverter x:Key="genderConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <ListView ItemsSource="{Binding Students}"
+    
+    <RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+            <ActivityIndicator IsRunning="{Binding IsBussy}" IsVisible="{Binding IsBussy}" 
+                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
+                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"/>
+            <ListView ItemsSource="{Binding Students}"
                   SeparatorVisibility="Default"
                   SelectedItem="{Binding SelectedStudent}"                         
                   x:Name="studentsList">
-            <ListView.Behaviors>
-                <prism:EventToCommandBehavior EventName="ItemTapped"
+                <ListView.Behaviors>
+                    <prism:EventToCommandBehavior EventName="ItemTapped"
                                               Command="{Binding ItemTappedCommand}"
                                               CommandParameter="{x:Reference studentsList}"/>
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <StackLayout Orientation="Horizontal">
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Ime:" x:Name="labelNameText"/>
-                                    <Label Text="{Binding FullName}" x:Name="labelName"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Ime:" x:Name="labelNameText"/>
+                                        <Label Text="{Binding FullName}" x:Name="labelName"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label Text="JMBG:" x:Name="labelJmbgText"/>
+                                        <Label Text="{Binding Jmbg}" x:Name="labelJmbg"/>
+                                    </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Label Text="JMBG:" x:Name="labelJmbgText"/>
-                                    <Label Text="{Binding Jmbg}" x:Name="labelJmbg"/>
-                                </StackLayout>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Id:" x:Name="labelIdText"/>
-                                    <Label Text="{Binding Id}" x:Name="labelId"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Id:" x:Name="labelIdText"/>
+                                        <Label Text="{Binding Id}" x:Name="labelId"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label Text="Pol:" x:Name="labelGenderText"/>
+                                        <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelGender"/>
+                                    </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Pol:" x:Name="labelGenderText"/>
-                                    <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelGender"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Škola:" x:Name="labelSchoolText"/>
+                                    <Label Text="{Binding CurrentSchool}" x:Name="labelSchool"/>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Škola:" x:Name="labelSchoolText"/>
-                                <Label Text="{Binding CurrentSchool}" x:Name="labelSchool"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>            
-        </ListView>
-    </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </RelativeLayout>
 </ContentPage>

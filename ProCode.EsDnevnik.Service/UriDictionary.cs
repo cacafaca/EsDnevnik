@@ -33,9 +33,11 @@ namespace ProCode.EsDnevnik.Service
             return new Uri(baseUri, "/api/students");
         }
 
-        internal Uri GetTimeLineEventsUri(Student student, int elementsToFetch = 30)
+        internal Uri GetTimeLineEventsUri(Student student, ref int page, int elementsToFetch = 30)
         {
-            return new Uri(baseUri, $"/api/timeline/{student.Id}?take={elementsToFetch}&page=1&school={student.CurrentSchool.Id}&class={student.CurrentSchool.GetCurrentClass().RecordId}");
+            if (page < 1)
+                page = 1;
+            return new Uri(baseUri, $"/api/timeline/{student.Id}?take={elementsToFetch}&page={page}&school={student.CurrentSchool.Id}&class={student.CurrentSchool.GetCurrentClass().RecordId}");
         }
 
         /// <summary>

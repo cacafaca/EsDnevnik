@@ -17,6 +17,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             Title = "Moja deca";
             students = new ObservableCollection<Student>();
+            isBussy = false;
         }
 
         EsDnevnik.Service.EsDnevnik esdService = null;
@@ -24,7 +25,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             if (esdService == null)
+            {
+                IsBussy = true;
                 esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
+                IsBussy = false;
+            }
 
             // Skip if already fetched.
             if (Students.Count == 0)
@@ -38,6 +43,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 foreach (var stud in students)
                 {
                     Students.Add(stud);
+                }
+                if (Students.Count == 1)
+                {
+                    SelectedStudent = Students.First();
+                    ExecuteItemTappedCommand();
                 }
             }
         }
@@ -62,9 +72,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private async void ExecuteItemTappedCommand()
         {
-            var param = new NavigationParameters();
-            param.Add(nameof(esdService), esdService);
-            param.Add(nameof(SelectedStudent), SelectedStudent);
+            var param = new NavigationParameters
+            {
+                { nameof(esdService), esdService },
+                { nameof(SelectedStudent), SelectedStudent }
+            };
             await NavigationService.NavigateAsync(nameof(Views.StudentOverviewPage), param);
         }
 
@@ -72,5 +84,14 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             return nameof(esdService);
         }
+
+        private bool isBussy;
+
+        public bool IsBussy
+        {
+            get { return isBussy; }
+            set { SetProperty(ref isBussy, value); }
+        }
+
     }
 }

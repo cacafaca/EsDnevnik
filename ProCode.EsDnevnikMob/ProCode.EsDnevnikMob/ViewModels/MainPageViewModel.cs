@@ -24,8 +24,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
             Password = userSettings.GetPasswordAsync().Result;
         }
 
-        private IPageDialogService dialogService;
-        private UserSettings userSettings = new UserSettings();
+        private readonly IPageDialogService dialogService;
+        private readonly UserSettings userSettings = new UserSettings();
         private EsDnevnik.Service.EsDnevnik esdService;
 
         private string username;
@@ -78,8 +78,10 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 await userSettings.SetUsernameAsync(Username);
                 await userSettings.SetPasswordAsync(Password);
 
-                var param = new NavigationParameters();
-                param.Add(nameof(esdService), esdService);
+                var param = new NavigationParameters
+                {
+                    { nameof(esdService), esdService }
+                };
                 await NavigationService.NavigateAsync(nameof(Views.StudentListPage), param);
                 IsLogging = false;
             }

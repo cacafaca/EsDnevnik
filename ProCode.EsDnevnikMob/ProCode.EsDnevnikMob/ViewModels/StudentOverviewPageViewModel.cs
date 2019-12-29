@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ProCode.EsDnevnik.Model.GeneratedGrades;
 using System;
+using Prism.Commands;
 #if DEBUGFAKE
 using System.Threading.Tasks;
 #endif
@@ -33,11 +34,12 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref timeLineEvents, value); }
         }
 
-        private async Task LoadTimeLine(Student student)
+        private async Task LoadTimeLine(Student student, TimeLineLoadType loadType)
         {
             if (TimeLineEvents.Count == 0)
             {
                 IList<TimeLineEvent> newTimeLineEvents;
+                bool resetTimeLineEventPage = loadType == TimeLineLoadType.Refresh;
 #if !DEBUGFAKE
                 newTimeLineEvents = await esdService.GetTimeLineEventsAsync(Student);
 #else
@@ -47,6 +49,14 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 foreach (var timeLineEvent in newTimeLineEvents.OrderByDescending(ev => ev.CreateTime))
                     TimeLineEvents.Add(timeLineEvent);
             }
+        }
+
+        private DelegateCommand timeLineScrolledCommand;
+        public DelegateCommand TimeLineScrolledCommand => timeLineScrolledCommand ?? (timeLineScrolledCommand = new DelegateCommand(ExecuteTimeLineScrolledCommand));
+
+        private void ExecuteTimeLineScrolledCommand()
+        {
+            
         }
         #endregion
 
@@ -84,7 +94,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             {
                 foreach(var courseGrade in grade.Parts.Part1Value.Grades)
                 {
-                    gradesSimple.Add(new EsDnevnik.Model.GeneratedGradesSimple
+                    gradesSimple.Add(new GeneratedGradesSimple
                     {
                         Course = grade.Course,
                         Date = courseGrade.Date,
@@ -104,9 +114,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
             return gradesSimpleSorted;
         }
 
-        private ObservableCollection<EsDnevnik.Model.GeneratedGradesSimple> generatedGradesSimples;
+        private ObservableCollection<GeneratedGradesSimple> generatedGradesSimples;
 
-        public ObservableCollection<EsDnevnik.Model.GeneratedGradesSimple> GeneratedGradesSimple
+        public ObservableCollection<GeneratedGradesSimple> GeneratedGradesSimple
         {
             get { return generatedGradesSimples; }
             set
@@ -128,13 +138,18 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 Student = parameters.GetValue<Student>(nameof(StudentListPageViewModel.SelectedStudent));
                 Title = Student.FullName;
             }
-
-
+            
             // Time line data fetch 
-            await LoadTimeLine(Student);
+            await LoadTimeLine(Student, TimeLineLoadType.Refresh);
 
             // Grades fetch
             await LoadGrades(Student);
         }
+    }
+
+    enum TimeLineLoadType
+    {
+        Refresh,
+        NextPage
     }
 }

@@ -4,13 +4,29 @@
             xmlns:prism="http://prismlibrary.com"
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
-            Title="{Binding Title}">
+            Title="{Binding Title}"
+            xmlns:local="clr-namespace:ProCode.EsDnevnikMob">
+
+    <TabbedPage.Resources>
+        <ResourceDictionary>
+            <local:DateConverter x:Key="dateConverter"/>
+            <local:AverageGradeConverter x:Key="averageGradeConverter"/>
+            <local:GradeColorConverter x:Key="gradeColorConverter"/>
+        </ResourceDictionary>
+    </TabbedPage.Resources>
+
 
     <!-- Time Line -->
     <ContentPage Title="Dogadjaji" x:Name="tabEvents">
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}">
+                
+                <!--<ListView.Behaviors>
+                    <prism:EventToCommandBehavior EventName="Scrolled"
+                                      Command="{Binding TimeLineScrolledCommand}"/>
+                </ListView.Behaviors>-->
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -28,24 +44,28 @@
     <ContentPage Title="Ocene" x:Name="tabGrades">
         <ContentPage.Content>
             <ListView x:Name="gradesListView"
-                      ItemsSource="{Binding GeneratedGradesSimple}">
+                      ItemsSource="{Binding GeneratedGradesSimple}"
+                      HasUnevenRows="True">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Margin="5, 0, 5, 0"  VerticalOptions="FillAndExpand">
                                 <Label Text="{Binding Grade}" x:Name="labelGradeBig" 
-                                       FontSize="Title" 
-                                       FontAttributes="Bold" 
-                                       Margin="5, 2, 5, 2"
-                                       TextColor="Blue"/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Course}" x:Name="labelGradeCourse" TextColor="Green"/>
-                                    <Label Text="{Binding GradeCategory}" x:Name="labelGradeCategory"/>
-                                    <Label Text="{Binding Note}" x:Name="labelGradeNote"/>
+                                    FontSize="Title" 
+                                    FontAttributes="Bold" 
+                                    Margin="5, 2, 5, 2"
+                                    TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Course}" x:Name="labelGradeCourse" TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}" LineBreakMode="TailTruncation"/>
+                                        <Label Text="{Binding GradeCategory}" x:Name="labelGradeCategory" LineBreakMode="TailTruncation" FontAttributes="Italic" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding Note}" x:Name="labelGradeNote" LineBreakMode="WordWrap"/>
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                    <Label Text="{Binding Date}" x:Name="labelGradeDate" LineBreakMode="TailTruncation"/>
-                                    <Label Text="{Binding Average}" x:Name="labelGradeAverage"/>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="End">
+                                    <Label Text="{Binding Date, Converter={StaticResource dateConverter}}" x:Name="labelGradeDate" LineBreakMode="TailTruncation"/>
+                                    <Label Text="{Binding Average, Converter={StaticResource averageGradeConverter}}" x:Name="labelGradeAverage" LineBreakMode="TailTruncation" HorizontalTextAlignment="End" FontAttributes="Bold"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
