@@ -89,7 +89,7 @@ namespace ProCode.EsDnevnik.Service
         }
         public IList<TimeLineEvent> GetTimeLineEventsFake()
         {
-            return new List<TimeLineEvent>
+            return new List<Model.GeneratedTimeLine.TimeLineEvent>
             {
                 new TimeLineEventAbsent
                 {
@@ -258,121 +258,26 @@ namespace ProCode.EsDnevnik.Service
         /// Get time line.
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<TimeLineEvent>> GetTimeLineEventsAsync(Student student, bool resetTimleLineEventPage = false)
+        public async Task<Model.GeneratedTimeLine.Rootobject> GetTimeLineEventsAsync(Student student, bool resetTimleLineEventPage = false)
         {
-            IList<TimeLineEvent> timeLine = new List<TimeLineEvent>();
-
             if (resetTimleLineEventPage)
                 timeLineEventsPage = timeLineEventFirstPage;
 
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref timeLineEventsPage));
-            
+
+            Model.GeneratedTimeLine.Rootobject rootTimeLine;
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
                 timeLineEventsPage++;
                 timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
-                var timeLineResponseObj = Newtonsoft.Json.Linq.JObject.Parse(timeLineResponseCache);
-                var data = timeLineResponseObj.SelectToken("$.data", true);
-                foreach (var timeLineDateEventToken in data.Children())
-                {
-                    TimeLineEvent newTimeLineEvent = null;
-
-                    if (timeLineDateEventToken is JProperty timeLineDateEventProp)
-                    {
-                        if (timeLineDateEventProp.Children().First().Children().First() is JObject timeLineEventObject)
-                        {
-                            TimeLineEventType eventType;
-                            switch (timeLineEventObject["type"].ToString())
-                            {
-                                case "absent":
-                                    eventType = TimeLineEventType.Absent;
-                                    newTimeLineEvent = new TimeLineEventAbsent
-                                    {
-                                        Type = eventType,
-                                        Date = DateTime.Parse(timeLineEventObject["date"].ToString()),
-                                        CreateTime = DateTime.Parse(timeLineEventObject["createTime"].ToString()),
-                                        SchoolHour = byte.Parse(timeLineEventObject["schoolHour"].ToString()),
-                                        WorkHourNote = timeLineEventObject["workHourNote"].ToString(),
-                                        TeacherNote = timeLineEventObject["teacherNote"].ToString(),
-                                        ClassMasterNote = timeLineEventObject["teacherNote"].ToString(),
-                                        AbsentType = timeLineEventObject["absentType"].ToString(),
-                                        Status = timeLineEventObject["status"].ToString(),
-                                        StatusId = byte.Parse(timeLineEventObject["statusId"].ToString()),
-                                        Course = timeLineEventObject["course"].ToString(),
-                                        ClassCourseId = int.Parse(timeLineEventObject["classCourseId"].ToString()),
-                                        SchoolClass = timeLineEventObject["schoolClass"].ToString(),
-                                        School = timeLineEventObject["school"].ToString()
-                                    };
-                                    break;
-                                case "grade":
-                                    eventType = TimeLineEventType.Grade;
-                                    newTimeLineEvent = new TimeLineEventGrade
-                                    {
-                                        Type = eventType,
-                                        Date = DateTime.Parse(timeLineEventObject["date"].ToString()),
-                                        CreateTime = DateTime.Parse(timeLineEventObject["createTime"].ToString()),
-                                        FullGrade = timeLineEventObject["fullGrade"]?.ToString(),
-                                        GradeCategory = timeLineEventObject["gradeCategory"]?.ToString(),
-                                        Note = timeLineEventObject["note"]?.ToString(),
-                                        Course = timeLineEventObject["course"].ToString(),
-                                        ClassCourseId = int.Parse(timeLineEventObject["classCourseId"]?.ToString()),
-                                        SchoolClass = timeLineEventObject["schoolClass"].ToString(),
-                                        School = timeLineEventObject["school"].ToString()
-                                    };
-                                    if (timeLineEventObject["grade"] != null)
-                                    {
-                                        var gradeObject = timeLineEventObject["grade"];
-                                        ((TimeLineEventGrade)newTimeLineEvent).Grade = new Grade
-                                        {
-                                            Id = int.Parse(gradeObject["id"].ToString()),
-                                            GradeTypeId = int.Parse(gradeObject["grade_type_id"].ToString()),
-                                            Name = gradeObject["name"].ToString(),
-                                            Value = byte.Parse(gradeObject["value"].ToString()),
-                                            Sequence = int.Parse(gradeObject["sequence"].ToString())
-                                        };
-                                    }
-                                    break;
-                                case "final-grade":
-                                    eventType = TimeLineEventType.FinalGrade;
-                                    newTimeLineEvent = new TimeLineEventFinalGrade
-                                    {
-                                        Type = eventType,
-                                        Date = DateTime.Parse(timeLineEventObject["date"].ToString()),
-                                        CreateTime = DateTime.Parse(timeLineEventObject["createTime"].ToString()),
-                                        Engagement = timeLineEventObject["engagement"].ToString(),
-                                        SchoolyearPart = timeLineEventObject["schoolyearPart"].ToString(),
-                                        Course = timeLineEventObject["course"].ToString(),
-                                        SchoolClass = timeLineEventObject["schoolClass"].ToString(),
-                                        School = timeLineEventObject["school"].ToString()
-                                    };
-                                    if (timeLineEventObject["grade"] != null)
-                                    {
-                                        var gradeObject = timeLineEventObject["grade"];
-                                        ((TimeLineEventFinalGrade)newTimeLineEvent).Grade = new Grade
-                                        {
-                                            Id = int.Parse(gradeObject["id"].ToString()),
-                                            GradeTypeId = int.Parse(gradeObject["grade_type_id"].ToString()),
-                                            Name = gradeObject["name"].ToString(),
-                                            Value = byte.Parse(gradeObject["value"].ToString()),
-                                            Sequence = int.Parse(gradeObject["sequence"].ToString())
-                                        };
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-                            if (newTimeLineEvent != null)
-                                timeLine.Add(newTimeLineEvent);
-                        }
-                    }
-                }
+                rootTimeLine = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
             }
             else
             {
                 throw new Exception("Can't read time line.");
             }
 
-            return timeLine;
+            return rootTimeLine;
         }
 
         public async Task<Model.GeneratedGrades.Rootobject> GetGradesAsync(Student student)

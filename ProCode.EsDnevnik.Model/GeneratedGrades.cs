@@ -5,7 +5,6 @@ using System.Text;
 
 namespace ProCode.EsDnevnik.Model.GeneratedGrades
 {
-
     public class Rootobject
     {
         public GradesArray[] Grades { get; set; }

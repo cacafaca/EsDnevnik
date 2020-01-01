@@ -5,43 +5,48 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}"
-            xmlns:local="clr-namespace:ProCode.EsDnevnikMob">
+            xmlns:local="clr-namespace:ProCode.EsDnevnikMob"
+            xmlns:datatemplates="clr-namespace:ProCode.EsDnevnikMob.DataTemplates">
 
     <TabbedPage.Resources>
         <ResourceDictionary>
             <local:DateConverter x:Key="dateConverter"/>
             <local:AverageGradeConverter x:Key="averageGradeConverter"/>
             <local:GradeColorConverter x:Key="gradeColorConverter"/>
+            <datatemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector"/>
         </ResourceDictionary>
     </TabbedPage.Resources>
 
 
     <!-- Time Line -->
-    <ContentPage Title="Dogadjaji" x:Name="tabEvents">
+    <ContentPage Title="Догађаји" x:Name="tabEvents">
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
-                      ItemsSource="{Binding TimeLineEvents}">
+                      ItemsSource="{Binding TimeLineEvents}"
+                      ItemTemplate="{StaticResource TimeLineDataTemplateSelector}">
 
-                <!--<ListView.Behaviors>
+            <!--<ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="Scrolled"
                                       Command="{Binding TimeLineScrolledCommand}"/>
                 </ListView.Behaviors>-->
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Summary}" x:Name="labelTimeLineEventSummary"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Summary}" x:Name="labelTimeLineEventSummary"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+
+
             </ListView>
         </ContentPage.Content>
     </ContentPage>
 
     <!-- Grades -->
-    <ContentPage Title="Ocene" x:Name="tabGrades">
+    <ContentPage Title="Оцене" x:Name="tabGrades">
         <ContentPage.Content>
             <ListView x:Name="gradesListView"
                       ItemsSource="{Binding GeneratedGradesSimple}"

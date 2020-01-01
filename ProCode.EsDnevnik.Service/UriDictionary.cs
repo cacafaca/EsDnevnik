@@ -8,7 +8,7 @@ namespace ProCode.EsDnevnik.Service
 {
     class UriDictionary
     {
-        Uri baseUri;
+        readonly Uri baseUri;
         public UriDictionary()
         {
             baseUri = new Uri("https://moj.esdnevnik.rs");
@@ -44,9 +44,9 @@ namespace ProCode.EsDnevnik.Service
         /// Get grades json.
         /// </summary>
         /// <param name="student"></param>
-        /// <param name="elementsToFetch"></param>
+        /// 
         /// <returns></returns>
-        internal Uri GetGradesUri(Student student, int elementsToFetch = 30)
+        internal Uri GetGradesUri(Student student)
         {
             return new Uri(baseUri, $"/api/grades/{student.GetLastStudentClassId()}");
         }

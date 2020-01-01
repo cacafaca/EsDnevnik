@@ -1,0 +1,576 @@
+{
+  "data": {
+    "2019-12-27": [
+      {
+        "type": "grade",
+        "date": "2019-12-27",
+        "createTime": "2019-12-29 10:30:49",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "40,5\/45 \u0431\u043e\u0434\u043e\u0432\u0430\n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u043e \u0433\u0440\u0430\u0434\u0438\u0432\u043e \u043e \u0432\u043e\u0434\u0438 \u0438 \u0434\u0440\u0443\u0433\u0438\u043c \u0442\u0435\u0447\u043d\u043e\u0441\u0442\u0438\u043c\u0430. \u041f\u0430\u0437\u0438\u0442\u0438 \u0443 \u0444\u043e\u0440\u043c\u0443\u043b\u0430\u0446\u0438\u0458\u0438 \u043f\u0440\u043e\u043c\u0435\u043d\u0430 \u0441\u0442\u0430\u045a\u0430 \u0432\u043e\u0434\u0435 \u0437\u0430\u0433\u0440\u0435\u0432\u0430\u045a\u0435\u043c \u0438\u043b\u0438 \u0445\u043b\u0430\u0452\u0435\u045a\u0435\u043c (\u0432\u043e\u0434\u0430 \u043d\u0438\u0458\u0435 \u0441\u0430\u043c\u043e \u0442\u0435\u0447\u043d\u043e \u0441\u0442\u0430\u045a\u0435).",
+        "course": "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u0434\u0440\u0443\u0448\u0442\u0432\u043e",
+        "classCourseId": 1244331,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-12-26": [
+      {
+        "type": "grade",
+        "date": "2019-12-26",
+        "createTime": "2019-12-26 09:01:50",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "55,75\/60 \u0431\u043e\u0434\u043e\u0432\u0430\n\u041d\u0430\u0441\u0442\u0430\u0432\u043d\u0438 \u0441\u0430\u0434\u0440\u0436\u0430\u0458\u0438 \u0438\u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0435 \u0438 \u043f\u0440\u0430\u0432\u043e\u043f\u0438\u0441\u0430 \u0441\u0443 \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u0438!\n\u0421\u0442\u0430\u0432\u0459\u0430\u0442\u0438 \u0443\u043f\u0438\u0442\u043d\u0438\u043a \u043d\u0430 \u043a\u0440\u0430\u0458\u0443 \u0443\u043f\u0438\u0442\u043d\u0435 \u0440\u0435\u0447\u0435\u043d\u0438\u0446\u0435.",
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      },
+      {
+        "type": "grade",
+        "date": "2019-12-26",
+        "createTime": "2019-12-27 08:23:23",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u0432\u0435\u0436\u0431\u0435",
+        "note": "\u0408\u0435\u0434\u043d\u0430\u0447\u0438\u043d\u0435 \u0441\u0430 \u0441\u0430\u0431\u0438\u0440\u0430\u045a\u0435\u043c \u0438 \u043e\u0434\u0443\u0437\u0438\u043c\u0430\u045a\u0435\u043c - \u0440\u0430\u0434 \u043d\u0430 \u0437\u0430\u0434\u0430\u0446\u0438\u043c\u0430.",
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-12-18": [
+      {
+        "type": "grade",
+        "date": "2019-12-18",
+        "createTime": "2019-12-20 19:30:10",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "53,5\/55 \u0431\u043e\u0434\u043e\u0432\u0430 \n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u0438 \u0441\u0430\u0434\u0440\u0436\u0430\u0458\u0438 \u043e \u0441\u0430\u0431\u0438\u0440\u0430\u045a\u0443 \u0438 \u043e\u0434\u0443\u0437\u0438\u043c\u0430\u045a\u0443 \u0442\u0440\u043e\u0446\u0438\u0444\u0440\u0435\u043d\u0438\u0445 \u0431\u0440\u043e\u0458\u0435\u0432\u0430 (\u0443\u0441\u043c\u0435\u043d\u043e).",
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-12-13": [
+      {
+        "type": "absent",
+        "date": "2019-12-13",
+        "createTime": "2019-12-13 08:14:11",
+        "schoolHour": 1,
+        "workHourNote": "73. \u0418\u0441\u043f\u0440\u0430\u0432\u0430\u043a \u043f\u0440\u0432\u043e\u0433 \u0448\u043a\u043e\u043b\u0441\u043a\u043e\u0433 \u043f\u0438\u0441\u043c\u0435\u043d\u043e\u0433 \u0437\u0430\u0434\u0430\u0442\u043a\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-13",
+        "createTime": "2019-12-13 15:41:57",
+        "schoolHour": 4,
+        "workHourNote": "\u0411\u043e\u0436\u0438\u045b\u043d\u0438 \u0432\u0435\u0441\u043d\u0438\u0446\u0438",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0412\u0435\u0440\u0441\u043a\u0430 \u043d\u0430\u0441\u0442\u0430\u0432\u0430 - \u043f\u0440\u0430\u0432\u043e\u0441\u043b\u0430\u0432\u043d\u0438 \u043a\u0430\u0442\u0438\u0445\u0438\u0437\u0438\u0441 (\u0438\u0437\u0431\u043e\u0440\u043d\u0438)",
+        "classCourseId": 1244483,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-13",
+        "createTime": "2019-12-13 08:15:39",
+        "schoolHour": 2,
+        "workHourNote": "73. \u0417\u0430\u0432\u0438\u0441\u043d\u043e\u0441\u0442 \u0440\u0430\u0437\u043b\u0438\u043a\u0435 \u043e\u0434 \u043f\u0440\u043e\u043c\u0435\u043d\u0435 \u0443\u043c\u0430\u045a\u0435\u043d\u0438\u043a\u0430 \u0438 \u0443\u043c\u0430\u045a\u0438\u043e\u0446\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-13",
+        "createTime": "2019-12-13 08:17:09",
+        "schoolHour": 3,
+        "workHourNote": "44. \u0414\u043e\u0434\u0430\u0432\u0430\u045a\u0435 \u043b\u043e\u043f\u0442\u0435 \u0443 \u043f\u0430\u0440\u0443 \u0443 \u0442\u0440\u0447\u0430\u045a\u0443",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0424\u0438\u0437\u0438\u0447\u043a\u043e \u0432\u0430\u0441\u043f\u0438\u0442\u0430\u045a\u0435",
+        "classCourseId": 1244439,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      }
+    ],
+    "2019-12-12": [
+      {
+        "type": "absent",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:38:29",
+        "schoolHour": 0,
+        "workHourNote": "15. \u0421\u0442\u0430\u0440\u0438 \u0437\u0430\u043d\u0430\u0442\u0438 \u2013 \u043a\u0443\u0458\u0443\u043d\u045f\u0438\u0458\u0430, \u0431\u043e\u0458\u0430\u045f\u0438\u0458\u0430, \u0442\u043a\u0430\u0447 \u0438 \u0430\u0431\u0430\u045f\u0438\u0458\u0430 (\u0443\u0433\u043b\u0435\u0434\u043d\u0438 \u0447\u0430\u0441)",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041d\u0430\u0440\u043e\u0434\u043d\u0430 \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u0458\u0430 (\u0438\u0437\u0431\u043e\u0440\u043d\u0438)",
+        "classCourseId": 1244550,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "grade",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:37:29",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043e\u0441\u0442\u0430\u043b\u043e",
+        "note": "\u0423\u0447\u0435\u0448\u045b\u0435 \u043d\u0430 \u043e\u043f\u0448\u0442\u0438\u043d\u0441\u043a\u043e\u043c \u0442\u0430\u043a\u043c\u0438\u0447\u0435\u045a\u0443 \u0438\u0437 \u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0435;\n(\u043e\u0441\u0432\u043e\u0458\u0435\u043d\u0430 1. \u043d\u0430\u0433\u0440\u0430\u0434\u0430). \u0423\u0458\u0435\u0434\u043d\u043e \u0458\u0435 \u0443\u0447\u0435\u043d\u0438\u0446\u0430 \u0438 \u043f\u043e\u0431\u0435\u0434\u043d\u0438\u0446\u0430 \u0442\u0430\u043a\u043c\u0438\u0447\u0435\u045a\u0430 \u043d\u0430 \u043d\u0438\u0432\u043e\u0443 \u043e\u043f\u0448\u0442\u0438\u043d\u0435 \u0412\u043e\u0436\u0434\u043e\u0432\u0430\u0446.",
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:38:23",
+        "schoolHour": 1,
+        "workHourNote": "72. \u0417\u0430\u0432\u0438\u0441\u043d\u043e\u0441\u0442 \u0440\u0430\u0437\u043b\u0438\u043a\u0435 \u043e\u0434 \u043f\u0440\u043e\u043c\u0435\u043d\u0435 \u0443\u043c\u0430\u045a\u0438\u043e\u0446\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:38:36",
+        "schoolHour": 2,
+        "workHourNote": "72. \u0410\u043d\u0430\u043b\u0438\u0437\u0430 \u043f\u0440\u0432\u043e\u0433 \u0448\u043a\u043e\u043b\u0441\u043a\u043e\u0433 \u043f\u0438\u0441\u043c\u0435\u043d\u043e\u0433 \u0437\u0430\u0434\u0430\u0442\u043a\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:38:42",
+        "schoolHour": 3,
+        "workHourNote": "29. \u0418\u0441\u043f\u0438\u0442\u0443\u0458\u0435\u043c\u043e \u0448\u0442\u0430 \u043f\u043b\u0443\u0442\u0430, \u0430 \u0448\u0442\u0430 \u0442\u043e\u043d\u0435. \u041c\u0430\u0433\u0438\u0458\u0430 \u0440\u0430\u0441\u0442\u0432\u0430\u0440\u0430\u045a\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u0434\u0440\u0443\u0448\u0442\u0432\u043e",
+        "classCourseId": 1244331,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-12",
+        "createTime": "2019-12-12 18:38:51",
+        "schoolHour": 4,
+        "workHourNote": "43. \u0425\u043e\u0434\u0430\u045a\u0435 \u0438 \u0442\u0440\u0447\u0430\u045a\u0435 \u043f\u043e \u0433\u0440\u0435\u0434\u0438",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0424\u0438\u0437\u0438\u0447\u043a\u043e \u0432\u0430\u0441\u043f\u0438\u0442\u0430\u045a\u0435",
+        "classCourseId": 1244439,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      }
+    ],
+    "2019-12-11": [
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-11 16:01:07",
+        "schoolHour": 3,
+        "workHourNote": "Practice",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0415\u043d\u0433\u043b\u0435\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a (1. \u0441\u0442\u0440\u0430\u043d\u0438 \u0458\u0435\u0437\u0438\u043a)",
+        "classCourseId": 1244277,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-13 08:11:54",
+        "schoolHour": 6,
+        "workHourNote": "16. \u041f\u0440\u0435\u0434\u0430\u0432\u0430\u045a\u0435 \u0426\u0440\u0432\u0435\u043d\u043e\u0433 \u043a\u0440\u0441\u0442\u0430 \u201e\u0421\u043c\u0430\u045a\u0435\u045a\u0435 \u0440\u0438\u0437\u0438\u043a\u0430 \u0438 \u0443\u0431\u043b\u0430\u0436\u0430\u0432\u0430\u045a\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u0438\u0446\u0430 \u043e\u0434 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0430\u0440\u043d\u0438\u0445 \u043d\u0435\u043f\u043e\u0433\u043e\u0434\u0430 \u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438\u201c",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0427\u041e\u0421",
+        "classCourseId": 1244852,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-11 23:57:30",
+        "schoolHour": 5,
+        "workHourNote": "29-30. \u041e\u0434 \u0438\u0433\u0440\u0435 \u0434\u043e \u043e\u0440\u043d\u0430\u043c\u0435\u043d\u0442\u0430 \u2013 (\u0440\u0430\u043c \u0437\u0430 \u0441\u043b\u0438\u043a\u0443, \u0448\u0430\u0440\u0430 \u043d\u0430 \u045f\u0435\u043c\u043f\u0435\u0440\u0443...)",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041b\u0438\u043a\u043e\u0432\u043d\u0430 \u043a\u0443\u043b\u0442\u0443\u0440\u0430",
+        "classCourseId": 1244388,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-11 23:51:32",
+        "schoolHour": 1,
+        "workHourNote": "71. \u0423\u043f\u0440\u0430\u0432\u043d\u0438 \u0433\u043e\u0432\u043e\u0440",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-11 23:57:08",
+        "schoolHour": 4,
+        "workHourNote": "29-30. \u041e\u0434 \u0438\u0433\u0440\u0435 \u0434\u043e \u043e\u0440\u043d\u0430\u043c\u0435\u043d\u0442\u0430 \u2013 (\u0440\u0430\u043c \u0437\u0430 \u0441\u043b\u0438\u043a\u0443, \u0448\u0430\u0440\u0430 \u043d\u0430 \u045f\u0435\u043c\u043f\u0435\u0440\u0443...)",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041b\u0438\u043a\u043e\u0432\u043d\u0430 \u043a\u0443\u043b\u0442\u0443\u0440\u0430",
+        "classCourseId": 1244388,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-12-11",
+        "createTime": "2019-12-11 23:55:14",
+        "schoolHour": 2,
+        "workHourNote": "71. \u0417\u0430\u0432\u0438\u0441\u043d\u043e\u0441\u0442 \u0440\u0430\u0437\u043b\u0438\u043a\u0435 \u043e\u0434 \u043f\u0440\u043e\u043c\u0435\u043d\u0435 \u0443\u043c\u0430\u045a\u0435\u043d\u0438\u043a\u0430",
+        "teacherNote": null,
+        "classmasterNote": null,
+        "absentType": "\u0431\u043e\u043b\u0435\u0441\u0442 - \u043f\u043e\u0442\u0432\u0440\u0434\u0430 \u043b\u0435\u043a\u0430\u0440\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      }
+    ],
+    "2019-12-09": [
+      {
+        "type": "grade",
+        "date": "2019-12-09",
+        "createTime": "2019-12-09 16:01:23",
+        "fullGrade": "\u0432\u0440\u043b\u043e \u0434\u043e\u0431\u0430\u0440 (4)",
+        "grade": {
+          "id": 4,
+          "grade_type_id": 1,
+          "name": "\u0432\u0440\u043b\u043e \u0434\u043e\u0431\u0430\u0440",
+          "value": 4,
+          "sequence": 4
+        },
+        "gradeCategory": "\u043e\u0441\u0442\u0430\u043b\u043e",
+        "note": null,
+        "course": "\u0415\u043d\u0433\u043b\u0435\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a (1. \u0441\u0442\u0440\u0430\u043d\u0438 \u0458\u0435\u0437\u0438\u043a)",
+        "classCourseId": 1244277,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-12-05": [
+      {
+        "type": "grade",
+        "date": "2019-12-05",
+        "createTime": "2019-12-05 14:18:45",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "53\/60 \u0431\u043e\u0434\u043e\u0432\u0430\n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u043e \u0433\u0440\u0430\u0434\u0438\u0432\u043e \u043e \u043d\u0430\u0441\u043b\u0435\u0452\u0443 \u0438 \u043f\u0440\u043e\u0448\u043b\u043e\u0441\u0442\u0438 \u0437\u0430\u0432\u0438\u0447\u0430\u0458\u0430, \u043a\u0430\u043e \u0438 \u0437\u0430\u0432\u0438\u0447\u0430\u0458\u043d\u0438\u043c \u043b\u0438\u0447\u043d\u043e\u0441\u0442\u0438\u043c\u0430.",
+        "course": "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u0434\u0440\u0443\u0448\u0442\u0432\u043e",
+        "classCourseId": 1244331,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-11-29": [
+      {
+        "type": "grade",
+        "date": "2019-11-29",
+        "createTime": "2019-11-29 19:45:21",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "78\/80 \u0431\u043e\u0434\u043e\u0432\u0430\n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u0438 \u0441\u0430\u0434\u0440\u0436\u0430\u0458\u0438 \u043e \u043f\u0440\u0438\u0434\u0435\u0432\u0438\u043c\u0430 \u0438 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043a\u0438\u043c \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0458\u0430\u043c\u0430 (\u0440\u043e\u0434, \u0431\u0440\u043e\u0458, \u043f\u043e\u0434\u0432\u0440\u0441\u0442\u0430).",
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-11-27": [
+      {
+        "type": "absent",
+        "date": "2019-11-27",
+        "createTime": "2019-11-27 22:19:33",
+        "schoolHour": 2,
+        "workHourNote": "62. \u041e\u0434\u0443\u0437\u0438\u043c\u0430\u045a\u0435 \u0442\u0440\u043e\u0446\u0438\u0444\u0440\u0435\u043d\u0438\u0445 \u0431\u0440\u043e\u0458\u0435\u0432\u0430 (300 \u2013 130; 310 \u2013 180)",
+        "teacherNote": null,
+        "classmasterNote": "\u0423\u0447\u0435\u0448\u045b\u0435 \u043d\u0430 \u0433\u0440\u0430\u0434\u0441\u043a\u043e\u043c \u0442\u0430\u043a\u043c\u0438\u0447\u0435\u045a\u0443 \"\u0420\u0430\u0443\u0445\".",
+        "absentType": "\u0434\u043e\u0437\u0432\u043e\u043b\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      },
+      {
+        "type": "absent",
+        "date": "2019-11-27",
+        "createTime": "2019-11-27 22:19:22",
+        "schoolHour": 1,
+        "workHourNote": "62. \u041f\u0440\u0438\u0434\u0435\u0432\u0438",
+        "teacherNote": null,
+        "classmasterNote": "\u0423\u0447\u0435\u0448\u045b\u0435 \u043d\u0430 \u0433\u0440\u0430\u0434\u0441\u043a\u043e\u043c \u0442\u0430\u043a\u043c\u0438\u0447\u0435\u045a\u0443 \"\u0420\u0430\u0443\u0445\".",
+        "absentType": "\u0434\u043e\u0437\u0432\u043e\u043b\u0430",
+        "status": "\u043e\u043f\u0440\u0430\u0432\u0434\u0430\u043d",
+        "statusId": 2,
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b"
+      }
+    ],
+    "2019-11-26": [
+      {
+        "type": "grade",
+        "date": "2019-11-26",
+        "createTime": "2019-11-26 17:58:43",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u0443\u0441\u043c\u0435\u043d\u043e \u043e\u0434\u0433\u043e\u0432\u0430\u0440\u0430\u045a\u0435",
+        "note": "\u041f\u0440\u043e\u0448\u043b\u043e\u0441\u0442 \u0438 \u0442\u0440\u0430\u0433\u043e\u0432\u0438 \u043f\u0440\u043e\u0448\u043b\u043e\u0441\u0442\u0438.",
+        "course": "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u0434\u0440\u0443\u0448\u0442\u0432\u043e",
+        "classCourseId": 1244331,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-11-19": [
+      {
+        "type": "grade",
+        "date": "2019-11-19",
+        "createTime": "2019-11-18 15:48:43",
+        "fullGrade": "\u0432\u0440\u043b\u043e \u0434\u043e\u0431\u0430\u0440 (4)",
+        "grade": {
+          "id": 4,
+          "grade_type_id": 1,
+          "name": "\u0432\u0440\u043b\u043e \u0434\u043e\u0431\u0430\u0440",
+          "value": 4,
+          "sequence": 4
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "39,5\/50 \u0431\u043e\u0434\u043e\u0432\u0430 \n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0431\u0438\u0440\u0430 \u0438 \u043e\u0434\u0443\u0437\u0438\u043c\u0430 \u0442\u0440\u043e\u0446\u0438\u0444\u0440\u0435\u043d\u0435 \u0438 \u0434\u0432\u043e\u0446\u0438\u0444\u0440\u0435\u043d\u0435 \u0431\u0440\u043e\u0458\u0435\u0432\u0435. \u0413\u0440\u0435\u0448\u0438 \u0443 \u0440\u0435\u0448\u0430\u0432\u0430\u045a\u0443 \u0431\u0440\u043e\u0458\u0435\u0432\u043d\u0438\u0445 \u0438\u0437\u0440\u0430\u0437\u0430 (\u0440\u0435\u0434\u043e\u0441\u043b\u0435\u0434 \u0440\u0430\u0447\u0443\u043d\u0441\u043a\u0438\u0445 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0458\u0430) \u0438 \u043a\u0440\u0430\u0458\u045a\u0438\u043c \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0438\u043c\u0430 \u0443 \u0438\u0437\u0440\u0430\u0447\u0443\u043d\u0432\u0430\u045a\u0443 \u043f\u0440\u043e\u0441\u0442\u0438\u0445 \u0438 \u0441\u043b\u043e\u0436\u0435\u043d\u0438\u0458\u0438\u0445 \u0442\u0435\u043a\u0441\u0442\u0443\u0430\u043b\u043d\u0438\u0445 \u0437\u0430\u0434\u0430\u0442\u0430\u043a\u0430. \u041f\u043e\u0442\u0440\u0435\u0431\u043d\u043e \u0458\u0435 \u0442\u0435\u043c\u0435\u0459\u043d\u0438\u0458\u0435 \u0432\u0435\u0436\u0431\u0430\u0442\u0438 \u043a\u043e\u0434 \u043a\u0443\u045b\u0435.",
+        "course": "\u041c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u043a\u0430",
+        "classCourseId": 1244305,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-11-15": [
+      {
+        "type": "grade",
+        "date": "2019-11-15",
+        "createTime": "2019-11-15 09:11:43",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u0430\u043a",
+        "note": "69\/75 \u0431\u043e\u0434\u043e\u0432\u0430\n\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0430\u0432\u043b\u0430\u0434\u0430\u043d\u0438 \u0441\u0430\u0434\u0440\u0436\u0430\u0458\u0438 \u043e \u0433\u043b\u0430\u0433\u043e\u043b\u0438\u043c\u0430 \u0438 \u043f\u0440\u0430\u0432\u043e\u043f\u0438\u0441\u0443. \u041e\u0431\u043d\u043e\u0432\u0438\u0442\u0438 \u043f\u0438\u0441\u0430\u045a\u0435 \u043d\u0435\u0433\u0430\u0446\u0438\u0458\u0435 \u0443\u0437 \u0433\u043b\u0430\u0433\u043e\u043b\u0435.",
+        "course": "\u0421\u0440\u043f\u0441\u043a\u0438 \u0458\u0435\u0437\u0438\u043a",
+        "classCourseId": 1244249,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ],
+    "2019-11-12": [
+      {
+        "type": "final-grade",
+        "grade": {
+          "id": 6,
+          "name": "\u0438\u0441\u0442\u0438\u0447\u0435 \u0441\u0435",
+          "value": 0,
+          "sequence": 1,
+          "grade_type_id": 2
+        },
+        "createTime": "2019-11-12 15:48:26",
+        "date": "2019-11-12",
+        "engagement": null,
+        "schoolyearPart": "\u043f\u0440\u0432\u0438 \u043a\u043b\u0430\u0441\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u043e\u043d\u0438 \u043f\u0435\u0440\u0438\u043e\u0434",
+        "course": "\u0412\u0435\u0440\u0441\u043a\u0430 \u043d\u0430\u0441\u0442\u0430\u0432\u0430 - \u043f\u0440\u0430\u0432\u043e\u0441\u043b\u0430\u0432\u043d\u0438 \u043a\u0430\u0442\u0438\u0445\u0438\u0437\u0438\u0441 (\u0438\u0437\u0431\u043e\u0440\u043d\u0438)",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "schoolClass": "III 1"
+      },
+      {
+        "type": "grade",
+        "date": "2019-11-12",
+        "createTime": "2019-11-12 07:10:09",
+        "fullGrade": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d (5)",
+        "grade": {
+          "id": 5,
+          "grade_type_id": 1,
+          "name": "\u043e\u0434\u043b\u0438\u0447\u0430\u043d",
+          "value": 5,
+          "sequence": 5
+        },
+        "gradeCategory": "\u0432\u0435\u0436\u0431\u0435",
+        "note": "\u0411\u0430\u0446\u0430\u045a\u0435 \u043b\u043e\u043f\u0442\u0435 \u0443 \u0446\u0438\u0459 \u043e\u0431\u0435\u043c\u0430 \u0440\u0443\u043a\u0430\u043c\u0430 \u0441\u0430 \u043e\u0434\u0440\u0435\u0452\u0435\u043d\u0438\u0445 \u0443\u0434\u0430\u0459\u0435\u043d\u043e\u0441\u0442\u0438.",
+        "course": "\u0424\u0438\u0437\u0438\u0447\u043a\u043e \u0432\u0430\u0441\u043f\u0438\u0442\u0430\u045a\u0435",
+        "classCourseId": 1244439,
+        "schoolClass": "III 1",
+        "school": "\u0402\u0443\u0440\u0430 \u0414\u0430\u043d\u0438\u0447\u0438\u045b",
+        "iopNote": null,
+        "evaluationElementCourse": null
+      }
+    ]
+  },
+  "meta": {
+    "total": 69
+  }
+}

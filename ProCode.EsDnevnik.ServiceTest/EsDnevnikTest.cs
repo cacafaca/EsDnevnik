@@ -62,7 +62,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         }
 
         [TestMethod]
-        public void GetTimeLineEvents()
+        public void Login_GetTimeLineEvents_Logout()
         {
             var userCredential = Config.GetUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
@@ -77,9 +77,10 @@ namespace ProCode.EsDnevnik.ServiceTest
                 Assert.AreNotEqual(0, students.Count, "No students.");
 
                 // Get events.
-                IList<TimeLineEvent> timeLineEvents = esd.GetTimeLineEventsAsync(students.First()).Result;
-                Assert.IsNotNull(timeLineEvents);
-                Assert.AreNotEqual(0, timeLineEvents.Count, "No events.");
+                Model.GeneratedTimeLine.Rootobject rootTimeLine = esd.GetTimeLineEventsAsync(students.First()).Result;
+                Assert.IsNotNull(rootTimeLine);
+                Assert.IsNotNull(rootTimeLine.Data);
+                Assert.AreNotEqual(0, rootTimeLine.Data.Count);
             }
             finally
             {

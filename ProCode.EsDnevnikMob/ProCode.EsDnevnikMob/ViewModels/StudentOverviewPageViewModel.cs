@@ -17,9 +17,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
     {
         public StudentOverviewPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Pregled za dete";
-            timeLineEvents = new ObservableCollection<TimeLineEvent>();
-            grades = new ObservableCollection<EsDnevnik.Model.GeneratedGrades.GradesArray>();
+            Title = "Преглед за дете";
+            timeLineEvents = new ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
+            grades = new ObservableCollection<GradesArray>();
         }
 
         EsDnevnik.Service.EsDnevnik esdService;
@@ -27,8 +27,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
 
         #region Time Line Events tab
-        private ObservableCollection<TimeLineEvent> timeLineEvents;
-        public ObservableCollection<TimeLineEvent> TimeLineEvents
+        private ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> timeLineEvents;
+        public ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> TimeLineEvents
         {
             get { return timeLineEvents; }
             set { SetProperty(ref timeLineEvents, value); }
@@ -38,16 +38,17 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             if (TimeLineEvents.Count == 0)
             {
-                IList<TimeLineEvent> newTimeLineEvents;
+                EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine;
                 bool resetTimeLineEventPage = loadType == TimeLineLoadType.Refresh;
 #if !DEBUGFAKE
-                newTimeLineEvents = await esdService.GetTimeLineEventsAsync(Student);
+                newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student);
 #else
                 await Task.Run(() => { timeLine = esdService.GetTimeLineFake(); });
 #endif
                 TimeLineEvents.Clear();
-                foreach (var timeLineEvent in newTimeLineEvents.OrderByDescending(ev => ev.CreateTime))
-                    TimeLineEvents.Add(timeLineEvent);
+                foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(ev => ev.Key))
+                    foreach (var timeLineEvent in timeLineDate.Value)
+                        TimeLineEvents.Add(timeLineEvent);
             }
         }
 
@@ -56,7 +57,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private void ExecuteTimeLineScrolledCommand()
         {
-            
+
         }
         #endregion
 
@@ -90,9 +91,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
         private ObservableCollection<GeneratedGradesSimple> CalculateGeneratedGradesSimple(ObservableCollection<GradesArray> grades)
         {
             ObservableCollection<GeneratedGradesSimple> gradesSimple = new ObservableCollection<GeneratedGradesSimple>();
-            foreach(var grade in grades)
+            foreach (var grade in grades)
             {
-                foreach(var courseGrade in grade.Parts.Part1Value.Grades)
+                foreach (var courseGrade in grade.Parts.Part1Value.Grades)
                 {
                     gradesSimple.Add(new GeneratedGradesSimple
                     {
@@ -107,7 +108,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 }
             }
             ObservableCollection<GeneratedGradesSimple> gradesSimpleSorted = new ObservableCollection<GeneratedGradesSimple>();
-            foreach(var grade in gradesSimple.OrderByDescending(gr => gr.Date))
+            foreach (var grade in gradesSimple.OrderByDescending(gr => gr.Date))
             {
                 gradesSimpleSorted.Add(grade);
             }
@@ -138,7 +139,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 Student = parameters.GetValue<Student>(nameof(StudentListPageViewModel.SelectedStudent));
                 Title = Student.FullName;
             }
-            
+
             // Time line data fetch 
             await LoadTimeLine(Student, TimeLineLoadType.Refresh);
 

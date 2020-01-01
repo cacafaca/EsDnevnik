@@ -18,12 +18,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataTemplates\TimeLineAbsenceViewCell.xaml.cs">
+      <DependentUpon>TimeLineAbsenceViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="DataTemplates\TimeLineGradeViewCell.xaml.cs">
+      <DependentUpon>TimeLineGradeViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\StudentOverviewPage.xaml.cs">
       <DependentUpon>StudentOverviewPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="DataTemplates\TimeLineGradeViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentOverviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

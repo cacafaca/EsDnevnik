@@ -16,7 +16,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public MainPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
             : base(navigationService)
         {
-            Title = "Elektronski dnevnik";
+            Title = "Електронски дневник";
             this.dialogService = dialogService;
 
             IsLogging = false;
@@ -27,6 +27,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         private readonly IPageDialogService dialogService;
         private readonly UserSettings userSettings = new UserSettings();
         private EsDnevnik.Service.EsDnevnik esdService;
+        private bool firstAppaerance = true;
 
         private string username;
         public string Username
@@ -124,8 +125,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private void ExecuteAppearingCommand()
         {
-            if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
+            if (firstAppaerance && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {
+                firstAppaerance = false;
                 ExecuteLoginNavigateCommand();
             }
         }

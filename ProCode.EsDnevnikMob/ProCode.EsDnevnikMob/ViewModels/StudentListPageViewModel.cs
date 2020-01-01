@@ -15,7 +15,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
     {
         public StudentListPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Moja deca";
+            Title = "Моја деца";
             students = new ObservableCollection<Student>();
             isBussy = false;
         }
