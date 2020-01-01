@@ -113,7 +113,7 @@ namespace ProCode.EsDnevnik.Service
                             },
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
-                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Type = Model.GeneratedTimeLine.EventType.Grade,
                                 Date = "2019-01-02",
                                 CreateTime = "2019-01-01",
                                 FullGrade = "odlican (5)",
@@ -133,7 +133,7 @@ namespace ProCode.EsDnevnik.Service
                         {
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
-                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
                                 Date = "2019-01-03",
                                 CreateTime = "2019-01-01",
                                 FullGrade = "dobar (3)",
