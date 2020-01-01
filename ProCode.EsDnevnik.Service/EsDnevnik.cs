@@ -87,67 +87,67 @@ namespace ProCode.EsDnevnik.Service
             }
 
         }
-        public IList<TimeLineEvent> GetTimeLineEventsFake()
+        public Model.GeneratedTimeLine.Rootobject GetTimeLineEventsFake()
         {
-            return new List<Model.GeneratedTimeLine.TimeLineEvent>
+            return new Model.GeneratedTimeLine.Rootobject
             {
-                new TimeLineEventAbsent
+                Data = new Dictionary<string, Model.GeneratedTimeLine.TimeLineEvent[]>
                 {
-                    Type = TimeLineEventType.Absent,
-                    Date = new DateTime(2019, 12, 2),
-                    CreateTime = new DateTime(2019, 12, 2, 10, 53, 12),
-                    SchoolHour = 1,
-                    WorkHourNote = "62. Pridevi",
-                    ClassMasterNote = "Učešće na takmičenju.",
-                    AbsentType = "dozvola",
-                    Status = "opravdan",
-                    StatusId = 2,
-                    Course = "Srpski",
-                    ClassCourseId = 1234,
-                    SchoolClass = "III 1",
-                    School = "Đura"
-                },
-                new TimeLineEventGrade
-                {
-                    Type = TimeLineEventType.FinalGrade,
-                    Date = new DateTime(2019, 12, 3),
-                    CreateTime = new DateTime(2019, 12, 3, 11, 53, 12),
-                    FullGrade = "odličan (5)",
-                    Grade = new Grade
-                    {
-                        Id = 5,
-                        GradeTypeId = 2,
-                        Name = "odličan",
-                        Value = 5,
-                        Sequence = 5
+                    {   "2019-12-27",
+                        new Model.GeneratedTimeLine.TimeLineEvent[]
+                        {
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Date = "2019-01-01",
+                                CreateTime = "2019-01-01",
+                                FullGrade = "odlican (5)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 5,
+                                    GradeTypeId = 5,
+                                    Name = "Odlican",
+                                    Value = 5,
+                                    Sequence = 1
+                                }
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Date = "2019-01-02",
+                                CreateTime = "2019-01-01",
+                                FullGrade = "odlican (5)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 5,
+                                    GradeTypeId = 5,
+                                    Name = "Odlican",
+                                    Value = 5,
+                                    Sequence = 1
+                                }
+                            }
+                        }
                     },
-                    GradeCategory = "Usmeno",
-                    Note = "Prošlost i tragovi prošlosti.",
-                    Course = "Priroda i društvo",
-                    ClassCourseId = 2222,
-                    SchoolClass = "III 1",
-                    School = "Đura"
-                },
-                new TimeLineEventGrade
-                {
-                    Type = TimeLineEventType.FinalGrade,
-                    Date = new DateTime(2019, 12, 10),
-                    CreateTime = new DateTime(2019, 12, 10, 12, 53, 12),
-                    FullGrade = "odličan (5)",
-                    Grade = new Grade
-                    {
-                        Id = 5,
-                        GradeTypeId = 2,
-                        Name = "odličan",
-                        Value = 5,
-                        Sequence = 5
-                    },
-                    GradeCategory = "Usmeno",
-                    Note = "Jednačine.",
-                    Course = "Математика",
-                    ClassCourseId = 3333,
-                    SchoolClass = "III 1",
-                    School = "Đura"
+                    {   "2019-12-26",
+                        new Model.GeneratedTimeLine.TimeLineEvent[]
+                        {
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Date = "2019-01-03",
+                                CreateTime = "2019-01-01",
+                                FullGrade = "dobar (3)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 5,
+                                    GradeTypeId = 5,
+                                    Name = "Odlican",
+                                    Value = 5,
+                                    Sequence = 1
+                                }
+                            }
+                        }
+                    }
                 }
             };
         }

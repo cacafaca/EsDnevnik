@@ -12,8 +12,10 @@
                 <ColumnDefinition Width="15%"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Text="{Binding Grade}" Grid.Column="0"/>
-            <Label Text="{Binding Summary}" Grid.Column="1"/>
+            <!--<Label Text="{Binding Grade.Value}" Grid.Column="0"/>-->
+            <!--<Label Text="{Binding Summary}" Grid.Column="1"/>-->
+            <Label Text="Col0" Grid.Column="0"/>
+            <Label Text="Col1" Grid.Column="1"/>
         </Grid>
   </ViewCell.View>
 </ViewCell>

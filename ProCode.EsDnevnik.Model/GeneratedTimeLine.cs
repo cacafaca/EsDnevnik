@@ -71,6 +71,10 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         public string Name { get; set; }
         public int Value { get; set; }
         public int Sequence { get; set; }
+        public override string ToString()
+        {
+            return $"Ocena: {Value}";
+        }
     }
 
     public class Meta

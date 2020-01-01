@@ -1,15 +1,10 @@
 ﻿using ProCode.EsDnevnik.Model;
 using System.Collections.ObjectModel;
 using Prism.Navigation;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ProCode.EsDnevnik.Model.GeneratedGrades;
-using System;
 using Prism.Commands;
-#if DEBUGFAKE
-using System.Threading.Tasks;
-#endif
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
@@ -38,12 +33,12 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             if (TimeLineEvents.Count == 0)
             {
-                EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine;
+                EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine = null;
                 bool resetTimeLineEventPage = loadType == TimeLineLoadType.Refresh;
 #if !DEBUGFAKE
                 newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student);
 #else
-                await Task.Run(() => { timeLine = esdService.GetTimeLineFake(); });
+                await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
 #endif
                 TimeLineEvents.Clear();
                 foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(ev => ev.Key))
@@ -75,11 +70,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             if (Grades.Count == 0)
             {
-                EsDnevnik.Model.GeneratedGrades.Rootobject gradesRoot;
+                EsDnevnik.Model.GeneratedGrades.Rootobject gradesRoot = null;
 #if !DEBUGFAKE
                 gradesRoot = await esdService.GetGradesAsync(Student);
 #else
-                gradesRoot = esdService.GetGradesFake();
+                await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
 #endif
                 Grades.Clear();
                 foreach (var grade in gradesRoot.Grades.OrderByDescending(ev => ev.Course))

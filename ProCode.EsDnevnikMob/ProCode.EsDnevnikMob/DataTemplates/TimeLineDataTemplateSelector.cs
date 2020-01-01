@@ -15,7 +15,7 @@ namespace ProCode.EsDnevnikMob.DataTemplates
             else
                 return timeLineGradeDataTemplate;
         }
-        private DataTemplate timeLineAbsenceDataTemplate = new DataTemplate(typeof(TimeLineAbsenceViewCell));
-        private DataTemplate timeLineGradeDataTemplate = new DataTemplate(typeof(TimeLineGradeViewCell));
+        private readonly DataTemplate timeLineAbsenceDataTemplate = new DataTemplate(typeof(TimeLineAbsenceViewCell));
+        private readonly DataTemplate timeLineGradeDataTemplate = new DataTemplate(typeof(TimeLineGradeViewCell));
     }
 }
