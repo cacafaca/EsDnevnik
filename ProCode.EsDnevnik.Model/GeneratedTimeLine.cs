@@ -115,6 +115,8 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
 
     public enum AbsenceStatusIdType
     {
+        [EnumMember(Value = "")]
+        Unknown,
         [EnumMember(Value = "1")]
         NotJustified,
         [EnumMember(Value = "2")]

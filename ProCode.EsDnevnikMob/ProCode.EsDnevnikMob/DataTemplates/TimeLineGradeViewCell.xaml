@@ -15,6 +15,7 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
 
+            
             <Grid.Resources>
                 <ResourceDictionary>
                     <localTimeLineGrade:GradeColorConverter x:Key="gradeColorConverter"/>

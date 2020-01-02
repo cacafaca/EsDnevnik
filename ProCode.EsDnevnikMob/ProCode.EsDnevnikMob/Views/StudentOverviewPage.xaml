@@ -24,7 +24,7 @@
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
                       ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
-                      >
+                      HasUnevenRows="True">
 
             <!--<ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="Scrolled"

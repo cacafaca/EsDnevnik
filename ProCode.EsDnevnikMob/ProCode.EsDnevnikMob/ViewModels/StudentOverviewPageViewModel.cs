@@ -41,8 +41,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
 #endif
                 TimeLineEvents.Clear();
-                foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(ev => ev.Key))
-                    foreach (var timeLineEvent in timeLineDate.Value)
+                foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
+                    foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
                         TimeLineEvents.Add(timeLineEvent);
             }
         }

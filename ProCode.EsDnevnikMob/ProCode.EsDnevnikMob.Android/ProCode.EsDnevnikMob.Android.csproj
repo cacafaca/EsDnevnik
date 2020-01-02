@@ -65,6 +65,7 @@
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <MandroidI18n />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugFake|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
