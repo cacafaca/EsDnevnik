@@ -52,11 +52,6 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
         }
 
-        public override async void OnNavigatedFrom(INavigationParameters parameters)
-        {
-
-        }
-
         private ObservableCollection<Student> students;
         public ObservableCollection<Student> Students
         {
