@@ -52,6 +52,6 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
     {
         public object[] Grades { get; set; }
         public object Final { get; set; }
-        public int Average { get; set; }
+        public float Average { get; set; }
     }
 }

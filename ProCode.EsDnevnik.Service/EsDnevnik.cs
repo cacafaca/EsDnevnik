@@ -115,7 +115,9 @@ namespace ProCode.EsDnevnik.Service
                                 SchoolClass = "III 1",
                                 School = "Ђура",
                                 IopNote = null,
-                                EvaluationElementCourse = null
+                                EvaluationElementCourse = null,
+                                Status = "неоправдан",
+                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.NotJustified
                             },
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
@@ -419,7 +421,7 @@ namespace ProCode.EsDnevnik.Service
                                         FullGrade = "Odlican (5)",
                                         GradeValue = 5,
                                         GradeCategory = "praktican rad",
-                                        Note = "Beleska",
+                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
@@ -435,7 +437,7 @@ namespace ProCode.EsDnevnik.Service
                     },
                     new Model.GeneratedGrades.GradesArray
                     {
-                        Course = "Srpski",
+                        Course = "Математика",
                         ClassCourseId = 12345,
                         ClassCourseGradeTypeId = 1,
                         Sequence = 10,
@@ -453,7 +455,7 @@ namespace ProCode.EsDnevnik.Service
                                         FullGrade = "Vrlodobar (4)",
                                         GradeValue = 4,
                                         GradeCategory = "praktican rad",
-                                        Note = "Beleska",
+                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
@@ -463,13 +465,13 @@ namespace ProCode.EsDnevnik.Service
                             {
                                 Grades = null,
                                 Final = null,
-                                Average = 0
+                                Average = 4.2f
                             }
                         }
                     },
                     new Model.GeneratedGrades.GradesArray
                     {
-                        Course = "Srpski",
+                        Course = "Природа и друштво",
                         ClassCourseId = 12345,
                         ClassCourseGradeTypeId = 1,
                         Sequence = 10,
@@ -497,13 +499,13 @@ namespace ProCode.EsDnevnik.Service
                             {
                                 Grades = null,
                                 Final = null,
-                                Average = 0
+                                Average = 2.9f
                             }
                         }
                     },
                     new Model.GeneratedGrades.GradesArray
                     {
-                        Course = "Srpski",
+                        Course = "Физичко васпитање",
                         ClassCourseId = 12345,
                         ClassCourseGradeTypeId = 1,
                         Sequence = 10,
@@ -531,13 +533,13 @@ namespace ProCode.EsDnevnik.Service
                             {
                                 Grades = null,
                                 Final = null,
-                                Average = 0
+                                Average = 2.1f
                             }
                         }
                     },
                     new Model.GeneratedGrades.GradesArray
                     {
-                        Course = "Srpski",
+                        Course = "Наука о Стефану Немањи",
                         ClassCourseId = 12345,
                         ClassCourseGradeTypeId = 1,
                         Sequence = 10,
@@ -559,13 +561,15 @@ namespace ProCode.EsDnevnik.Service
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
-                                }
+                                },
+                                Average = 1.4f,
+                                Final = null
                             },
                             Part2Value = new Model.GeneratedGrades.Part2
                             {
                                 Grades = null,
                                 Final = null,
-                                Average = 0
+                                Average = 1.4f
                             }
                         }
                     }
