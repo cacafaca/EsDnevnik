@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
-             xmlns:local="clr-namespace:ProCode.EsDnevnikMob"
+             xmlns:local="clr-namespace:ProCode.EsDnevnikMob.Converters"
              Title="{Binding Title}">
 
     <ContentPage.Resources>

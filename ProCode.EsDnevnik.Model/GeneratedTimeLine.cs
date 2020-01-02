@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -10,6 +11,12 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
     {
         public Dictionary<string, TimeLineEvent[]> Data { get; set; }
         public Meta Meta { get; set; }
+
+        public Rootobject()
+        {
+            Data = new Dictionary<string, TimeLineEvent[]>();
+            Meta = new Meta();
+        }
     }
 
     public class TimeLineEvent
@@ -28,6 +35,13 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         public object IopNote { get; set; }
         public object EvaluationElementCourse { get; set; }
         public int SchoolHour { get; set; }
+        public string WorkHourNote { get; set; }
+        public string TeacherNote { get; set; }
+        public string ClassmasterNote { get; set; }
+        public string AbsentType { get; set; }
+        public string Status { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))] 
+        public AbsenceStatusIdType StatusId { get; set; }
 
         [JsonIgnore]
         public string Summary
@@ -35,13 +49,20 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
             get
             {
                 string summary;
-                if (Type == EventType.Absent)
+                switch (Type)
                 {
-                    summary = $"Izostanak dana {GetDate().ToShortDateString()} sa predmeta {Course}. Broj časa {SchoolHour}";
-                }
-                else
-                {
-                    summary = $"Uneta ocena {FullGrade} iz predmeta {Course} dana {GetDate().ToShortDateString()}.";
+                    case EventType.Absent:
+                        summary = $"Изостанак дана {GetDate().ToString("dd.MM.yy")} са предмета {Course}. Број часа {SchoolHour}. Статус: {Status}.";
+                        break;
+                    case EventType.Grade:
+                        summary = $"Унета оцена {FullGrade} из предмета {Course} дана {GetDate().ToString("dd.MM.yy")}.";
+                        break;
+                    case EventType.FinalGrade:
+                        summary = $"Закључена оцена {FullGrade} из предмета {Course} дана {GetDate().ToString("dd.MM.yy")}.";
+                        break;
+                    default:
+                        summary = string.Empty;
+                        break;
                 }
                 return summary;
             }
@@ -52,7 +73,7 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         public DateTime GetDate()
         {
             if (DateCache == DateTime.MinValue)
-                return DateCache = DateTime.ParseExact(Date, "yyyy-MM-dd", null );
+                return DateCache = DateTime.ParseExact(Date, "yyyy-MM-dd", null);
             else
                 return DateCache;
         }
@@ -90,5 +111,13 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         Absent,
         [EnumMember(Value = "final-grade")]
         FinalGrade
+    }
+
+    public enum AbsenceStatusIdType
+    {
+        [EnumMember(Value = "1")]
+        NotJustified,
+        [EnumMember(Value = "2")]
+        Justified
     }
 }

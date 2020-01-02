@@ -5,14 +5,14 @@
             prism:ViewModelLocator.AutowireViewModel="True"
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}"
-            xmlns:local="clr-namespace:ProCode.EsDnevnikMob"
+            xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
             xmlns:datatemplates="clr-namespace:ProCode.EsDnevnikMob.DataTemplates">
 
     <TabbedPage.Resources>
         <ResourceDictionary>
-            <local:DateConverter x:Key="dateConverter"/>
-            <local:AverageGradeConverter x:Key="averageGradeConverter"/>
-            <local:GradeColorConverter x:Key="gradeColorConverter"/>
+            <converters:DateConverter x:Key="dateConverter"/>
+            <converters:AverageGradeConverter x:Key="averageGradeConverter"/>
+            <converters:GradeColorConverter x:Key="gradeColorConverter"/>
             <datatemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector"/>
         </ResourceDictionary>
     </TabbedPage.Resources>
@@ -23,23 +23,13 @@
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
-                      ItemTemplate="{StaticResource TimeLineDataTemplateSelector}">
+                      ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
+                      >
 
             <!--<ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="Scrolled"
                                       Command="{Binding TimeLineScrolledCommand}"/>
                 </ListView.Behaviors>-->
-
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding Summary}" x:Name="labelTimeLineEventSummary"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
-
 
             </ListView>
         </ContentPage.Content>

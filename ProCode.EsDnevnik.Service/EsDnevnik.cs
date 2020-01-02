@@ -109,14 +109,20 @@ namespace ProCode.EsDnevnik.Service
                                     Name = "Odlican",
                                     Value = 5,
                                     Sequence = 1
-                                }
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
                             },
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
                                 Type = Model.GeneratedTimeLine.EventType.Grade,
                                 Date = "2019-01-02",
                                 CreateTime = "2019-01-01",
-                                FullGrade = "odlican (5)",
+                                FullGrade = "Odlican (5)",
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 5,
@@ -124,7 +130,13 @@ namespace ProCode.EsDnevnik.Service
                                     Name = "Odlican",
                                     Value = 5,
                                     Sequence = 1
-                                }
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
                             }
                         }
                     },
@@ -134,17 +146,86 @@ namespace ProCode.EsDnevnik.Service
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
                                 Type = Model.GeneratedTimeLine.EventType.FinalGrade,
-                                Date = "2019-01-03",
-                                CreateTime = "2019-01-01",
+                                Date = "2019-12-26",
+                                CreateTime = "2019-12-26",
+                                FullGrade = "Vrlo dobar (4)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 4,
+                                    GradeTypeId = 4,
+                                    Name = "Vrlo Dobar",
+                                    Value = 4,
+                                    Sequence = 1
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.Grade,
+                                Date = "2019-12-26",
+                                CreateTime = "2019-12-26",
                                 FullGrade = "dobar (3)",
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
-                                    Id = 5,
-                                    GradeTypeId = 5,
-                                    Name = "Odlican",
-                                    Value = 5,
+                                    Id = 3,
+                                    GradeTypeId = 3,
+                                    Name = "Dobar",
+                                    Value = 3,
                                     Sequence = 1
-                                }
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
+                                Date = "2019-12-26",
+                                CreateTime = "2019-12-26",
+                                FullGrade = "dovoljan (2)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 2,
+                                    GradeTypeId = 2,
+                                    Name = "Dovoljan",
+                                    Value = 2,
+                                    Sequence = 1
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
+                                Date = "2019-12-26",
+                                CreateTime = "2019-12-26",
+                                FullGrade = "nedovoljan (1)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 1,
+                                    GradeTypeId = 1,
+                                    Name = "Nedovoljan",
+                                    Value = 1,
+                                    Sequence = 1
+                                },
+                                Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
                             }
                         }
                     }
@@ -266,18 +347,29 @@ namespace ProCode.EsDnevnik.Service
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref timeLineEventsPage));
 
             Model.GeneratedTimeLine.Rootobject rootTimeLine;
+            Model.GeneratedTimeLine.Rootobject rootTimeLineSorted = new Model.GeneratedTimeLine.Rootobject();
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
                 timeLineEventsPage++;
                 timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 rootTimeLine = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
+                rootTimeLineSorted.Meta = rootTimeLine.Meta;
+                foreach(var dateItem in rootTimeLine.Data.OrderByDescending(item => item.Key))
+                {
+                    List<Model.GeneratedTimeLine.TimeLineEvent> newTimeLineEventList = new List<Model.GeneratedTimeLine.TimeLineEvent>();
+                    foreach(var timeLineEvent in dateItem.Value.OrderByDescending(item => item.Date))
+                    {
+                        newTimeLineEventList.Add(timeLineEvent);
+                    }
+                    rootTimeLineSorted.Data.Add(dateItem.Key, newTimeLineEventList.ToArray());
+                }
             }
             else
             {
                 throw new Exception("Can't read time line.");
             }
 
-            return rootTimeLine;
+            return rootTimeLineSorted;
         }
 
         public async Task<Model.GeneratedGrades.Rootobject> GetGradesAsync(Student student)
@@ -319,6 +411,142 @@ namespace ProCode.EsDnevnik.Service
                                         CreateTime = "28.12.2019 10:00:00",
                                         FullGrade = "Odlican (5)",
                                         GradeValue = 5,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                }
+                            },
+                            Part2Value = new Model.GeneratedGrades.Part2
+                            {
+                                Grades = null,
+                                Final = null,
+                                Average = 0
+                            }
+                        }
+                    },
+                    new Model.GeneratedGrades.GradesArray
+                    {
+                        Course = "Srpski",
+                        ClassCourseId = 12345,
+                        ClassCourseGradeTypeId = 1,
+                        Sequence = 10,
+                        Parts = new Model.GeneratedGrades.Parts
+                        {
+                            Part1Value = new Model.GeneratedGrades.Part1
+                            {
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Vrlodobar (4)",
+                                        GradeValue = 4,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                }
+                            },
+                            Part2Value = new Model.GeneratedGrades.Part2
+                            {
+                                Grades = null,
+                                Final = null,
+                                Average = 0
+                            }
+                        }
+                    },
+                    new Model.GeneratedGrades.GradesArray
+                    {
+                        Course = "Srpski",
+                        ClassCourseId = 12345,
+                        ClassCourseGradeTypeId = 1,
+                        Sequence = 10,
+                        Parts = new Model.GeneratedGrades.Parts
+                        {
+                            Part1Value = new Model.GeneratedGrades.Part1
+                            {
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Dobar (3)",
+                                        GradeValue = 3,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                }
+                            },
+                            Part2Value = new Model.GeneratedGrades.Part2
+                            {
+                                Grades = null,
+                                Final = null,
+                                Average = 0
+                            }
+                        }
+                    },
+                    new Model.GeneratedGrades.GradesArray
+                    {
+                        Course = "Srpski",
+                        ClassCourseId = 12345,
+                        ClassCourseGradeTypeId = 1,
+                        Sequence = 10,
+                        Parts = new Model.GeneratedGrades.Parts
+                        {
+                            Part1Value = new Model.GeneratedGrades.Part1
+                            {
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Dovoljan (2)",
+                                        GradeValue = 2,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                }
+                            },
+                            Part2Value = new Model.GeneratedGrades.Part2
+                            {
+                                Grades = null,
+                                Final = null,
+                                Average = 0
+                            }
+                        }
+                    },
+                    new Model.GeneratedGrades.GradesArray
+                    {
+                        Course = "Srpski",
+                        ClassCourseId = 12345,
+                        ClassCourseGradeTypeId = 1,
+                        Sequence = 10,
+                        Parts = new Model.GeneratedGrades.Parts
+                        {
+                            Part1Value = new Model.GeneratedGrades.Part1
+                            {
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Nedovoljan (1)",
+                                        GradeValue = 1,
                                         GradeCategory = "praktican rad",
                                         Note = "Beleska",
                                         SchoolyearPartId = null,

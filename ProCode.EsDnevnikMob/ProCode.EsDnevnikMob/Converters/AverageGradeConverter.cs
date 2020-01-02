@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace ProCode.EsDnevnikMob
+namespace ProCode.EsDnevnikMob.Converters
 {
     class AverageGradeConverter : IValueConverter
     {

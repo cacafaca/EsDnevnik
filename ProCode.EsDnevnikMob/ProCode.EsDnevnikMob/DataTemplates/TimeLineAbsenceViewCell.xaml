@@ -5,15 +5,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineAbsenceViewCell"
-             >
+             xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
   <ViewCell.View>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <Label Text="Изостанак" Grid.Column="0"/>
-            <Label Text="{Binding Summary}" Grid.Column="1"/>
+
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <converters:AbsenceColorConverter x:Key="absenceColorConverter"/>
+                </ResourceDictionary>
+            </Grid.Resources>
+            
+            <Label Text="Изостанак" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold"
+                   TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"/>
+            <Label Text="{Binding Summary}" Grid.Column="1" />
         </Grid>
   </ViewCell.View>
 </ViewCell>

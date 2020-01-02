@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
-namespace ProCode.EsDnevnikMob
+namespace ProCode.EsDnevnikMob.Converters
 {
     class DateConverter : IValueConverter
     {
