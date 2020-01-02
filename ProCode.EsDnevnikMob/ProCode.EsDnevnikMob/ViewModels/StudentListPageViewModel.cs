@@ -26,20 +26,20 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             if (esdService == null)
             {
-                IsBussy = true;
                 esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
-                IsBussy = false;
             }
 
             // Skip if already fetched.
             if (Students.Count == 0)
             {
                 IList<Student> students = null;
+                IsBussy = true;
 #if !DEBUGFAKE
                 students = await esdService.GetStudentsAsync();
 #else
                 await Task.Run(() => { students = esdService.GetStudentsFake(); });
 #endif
+                IsBussy = false;
                 foreach (var stud in students)
                 {
                     Students.Add(stud);
@@ -50,6 +50,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
                     ExecuteItemTappedCommand();
                 }
             }
+        }
+
+        public override async void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
         }
 
         private ObservableCollection<Student> students;

@@ -5,20 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using ProCode.EsDnevnik.Model.GeneratedGrades;
 using Prism.Commands;
+using Xamarin.Forms;
+using System;
+using Prism.Services;
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
     public class StudentOverviewPageViewModel : ViewModelBase, INavigatedAware
     {
-        public StudentOverviewPageViewModel(INavigationService navigationService) : base(navigationService)
+        public StudentOverviewPageViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
         {
             Title = "Преглед за дете";
             timeLineEvents = new ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
             grades = new ObservableCollection<GradesArray>();
+            this.dialogService = dialogService;
         }
 
         EsDnevnik.Service.EsDnevnik esdService;
         Student Student;
+        private readonly IPageDialogService dialogService;
 
 
         #region Time Line Events tab
@@ -29,30 +34,40 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref timeLineEvents, value); }
         }
 
-        private async Task LoadTimeLine(Student student, TimeLineLoadType loadType)
+        private async Task LoadTimeLine(TimeLineLoadType loadType)
         {
-            if (TimeLineEvents.Count == 0)
+            EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine = null;
+            bool resetTimleLineEventPage = loadType == TimeLineLoadType.Refresh;
+            if (resetTimleLineEventPage)
+                TimeLineEvents.Clear();
+
+            try
             {
-                EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine = null;
-                bool resetTimeLineEventPage = loadType == TimeLineLoadType.Refresh;
 #if !DEBUGFAKE
-                newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student);
+                newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student, resetTimleLineEventPage);
 #else
                 await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
 #endif
-                TimeLineEvents.Clear();
-                foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
-                    foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
-                        TimeLineEvents.Add(timeLineEvent);
+                if (newRootTimeLine != null)
+                    foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
+                        foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
+                            TimeLineEvents.Add(timeLineEvent);
+            }
+            catch (Exception ex)
+            {
+                await dialogService.DisplayAlertAsync("Грешка?", ex.Message, "Уреду");
             }
         }
 
-        private DelegateCommand timeLineScrolledCommand;
-        public DelegateCommand TimeLineScrolledCommand => timeLineScrolledCommand ?? (timeLineScrolledCommand = new DelegateCommand(ExecuteTimeLineScrolledCommand));
+        private DelegateCommand<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> timeLineItemAppearingCommand;
+        public DelegateCommand<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> TimeLineItemAppearingCommand => timeLineItemAppearingCommand ?? (timeLineItemAppearingCommand = new DelegateCommand<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>(ExecuteTimeLineItemAppearingCommand));
 
-        private void ExecuteTimeLineScrolledCommand()
+        private void ExecuteTimeLineItemAppearingCommand(EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent timeLineEvent)
         {
-
+            if (timeLineEvent != null && timeLineEvent == TimeLineEvents.Last())
+            {
+                _ = LoadTimeLine(TimeLineLoadType.NextPage);
+            }
         }
         #endregion
 
@@ -136,7 +151,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
 
             // Time line data fetch 
-            await LoadTimeLine(Student, TimeLineLoadType.Refresh);
+            await LoadTimeLine(TimeLineLoadType.Refresh);
 
             // Grades fetch
             await LoadGrades(Student);

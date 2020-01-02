@@ -6,70 +6,88 @@
             x:Class="ProCode.EsDnevnikMob.Views.StudentOverviewPage"
             Title="{Binding Title}"
             xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
-            xmlns:datatemplates="clr-namespace:ProCode.EsDnevnikMob.DataTemplates">
-
+            xmlns:dataTemplates="clr-namespace:ProCode.EsDnevnikMob.DataTemplates">
+    
     <TabbedPage.Resources>
         <ResourceDictionary>
-            <converters:DateConverter x:Key="dateConverter"/>
-            <converters:AverageGradeConverter x:Key="averageGradeConverter"/>
-            <converters:GradeColorConverter x:Key="gradeColorConverter"/>
-            <datatemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector"/>
+            <converters:DateConverter x:Key="dateConverter" />
+            <converters:AverageGradeConverter x:Key="averageGradeConverter" />
+            <converters:GradeColorConverter x:Key="gradeColorConverter" />
+            <dataTemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector" />
+            <converters:ItemAppearingEventArgsConverter x:Key="itemAppearingEventArgsConverter" />
         </ResourceDictionary>
     </TabbedPage.Resources>
-
-
+    
     <!-- Time Line -->
-    <ContentPage Title="Догађаји" x:Name="tabEvents">
+    <ContentPage Title="Догађаји"
+                 x:Name="tabEvents">
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
                       ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
                       HasUnevenRows="True">
-
-            <!--<ListView.Behaviors>
-                    <prism:EventToCommandBehavior EventName="Scrolled"
-                                      Command="{Binding TimeLineScrolledCommand}"/>
-                </ListView.Behaviors>-->
-
+                <ListView.Behaviors>
+                    <prism:EventToCommandBehavior EventName="ItemAppearing"
+                                                  Command="{Binding TimeLineItemAppearingCommand}"
+                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}"/>
+                </ListView.Behaviors>
             </ListView>
         </ContentPage.Content>
     </ContentPage>
-
     <!-- Grades -->
-    <ContentPage Title="Оцене" x:Name="tabGrades">
+    <ContentPage Title="Оцене"
+                 x:Name="tabGrades">
         <ContentPage.Content>
             <ListView x:Name="gradesListView"
                       ItemsSource="{Binding GeneratedGradesSimple}"
                       HasUnevenRows="True">
-
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell >
-                            <StackLayout Orientation="Horizontal" Margin="5, 0, 5, 0">
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                                    <Label Text="{Binding Grade}" x:Name="labelGradeBig" 
-                                        FontSize="Title" 
-                                        FontAttributes="Bold" 
-                                        Margin="5, 2, 5, 2"
-                                        TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="5, 0, 5, 0">
+                                <StackLayout Orientation="Vertical"
+                                             HorizontalOptions="Start">
+                                    <Label Text="{Binding Grade}"
+                                           x:Name="labelGradeBig"
+                                           FontSize="Title"
+                                           FontAttributes="Bold"
+                                           Margin="5, 2, 5, 2"
+                                           TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}" />
                                 </StackLayout>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding Course}" x:Name="labelGradeCourse" TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}" 
+                                <StackLayout Orientation="Vertical"
+                                             HorizontalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding Course}"
+                                               x:Name="labelGradeCourse"
+                                               TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}"
                                                FontSize="Medium"
-                                               LineBreakMode="TailTruncation"/>
-                                        <Label Text="{Binding GradeCategory}" x:Name="labelGradeCategory" LineBreakMode="TailTruncation" FontAttributes="Italic" 
-                                               VerticalTextAlignment="Center"/>
-                                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}" x:Name="labelGradeDate" LineBreakMode="TailTruncation" 
-                                               HorizontalOptions="EndAndExpand"/>
+                                               LineBreakMode="TailTruncation" />
+                                        <Label Text="{Binding GradeCategory}"
+                                               x:Name="labelGradeCategory"
+                                               LineBreakMode="TailTruncation"
+                                               FontAttributes="Italic"
+                                               VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
+                                               x:Name="labelGradeDate"
+                                               LineBreakMode="TailTruncation"
+                                               HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding Note}" x:Name="labelGradeNote" LineBreakMode="WordWrap" HorizontalOptions="StartAndExpand"/>
-                                        <Label Text="{Binding Average, Converter={StaticResource averageGradeConverter}}" x:Name="labelGradeAverage" 
-                                               LineBreakMode="TailTruncation" HorizontalTextAlignment="End" FontAttributes="Bold" 
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding Note}"
+                                               x:Name="labelGradeNote"
+                                               LineBreakMode="WordWrap"
+                                               HorizontalOptions="StartAndExpand" />
+                                        <Label Text="{Binding Average, Converter={StaticResource averageGradeConverter}}"
+                                               x:Name="labelGradeAverage"
+                                               LineBreakMode="TailTruncation"
+                                               HorizontalTextAlignment="End"
+                                               FontAttributes="Bold"
                                                HorizontalOptions="EndAndExpand"
                                                VerticalTextAlignment="End"
-                                               MinimumWidthRequest="50"/>
+                                               MinimumWidthRequest="50" />
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>

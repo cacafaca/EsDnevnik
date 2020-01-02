@@ -352,16 +352,23 @@ namespace ProCode.EsDnevnik.Service
             {
                 timeLineEventsPage++;
                 timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
-                rootTimeLine = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
-                rootTimeLineSorted.Meta = rootTimeLine.Meta;
-                foreach(var dateItem in rootTimeLine.Data.OrderByDescending(item => item.Key))
+
+                // Check if reached end of data                
+                var timelineResponseObj = JObject.Parse(timeLineResponseCache);
+                var data = timelineResponseObj.SelectToken("$.data", true);
+                if (data != null && data.Children().Count() > 0)
                 {
-                    List<Model.GeneratedTimeLine.TimeLineEvent> newTimeLineEventList = new List<Model.GeneratedTimeLine.TimeLineEvent>();
-                    foreach(var timeLineEvent in dateItem.Value.OrderByDescending(item => item.Date))
+                    rootTimeLine = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
+                    rootTimeLineSorted.Meta = rootTimeLine.Meta;
+                    foreach (var dateItem in rootTimeLine.Data.OrderByDescending(item => item.Key))
                     {
-                        newTimeLineEventList.Add(timeLineEvent);
+                        List<Model.GeneratedTimeLine.TimeLineEvent> newTimeLineEventList = new List<Model.GeneratedTimeLine.TimeLineEvent>();
+                        foreach (var timeLineEvent in dateItem.Value.OrderByDescending(item => item.Date))
+                        {
+                            newTimeLineEventList.Add(timeLineEvent);
+                        }
+                        rootTimeLineSorted.Data.Add(dateItem.Key, newTimeLineEventList.ToArray());
                     }
-                    rootTimeLineSorted.Data.Add(dateItem.Key, newTimeLineEventList.ToArray());
                 }
             }
             else

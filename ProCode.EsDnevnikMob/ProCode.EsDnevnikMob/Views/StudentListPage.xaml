@@ -6,26 +6,25 @@
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
              xmlns:local="clr-namespace:ProCode.EsDnevnikMob.Converters"
              Title="{Binding Title}">
-
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:GenderConverter x:Key="genderConverter"/>
+            <local:GenderConverter x:Key="genderConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-            <ActivityIndicator IsRunning="{Binding IsBussy}" IsVisible="{Binding IsBussy}" 
-                           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"
-                           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}"/>
+    <AbsoluteLayout>
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="StartAndExpand"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
             <ListView ItemsSource="{Binding Students}"
-                  SeparatorVisibility="Default"
-                  SelectedItem="{Binding SelectedStudent}"                         
-                  x:Name="studentsList">
+                      SeparatorVisibility="Default"
+                      SelectedItem="{Binding SelectedStudent}"
+                      x:Name="studentsList">
                 <ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="ItemTapped"
-                                              Command="{Binding ItemTappedCommand}"
-                                              CommandParameter="{x:Reference studentsList}"/>
+                                                  Command="{Binding ItemTappedCommand}"
+                                                  CommandParameter="{x:Reference studentsList}" />
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -33,27 +32,39 @@
                             <StackLayout Orientation="Vertical">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Ime:" x:Name="labelNameText"/>
-                                        <Label Text="{Binding FullName}" x:Name="labelName"/>
+                                        <Label Text="Ime:"
+                                               x:Name="labelNameText" />
+                                        <Label Text="{Binding FullName}"
+                                               x:Name="labelName" />
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                        <Label Text="JMBG:" x:Name="labelJmbgText"/>
-                                        <Label Text="{Binding Jmbg}" x:Name="labelJmbg"/>
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="EndAndExpand">
+                                        <Label Text="JMBG:"
+                                               x:Name="labelJmbgText" />
+                                        <Label Text="{Binding Jmbg}"
+                                               x:Name="labelJmbg" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Id:" x:Name="labelIdText"/>
-                                        <Label Text="{Binding Id}" x:Name="labelId"/>
+                                        <Label Text="Id:"
+                                               x:Name="labelIdText" />
+                                        <Label Text="{Binding Id}"
+                                               x:Name="labelId" />
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                        <Label Text="Pol:" x:Name="labelGenderText"/>
-                                        <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}" x:Name="labelGender"/>
+                                    <StackLayout Orientation="Horizontal"
+                                                 HorizontalOptions="EndAndExpand">
+                                        <Label Text="Pol:"
+                                               x:Name="labelGenderText" />
+                                        <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}"
+                                               x:Name="labelGender" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Škola:" x:Name="labelSchoolText"/>
-                                    <Label Text="{Binding CurrentSchool}" x:Name="labelSchool"/>
+                                    <Label Text="Škola:"
+                                           x:Name="labelSchoolText" />
+                                    <Label Text="{Binding CurrentSchool}"
+                                           x:Name="labelSchool" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
@@ -61,5 +72,17 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </RelativeLayout>
+        <StackLayout x:Name="ActivityIndicatorLayout"
+                     BackgroundColor="Gray"
+                     Opacity="0.5"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     IsVisible="{Binding IsBussy}">
+            <ActivityIndicator IsRunning="{Binding IsBussy}"
+                               IsVisible="{Binding IsBussy}"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               x:Name="ActivityIndicator"/>
+        </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>
