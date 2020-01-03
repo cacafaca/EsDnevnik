@@ -6,31 +6,34 @@
           mc:Ignorable="d"
           x:Class="ProCode.EsDnevnikMob.DataTemplates.GradesViewCell"
           xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
-    
     <ViewCell.View>
         <Grid x:Name="mainGradesGrid">
             <Grid.Resources>
                 <converters:GradeColorConverter x:Key="gradeColorConverter" />
                 <converters:AverageGradeConverter x:Key="averageGradeConverter" />
                 <converters:DateConverter x:Key="dateConverter" />
+                <converters:AverageGradeColorConverter x:Key="averageGradeColorConverter" />
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="5*" />                
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <Label Text="{Binding Grade}"
                    x:Name="labelGradeBig"
-                   FontSize="40"
+                   FontSize="50"
                    FontAttributes="Bold"
-                   Margin="5, 2, 5, 2"
                    TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}"
-                   Grid.Column="0" 
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Start" VerticalOptions="Start"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
@@ -48,19 +51,21 @@
                        x:Name="labelGradeCategory"
                        LineBreakMode="TailTruncation"
                        FontAttributes="Italic"
-                       VerticalTextAlignment="Center"
+                       VerticalTextAlignment="Start"
                        Grid.Column="0"
                        Grid.Row="1" />
                 <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
                        x:Name="labelGradeDate"
                        LineBreakMode="TailTruncation"
-                       HorizontalOptions="EndAndExpand" 
-                       Grid.Column="1" Grid.Row="1"/>
+                       HorizontalOptions="End"
+                       Grid.Column="1"
+                       Grid.Row="1" />
                 <Label Text="{Binding Note}"
                        x:Name="labelGradeNote"
                        LineBreakMode="WordWrap"
-                       HorizontalOptions="StartAndExpand" 
-                       Grid.Column="0" Grid.Row="2"/>
+                       HorizontalOptions="Start"
+                       Grid.Column="0"
+                       Grid.Row="2" />
                 <Label Text="{Binding Average, Converter={StaticResource averageGradeConverter}}"
                        x:Name="labelGradeAverage"
                        LineBreakMode="TailTruncation"
@@ -68,10 +73,11 @@
                        FontAttributes="Bold"
                        HorizontalOptions="EndAndExpand"
                        VerticalTextAlignment="End"
-                       MinimumWidthRequest="50" 
-                       Grid.Column="1" Grid.Row="2"/>
+                       MinimumWidthRequest="50"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       TextColor="{Binding Average, Converter={StaticResource averageGradeColorConverter}}"/>
             </Grid>
         </Grid>
     </ViewCell.View>
-    
 </ViewCell>

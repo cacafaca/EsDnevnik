@@ -423,15 +423,16 @@ namespace ProCode.EsDnevnik.Service
                                         GradeCategory = "praktican rad",
                                         Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
                                         SchoolyearPartId = null,
-                                        EvaluationElement = null
+                                        EvaluationElement = null                                        
                                     }
-                                }
+                                },
+                                Average = 4.5f
                             },
                             Part2Value = new Model.GeneratedGrades.Part2
                             {
                                 Grades = null,
                                 Final = null,
-                                Average = 0
+                                Average = 4.5f
                             }
                         }
                     },
@@ -455,11 +456,12 @@ namespace ProCode.EsDnevnik.Service
                                         FullGrade = "Vrlodobar (4)",
                                         GradeValue = 4,
                                         GradeCategory = "praktican rad",
-                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
+                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
-                                }
+                                },
+                                Average = 4.4f
                             },
                             Part2Value = new Model.GeneratedGrades.Part2
                             {
@@ -493,7 +495,8 @@ namespace ProCode.EsDnevnik.Service
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
-                                }
+                                },
+                                Average = 3.4f
                             },
                             Part2Value = new Model.GeneratedGrades.Part2
                             {
@@ -527,7 +530,8 @@ namespace ProCode.EsDnevnik.Service
                                         SchoolyearPartId = null,
                                         EvaluationElement = null
                                     }
-                                }
+                                },
+                                Average = 1.5f
                             },
                             Part2Value = new Model.GeneratedGrades.Part2
                             {

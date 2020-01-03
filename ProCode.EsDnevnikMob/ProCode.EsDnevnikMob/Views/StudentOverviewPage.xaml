@@ -46,55 +46,6 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <dataTemplates:GradesViewCell />
-                        <!--<ViewCell>
-                            <StackLayout Orientation="Horizontal"
-                                         Margin="5, 0, 5, 0">
-                                <StackLayout Orientation="Vertical"
-                                             HorizontalOptions="Start">
-                                    <Label Text="{Binding Grade}"
-                                           x:Name="labelGradeBig"
-                                           FontSize="Title"
-                                           FontAttributes="Bold"
-                                           Margin="5, 2, 5, 2"
-                                           TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical"
-                                             HorizontalOptions="StartAndExpand">
-                                    <StackLayout Orientation="Horizontal"
-                                                 HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding Course}"
-                                               x:Name="labelGradeCourse"
-                                               TextColor="{Binding Grade, Converter={StaticResource gradeColorConverter}}"
-                                               FontSize="Medium"
-                                               LineBreakMode="TailTruncation" />
-                                        <Label Text="{Binding GradeCategory}"
-                                               x:Name="labelGradeCategory"
-                                               LineBreakMode="TailTruncation"
-                                               FontAttributes="Italic"
-                                               VerticalTextAlignment="Center" />
-                                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
-                                               x:Name="labelGradeDate"
-                                               LineBreakMode="TailTruncation"
-                                               HorizontalOptions="EndAndExpand" />
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal"
-                                                 HorizontalOptions="StartAndExpand">
-                                        <Label Text="{Binding Note}"
-                                               x:Name="labelGradeNote"
-                                               LineBreakMode="WordWrap"
-                                               HorizontalOptions="StartAndExpand" />
-                                        <Label Text="{Binding Average, Converter={StaticResource averageGradeConverter}}"
-                                               x:Name="labelGradeAverage"
-                                               LineBreakMode="TailTruncation"
-                                               HorizontalTextAlignment="End"
-                                               FontAttributes="Bold"
-                                               HorizontalOptions="EndAndExpand"
-                                               VerticalTextAlignment="End"
-                                               MinimumWidthRequest="50" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
