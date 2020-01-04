@@ -409,7 +409,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part1
+                            Part1Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -423,17 +423,54 @@ namespace ProCode.EsDnevnik.Service
                                         GradeCategory = "praktican rad",
                                         Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
                                         SchoolyearPartId = null,
-                                        EvaluationElement = null                                        
+                                        EvaluationElement = null
+                                    },
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Odlican (5)",
+                                        GradeValue = 5,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Бешика.",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
                                     }
                                 },
                                 Average = 4.5f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part2
+                            Part2Value = new Model.GeneratedGrades.Part
                             {
-                                Grades = null,
-                                Final = null,
+                                Grades = new Model.GeneratedGrades.Grade[]
+                                {
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Odlican (5)",
+                                        GradeValue = 5,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    },
+                                    new Model.GeneratedGrades.Grade
+                                    {
+                                        Descriptive = false,
+                                        Date = "28.12.2019",
+                                        CreateTime = "28.12.2019 10:00:00",
+                                        FullGrade = "Odlican (5)",
+                                        GradeValue = 5,
+                                        GradeCategory = "praktican rad",
+                                        Note = "Бешика.",
+                                        SchoolyearPartId = null,
+                                        EvaluationElement = null
+                                    }
+                                },
                                 Average = 4.5f
-                            }
+                            },
                         }
                     },
                     new Model.GeneratedGrades.GradesArray
@@ -444,7 +481,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part1
+                            Part1Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -463,7 +500,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 4.4f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part2
+                            Part2Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -479,7 +516,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part1
+                            Part1Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -498,7 +535,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 3.4f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part2
+                            Part2Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -514,7 +551,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part1
+                            Part1Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -533,7 +570,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 1.5f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part2
+                            Part2Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -549,7 +586,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part1
+                            Part1Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -569,7 +606,7 @@ namespace ProCode.EsDnevnik.Service
                                 Average = 1.4f,
                                 Final = null
                             },
-                            Part2Value = new Model.GeneratedGrades.Part2
+                            Part2Value = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,

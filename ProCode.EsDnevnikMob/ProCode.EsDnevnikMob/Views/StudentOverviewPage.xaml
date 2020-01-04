@@ -7,17 +7,15 @@
             Title="{Binding Title}"
             xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
             xmlns:dataTemplates="clr-namespace:ProCode.EsDnevnikMob.DataTemplates">
-    
     <TabbedPage.Resources>
         <ResourceDictionary>
             <converters:DateConverter x:Key="dateConverter" />
             <converters:AverageGradeConverter x:Key="averageGradeConverter" />
             <converters:GradeColorConverter x:Key="gradeColorConverter" />
-            <dataTemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector" />            
+            <dataTemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector" />
             <converters:ItemAppearingEventArgsConverter x:Key="itemAppearingEventArgsConverter" />
         </ResourceDictionary>
     </TabbedPage.Resources>
-    
     <!-- Time Line -->
     <ContentPage Title="Догађаји"
                  x:Name="tabEvents">
@@ -25,24 +23,23 @@
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
                       ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
-                      HasUnevenRows="True">
+                      HasUnevenRows="True"
+                      VerticalOptions="StartAndExpand">
                 <ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="ItemAppearing"
                                                   Command="{Binding TimeLineItemAppearingCommand}"
-                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}"/>
+                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}" />
                 </ListView.Behaviors>
             </ListView>
         </ContentPage.Content>
     </ContentPage>
-    
     <!-- Grades -->
     <ContentPage Title="Оцене"
                  x:Name="tabGrades">
         <ContentPage.Content>
             <ListView x:Name="gradesListView"
                       ItemsSource="{Binding GeneratedGradesSimple}"
-                      HasUnevenRows="True"
-                      >
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <dataTemplates:GradesViewCell />

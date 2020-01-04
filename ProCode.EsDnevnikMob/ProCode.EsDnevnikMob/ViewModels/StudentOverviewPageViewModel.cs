@@ -33,29 +33,55 @@ namespace ProCode.EsDnevnikMob.ViewModels
             get { return timeLineEvents; }
             set { SetProperty(ref timeLineEvents, value); }
         }
+        private bool timeLineEventsPopulated = false;
 
         private async Task LoadTimeLine(TimeLineLoadType loadType)
         {
             EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine = null;
             bool resetTimleLineEventPage = loadType == TimeLineLoadType.Refresh;
             if (resetTimleLineEventPage)
-                TimeLineEvents.Clear();
-
-            try
             {
+                TimeLineEvents.Clear();
+                timeLineEventsPopulated = false;
+            }
+
+            if (!timeLineEventsPopulated)
+                try
+                {
+                    AnimateLoading(true);
 #if !DEBUGFAKE
-                newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student, resetTimleLineEventPage);
+                    newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student, resetTimleLineEventPage);
 #else
                 await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
 #endif
-                if (newRootTimeLine != null)
-                    foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
-                        foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
-                            TimeLineEvents.Add(timeLineEvent);
-            }
-            catch (Exception ex)
+                    if (newRootTimeLine != null && newRootTimeLine.Data != null)
+                    {
+                        foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
+                            foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
+                                TimeLineEvents.Add(timeLineEvent);
+                        timeLineEventsPopulated = newRootTimeLine.Data.Count == 0; // If no elements are returned it means that complete list is retrieved.
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await dialogService.DisplayAlertAsync("Грешка?", ex.Message, "Уреду");
+                }
+                finally
+                {
+                    AnimateLoading(false);
+                }
+        }
+
+        private void AnimateLoading(bool loading)
+        {
+            if (loading)
             {
-                await dialogService.DisplayAlertAsync("Грешка?", ex.Message, "Уреду");
+                if (!TimeLineEvents.Any(t => t.Type == EsDnevnik.Model.GeneratedTimeLine.EventType.Loading))
+                    TimeLineEvents.Add(new EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent { Type = EsDnevnik.Model.GeneratedTimeLine.EventType.Loading });
+            }
+            else
+            {
+                TimeLineEvents.Remove(TimeLineEvents.Where(tle => tle.Type == EsDnevnik.Model.GeneratedTimeLine.EventType.Loading).FirstOrDefault());
             }
         }
 
@@ -64,7 +90,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private void ExecuteTimeLineItemAppearingCommand(EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent timeLineEvent)
         {
-            if (timeLineEvent != null && timeLineEvent == TimeLineEvents.Last())
+            if (!TimeLineEvents.Any(tle => tle.Type == EsDnevnik.Model.GeneratedTimeLine.EventType.Loading) && timeLineEvent != null && timeLineEvent == TimeLineEvents.LastOrDefault())
             {
                 _ = LoadTimeLine(TimeLineLoadType.NextPage);
             }

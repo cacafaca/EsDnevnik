@@ -21,13 +21,17 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
 
     public class Parts
     {
+        // Semester 1
         [JsonProperty("1")]
-        public Part1 Part1Value { get; set; }
+        public Part Part1Value { get; set; }
+        
+        // Semester 1
         [JsonProperty("2")]
-        public Part2 Part2Value { get; set; }
+        public Part Part2Value { get; set; }
     }
 
-    public class Part1
+    // Polugođe
+    public class Part
     {
         public Grade[] Grades { get; set; }
         public object Final { get; set; }
@@ -46,12 +50,5 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public string Note { get; set; }
         public object SchoolyearPartId { get; set; }
         public object EvaluationElement { get; set; }
-    }
-
-    public class Part2
-    {
-        public object[] Grades { get; set; }
-        public object Final { get; set; }
-        public float Average { get; set; }
     }
 }

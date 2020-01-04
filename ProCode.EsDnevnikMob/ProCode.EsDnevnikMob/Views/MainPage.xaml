@@ -3,26 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ProCode.EsDnevnikMob.Views.MainPage"             
+             x:Class="ProCode.EsDnevnikMob.Views.MainPage"
              Title="{Binding Title}">
-
-
     <ContentPage.Behaviors>
         <prism:EventToCommandBehavior EventName="Appearing"
-                                      Command="{Binding AppearingCommand}"/>
+                                      Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
-
-    <StackLayout HorizontalOptions="Fill" VerticalOptions="StartAndExpand" Orientation="Vertical" >
-            <Label Text="Корисничко име" x:Name="labelUsername" Style="{StaticResource MainPageLabelStyle}"/>
-            <Entry Text="{Binding Username}" x:Name="entryUsername" Style="{StaticResource MainPageEntryStyle}" IsEnabled="{Binding IsNotLogging}"/>
-
-            <Label Text="Лозинка" x:Name="labelPassword" Style="{StaticResource MainPageLabelStyle}"/>
-            <Entry Text="{Binding Password}" IsPassword="True" x:Name="entryPassword" Style="{StaticResource MainPageEntryStyle}" IsEnabled="{Binding IsNotLogging}"/>
-
-            <Button Text="Пријави се" Command="{Binding LoginNavigateCommand}" x:Name="buttonLogin" IsEnabled="{Binding IsNotLogging}"/>
-        <ActivityIndicator IsRunning="{Binding IsLogging}"/>
-        <Label Text="Ова апликација није званична апликација Министарства образовање Србије и није одговорна за податке приказане у њој. Ова апликација само користи податке са сајта https://moj.esdnevnik.rs и приказује их. Молим Вас да ову апликацију користите на своју одговорност." 
-               x:Name="disclamerLabel" VerticalOptions="EndAndExpand" VerticalTextAlignment="End" HorizontalTextAlignment="Center"/>
+    <StackLayout HorizontalOptions="Fill"
+                 VerticalOptions="StartAndExpand"
+                 Orientation="Vertical">
+        <Label Text="Корисничко име"
+               x:Name="labelUsername"
+               Style="{StaticResource MainPageLabelStyle}" />
+        <Entry Text="{Binding Username}"
+               x:Name="entryUsername"
+               Style="{StaticResource MainPageEntryStyle}"
+               IsEnabled="{Binding IsNotLogging}" />
+        <Label Text="Лозинка"
+               x:Name="labelPassword"
+               Style="{StaticResource MainPageLabelStyle}" />
+        <Entry Text="{Binding Password}"
+               IsPassword="True"
+               x:Name="entryPassword"
+               Style="{StaticResource MainPageEntryStyle}"
+               IsEnabled="{Binding IsNotLogging}" />
+        <Button Text="Пријави се"
+                Command="{Binding LoginNavigateCommand}"
+                x:Name="buttonLogin"
+                IsEnabled="{Binding IsNotLogging}" />
+        <ActivityIndicator IsRunning="{Binding IsLogging}" />
+        <Label Text="Ова апликација није званична апликација Министарства образовање Србије и није одговорна за податке приказане у њој. Ова апликација само користи податке са сајта https://moj.esdnevnik.rs и приказује их. Молим Вас да ову апликацију користите на своју одговорност."
+               x:Name="disclamerLabel"
+               VerticalOptions="EndAndExpand"
+               VerticalTextAlignment="End"
+               HorizontalTextAlignment="Center" />
     </StackLayout>
-
 </ContentPage>

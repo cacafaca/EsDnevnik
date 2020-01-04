@@ -40,7 +40,7 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         public string ClassmasterNote { get; set; }
         public string AbsentType { get; set; }
         public string Status { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))] 
+        [JsonConverter(typeof(StringEnumConverter))]
         public AbsenceStatusIdType StatusId { get; set; }
 
         [JsonIgnore]
@@ -67,6 +67,8 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
                 return summary;
             }
         }
+        [JsonIgnore]
+        public bool IsLoading { get { return Type == EventType.Loading; } }
 
         protected DateTime DateCache { get; set; }
 
@@ -110,7 +112,9 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         [EnumMember(Value = "absent")]
         Absent,
         [EnumMember(Value = "final-grade")]
-        FinalGrade
+        FinalGrade,
+        [JsonIgnore]
+        Loading
     }
 
     public enum AbsenceStatusIdType
