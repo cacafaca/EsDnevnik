@@ -53,7 +53,6 @@ Global
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.ReleaseInstant|Any CPU.ActiveCfg = ReleaseInstant|Any CPU
 		{7CB39FA6-464B-4AB7-A619-95C3BD50A50B}.ReleaseInstant|Any CPU.Build.0 = ReleaseInstant|Any CPU
 		{53B803E8-C1A8-477B-8C6E-C4EE7F7A9853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,7 +87,6 @@ Global
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugPhoneConnected|Any CPU.ActiveCfg = DebugPhoneConnected|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.DebugPhoneConnected|Any CPU.Build.0 = DebugPhoneConnected|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC0A6093-8655-4833-83FE-36FE71B7702D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.ReleaseInstant|Any CPU.ActiveCfg = Release|Any CPU
 		{DC0A6093-8655-4833-83FE-36FE71B7702D}.ReleaseInstant|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
