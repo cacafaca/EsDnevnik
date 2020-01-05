@@ -2,13 +2,12 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-                        x:Class="ProCode.EsDnevnikMob.App"
-                        xmlns:system="clr-namespace:System;assembly=netstandard">
+                        x:Class="ProCode.EsDnevnikMob.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
         <ResourceDictionary >
             <!-- Main page -->
-            <Style x:Key="MainPageLabelStyle"
+            <Style x:Key="mainPageLabelStyle"
                    TargetType="Label">
                 <Setter Property="FontSize"
                         Value="Default" />
@@ -17,15 +16,11 @@
                 <Setter Property="TextColor"
                         Value="Gray" />
             </Style>
-            <Style x:Key="MainPageEntryStyle"
+            <Style x:Key="mainPageEntryStyle"
                    TargetType="Entry">
                 <Setter Property="FontSize"
                         Value="Body" />
             </Style>
-            <!-- Formats -->
-            <!--<system:String x:Key="DateFormatStandard">{0:h\:mm tt}</system:String>-->
-            <!--<system:String x:Key="LocalCurrencyFormat">{}{0:C}</system:String>-->
-            <!--<system:String x:Key="Foo">Hello world</system:String>-->
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

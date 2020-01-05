@@ -19,6 +19,8 @@
                     <converters:GradeLiteColorConverter x:Key="gradeLiteColorConverter" />
                     <converters:DateConverter x:Key="dateConverter" />
                     <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                    <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                    <converters:GradeValueConverter x:Key="gradeValueConverter" />
                 </ResourceDictionary>
             </Frame.Resources>
             <Grid x:Name="timeLineMainGradesGrid"
@@ -33,9 +35,9 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Text="{Binding Grade.Value}"
+                    <Label Text="{Binding Grade, Converter={StaticResource gradeValueConverter}}"
                            x:Name="timeLineLeftGradeBigLabel"
-                           FontSize="50"
+                           FontSize="{Binding Grade, Converter={StaticResource gradeFontSizeConverter}}"
                            FontAttributes="Bold"
                            TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}"
                            Grid.Row="0"

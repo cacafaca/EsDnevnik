@@ -1,0 +1,26 @@
+﻿using ProCode.EsDnevnik.Model.GeneratedTimeLine;
+using System;
+using System.Globalization;
+using Xamarin.Forms;
+
+namespace ProCode.EsDnevnikMob.Converters
+{
+    class GradeValueConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value is Grade grade)
+                if (grade.GradeTypeId == 1) 
+                    return grade.Value;  // size for number grade
+                else
+                    return grade.Name;  // size for descriptive grade
+            else
+                return 50;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+    }
+}

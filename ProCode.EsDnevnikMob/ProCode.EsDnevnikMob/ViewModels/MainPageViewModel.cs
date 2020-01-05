@@ -131,5 +131,6 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 ExecuteLoginNavigateCommand();
             }
         }
+
     }
 }

@@ -95,7 +95,7 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
     {
         public int Id { get; set; }
         [JsonProperty("grade_type_id")]
-        public int GradeTypeId { get; set; }
+        public int GradeTypeId { get; set; }    // 1=brojevna ocena, 2=opisna
         public string Name { get; set; }
         public int Value { get; set; }
         public int Sequence { get; set; }

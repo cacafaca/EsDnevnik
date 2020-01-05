@@ -12,27 +12,33 @@
     <StackLayout HorizontalOptions="Fill"
                  VerticalOptions="StartAndExpand"
                  Orientation="Vertical">
-        <Frame>
+        <Frame BackgroundColor="White"
+               CornerRadius="5"
+               BorderColor="#fafafa"
+               Margin="2"
+               Padding="5"
+               HasShadow="True">
             <StackLayout Orientation="Vertical">
-                <Label Text="Корисничко име"
-                       x:Name="labelUsername"
-                       Style="{StaticResource MainPageLabelStyle}" />
                 <Entry Text="{Binding Username}"
                        x:Name="entryUsername"
-                       Style="{StaticResource MainPageEntryStyle}"
-                       IsEnabled="{Binding IsNotLogging}" Placeholder="корисничко име које сте дали наставнику"/>
-                <Label Text="Лозинка"
-                       x:Name="labelPassword"
-                       Style="{StaticResource MainPageLabelStyle}" />
+                       Style="{DynamicResource mainPageEntryStyle}"
+                       IsEnabled="{Binding IsNotLogging}"
+                       Placeholder="епошта коју сте дали наставнику"
+                       Margin="0,30,0,0"
+                       BackgroundColor="#fbe9e7" />
                 <Entry Text="{Binding Password}"
                        IsPassword="True"
                        x:Name="entryPassword"
-                       Style="{StaticResource MainPageEntryStyle}"
-                       IsEnabled="{Binding IsNotLogging}" Placeholder="лозинка"/>
+                       Style="{DynamicResource mainPageEntryStyle}"
+                       IsEnabled="{Binding IsNotLogging}"
+                       Placeholder="лозинка"
+                       Margin="0,30,0,0"
+                       BackgroundColor="#fbe9e7" />
                 <Button Text="Пријави се"
                         Command="{Binding LoginNavigateCommand}"
                         x:Name="buttonLogin"
-                        IsEnabled="{Binding IsNotLogging}" />
+                        IsEnabled="{Binding IsNotLogging}"
+                        Margin="0,20,0,0" />
             </StackLayout>
         </Frame>
         <ActivityIndicator IsRunning="{Binding IsLogging}" />
@@ -40,6 +46,8 @@
                x:Name="disclamerLabel"
                VerticalOptions="EndAndExpand"
                VerticalTextAlignment="End"
-               HorizontalTextAlignment="Center" />
+               HorizontalTextAlignment="Center"
+               TextColor="PaleVioletRed"
+               FontSize="Default" />
     </StackLayout>
 </ContentPage>
