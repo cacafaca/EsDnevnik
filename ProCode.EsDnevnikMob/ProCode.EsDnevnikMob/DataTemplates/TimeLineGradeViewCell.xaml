@@ -60,25 +60,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Course}"
-                               Grid.Column="0"
-                               FontSize="Medium"
-                               TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}" />
-                        <StackLayout Orientation="Horizontal"
-                                     Grid.Column="1">
-                            <Label Text="час"
-                                   HorizontalOptions="StartAndExpand"
-                                   FontAttributes="Italic"
-                                   LineBreakMode="NoWrap" />
-                            <Label Text="{Binding SchoolHour}"
-                                   FontAttributes="Italic" />
-                        </StackLayout>
-                    </Grid>
+                    <Label Text="{Binding Course}"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Grid.Row="0" 
+                            TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}" />                        
                     <Label Text="{Binding Note}"
                            x:Name="timeLineGradeNoteLabel"
                            LineBreakMode="WordWrap"

@@ -21,7 +21,7 @@
             <StackLayout Orientation="Vertical">
                 <Entry Text="{Binding Username}"
                        x:Name="entryUsername"
-                       Style="{DynamicResource mainPageEntryStyle}"
+                       Style="{StaticResource mainPageEntryStyle}"
                        IsEnabled="{Binding IsNotLogging}"
                        Placeholder="епошта коју сте дали наставнику"
                        Margin="0,30,0,0"
@@ -29,7 +29,7 @@
                 <Entry Text="{Binding Password}"
                        IsPassword="True"
                        x:Name="entryPassword"
-                       Style="{DynamicResource mainPageEntryStyle}"
+                       Style="{StaticResource mainPageEntryStyle}"
                        IsEnabled="{Binding IsNotLogging}"
                        Placeholder="лозинка"
                        Margin="0,30,0,0"

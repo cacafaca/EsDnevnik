@@ -39,7 +39,7 @@
                                  VerticalOptions="Center"
                                  Padding="0,5,0,5"
                                  Spacing="-5">
-                        <Label Text="Изостанак"
+                        <Label Text="изостанак"
                                HorizontalTextAlignment="Center"
                                FontAttributes="Bold"
                                TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"

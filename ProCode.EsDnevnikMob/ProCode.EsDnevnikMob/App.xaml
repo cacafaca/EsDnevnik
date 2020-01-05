@@ -5,7 +5,7 @@
                         x:Class="ProCode.EsDnevnikMob.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
-        <ResourceDictionary >
+        <ResourceDictionary>
             <!-- Main page -->
             <Style x:Key="mainPageLabelStyle"
                    TargetType="Label">
