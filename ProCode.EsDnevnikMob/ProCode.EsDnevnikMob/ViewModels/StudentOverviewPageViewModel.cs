@@ -124,14 +124,14 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
         }
 
-        private ObservableCollection<GeneratedGradesSimple> CalculateGeneratedGradesSimple(ObservableCollection<GradesArray> grades)
+        private ObservableCollection<CourseGrades> CalculateGeneratedGradesSimple(ObservableCollection<GradesArray> grades)
         {
-            ObservableCollection<GeneratedGradesSimple> gradesSimple = new ObservableCollection<GeneratedGradesSimple>();
+            ObservableCollection<CourseGrades> gradesSimple = new ObservableCollection<CourseGrades>();
             foreach (var grade in grades)
             {
                 foreach (var courseGrade in grade.Parts.Part1Value.Grades)
                 {
-                    gradesSimple.Add(new GeneratedGradesSimple
+                    gradesSimple.Add(new CourseGrades
                     {
                         Course = grade.Course,
                         Date = courseGrade.Date,
@@ -143,7 +143,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
                     });
                 }
             }
-            ObservableCollection<GeneratedGradesSimple> gradesSimpleSorted = new ObservableCollection<GeneratedGradesSimple>();
+            ObservableCollection<CourseGrades> gradesSimpleSorted = new ObservableCollection<CourseGrades>();
             foreach (var grade in gradesSimple.OrderByDescending(gr => gr.Date))
             {
                 gradesSimpleSorted.Add(grade);
@@ -151,9 +151,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
             return gradesSimpleSorted;
         }
 
-        private ObservableCollection<GeneratedGradesSimple> generatedGradesSimples;
+        private ObservableCollection<CourseGrades> generatedGradesSimples;
 
-        public ObservableCollection<GeneratedGradesSimple> GeneratedGradesSimple
+        public ObservableCollection<CourseGrades> GeneratedGradesSimple
         {
             get { return generatedGradesSimples; }
             set

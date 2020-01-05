@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProCode.EsDnevnik.Model
 {
-    public class GeneratedGradesSimple
+    public class CourseGrades
     {
         public string Course { get; set; }
         public string Date { get; set; }
