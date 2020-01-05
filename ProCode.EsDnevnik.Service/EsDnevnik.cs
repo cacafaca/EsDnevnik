@@ -117,7 +117,34 @@ namespace ProCode.EsDnevnik.Service
                                 IopNote = null,
                                 EvaluationElementCourse = null,
                                 Status = "неоправдан",
-                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.NotJustified
+                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.NotJustified,
+                                WorkHourNote = "Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška.",
+                                SchoolHour = 1
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.Absent,
+                                Date = "2019-01-01",
+                                CreateTime = "2019-01-01",
+                                FullGrade = "odlican (5)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 5,
+                                    GradeTypeId = 5,
+                                    Name = "Odlican",
+                                    Value = 5,
+                                    Sequence = 1
+                                },
+                                Course = "Верска настава - православни катихизис (изборни)",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null,
+                                Status = "оправдан",
+                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.Justified,
+                                WorkHourNote = "Лепо писање.",
+                                SchoolHour = 2
                             },
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {
@@ -138,7 +165,10 @@ namespace ProCode.EsDnevnik.Service
                                 SchoolClass = "III 1",
                                 School = "Ђура",
                                 IopNote = null,
-                                EvaluationElementCourse = null
+                                EvaluationElementCourse = null,
+                                Note = @"40,5/45 бодова
+Успешно савладано градиво о води и другим течностима. Пазити у формулацији промена стања воде загревањем или хлађењем (вода није само течно стање).",
+                                SchoolHour = 3
                             }
                         }
                     },
@@ -159,12 +189,15 @@ namespace ProCode.EsDnevnik.Service
                                     Value = 4,
                                     Sequence = 1
                                 },
-                                Course = "Математика",
+                                Course = "Верска настава - православни катихизис (изборни)",
                                 ClassCourseId = 123,
                                 SchoolClass = "III 1",
                                 School = "Ђура",
                                 IopNote = null,
-                                EvaluationElementCourse = null
+                                EvaluationElementCourse = null,
+                                Note = @"53,5/55 бодова 
+Успешно савладани садржаји о сабирању и одузимању троцифрених бројева (усмено).",
+                                SchoolHour = 4
                             },
                             new Model.GeneratedTimeLine.TimeLineEvent
                             {

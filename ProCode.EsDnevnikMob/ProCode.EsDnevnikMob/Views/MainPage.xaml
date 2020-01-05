@@ -12,25 +12,29 @@
     <StackLayout HorizontalOptions="Fill"
                  VerticalOptions="StartAndExpand"
                  Orientation="Vertical">
-        <Label Text="Корисничко име"
-               x:Name="labelUsername"
-               Style="{StaticResource MainPageLabelStyle}" />
-        <Entry Text="{Binding Username}"
-               x:Name="entryUsername"
-               Style="{StaticResource MainPageEntryStyle}"
-               IsEnabled="{Binding IsNotLogging}" />
-        <Label Text="Лозинка"
-               x:Name="labelPassword"
-               Style="{StaticResource MainPageLabelStyle}" />
-        <Entry Text="{Binding Password}"
-               IsPassword="True"
-               x:Name="entryPassword"
-               Style="{StaticResource MainPageEntryStyle}"
-               IsEnabled="{Binding IsNotLogging}" />
-        <Button Text="Пријави се"
-                Command="{Binding LoginNavigateCommand}"
-                x:Name="buttonLogin"
-                IsEnabled="{Binding IsNotLogging}" />
+        <Frame>
+            <StackLayout Orientation="Vertical">
+                <Label Text="Корисничко име"
+                       x:Name="labelUsername"
+                       Style="{StaticResource MainPageLabelStyle}" />
+                <Entry Text="{Binding Username}"
+                       x:Name="entryUsername"
+                       Style="{StaticResource MainPageEntryStyle}"
+                       IsEnabled="{Binding IsNotLogging}" Placeholder="корисничко име које сте дали наставнику"/>
+                <Label Text="Лозинка"
+                       x:Name="labelPassword"
+                       Style="{StaticResource MainPageLabelStyle}" />
+                <Entry Text="{Binding Password}"
+                       IsPassword="True"
+                       x:Name="entryPassword"
+                       Style="{StaticResource MainPageEntryStyle}"
+                       IsEnabled="{Binding IsNotLogging}" Placeholder="лозинка"/>
+                <Button Text="Пријави се"
+                        Command="{Binding LoginNavigateCommand}"
+                        x:Name="buttonLogin"
+                        IsEnabled="{Binding IsNotLogging}" />
+            </StackLayout>
+        </Frame>
         <ActivityIndicator IsRunning="{Binding IsLogging}" />
         <Label Text="Ова апликација није званична апликација Министарства образовање Србије и није одговорна за податке приказане у њој. Ова апликација само користи податке са сајта https://moj.esdnevnik.rs и приказује их. Молим Вас да ову апликацију користите на своју одговорност."
                x:Name="disclamerLabel"

@@ -84,6 +84,11 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         {
             return Summary;
         }
+
+        /// <summary>
+        /// Flag for new event since last update.
+        /// </summary>
+        public bool IsNew { get; set; }
     }
 
     public class Grade

@@ -1,31 +1,95 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineAbsenceViewCell"
-             xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
-  <ViewCell.View>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            
-            <Grid.Resources>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          mc:Ignorable="d"
+          x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineAbsenceViewCell"
+          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+    <ViewCell.View>
+        <Frame BackgroundColor="White"
+               BorderColor="{Binding StatusId, Converter={StaticResource absenceLiteColorConverter}}"
+               Margin="2"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="5">
+            <Frame.Resources>
                 <ResourceDictionary>
-                    <converters:AbsenceColorConverter x:Key="absenceColorConverter"/>
+                    <converters:AbsenceColorConverter x:Key="absenceColorConverter" />
+                    <converters:AbsenceLiteColorConverter x:Key="absenceLiteColorConverter" />
+                    <converters:DateConverter x:Key="dateConverter" />
+                    <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
                 </ResourceDictionary>
-            </Grid.Resources>
-            
-            <Label Text="Изостанак" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold"
-                   TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"/>
-            <Label Text="{Binding Summary}" Grid.Column="1" />
-        </Grid>
-  </ViewCell.View>
+            </Frame.Resources>
+            <Grid Padding="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Column="0"
+                                 VerticalOptions="Center"
+                                 Padding="0,5,0,5"
+                                 Spacing="-5">
+                        <Label Text="Изостанак"
+                               HorizontalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"
+                               FontSize="Body"
+                               VerticalOptions="End" />
+                        <Label Text="{Binding Status}"
+                               TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"
+                               FontSize="Caption"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Row="1"
+                                 Spacing="-5">
+                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Date, Converter={StaticResource dateToWeekDayConverter}}"
+                               Grid.Row="1"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Course}"
+                               Grid.Column="0"
+                               FontSize="Medium"
+                               TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"
+                               HorizontalOptions="FillAndExpand" />
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.Column="1"
+                                     HorizontalOptions="End">
+                            <Label Text="час"
+                                   FontAttributes="Italic"
+                                   LineBreakMode="NoWrap" />
+                            <Label Text="{Binding SchoolHour}"
+                                   FontAttributes="Italic" />
+                        </StackLayout>
+                    </Grid>
+                    <Label Text="{Binding WorkHourNote}"
+                           Grid.Row="1" />
+                </Grid>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
 </ViewCell>

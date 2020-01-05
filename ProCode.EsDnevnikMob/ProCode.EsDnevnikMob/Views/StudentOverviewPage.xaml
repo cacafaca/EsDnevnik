@@ -23,12 +23,11 @@
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
                       ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
-                      HasUnevenRows="True"
-                      VerticalOptions="StartAndExpand">
+                      HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="ItemAppearing"
                                                   Command="{Binding TimeLineItemAppearingCommand}"
-                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}" />
+                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}" />  
                 </ListView.Behaviors>
             </ListView>
         </ContentPage.Content>

@@ -13,7 +13,7 @@ namespace ProCode.EsDnevnikMob.Converters
             if (value is string valueStr)
             {
                 DateTime.TryParse(valueStr, out DateTime result);
-                return result.ToString("dd.MM.yy");
+                return result.ToString("dd.MM.yyyy");
             }
             else
                 return value;
