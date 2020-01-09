@@ -37,7 +37,7 @@
                  x:Name="tabGrades">
         <ContentPage.Content>
             <ListView x:Name="gradesListView"
-                      ItemsSource="{Binding GeneratedGradesSimple}"
+                      ItemsSource="{Binding CoursesGrades}"
                       HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

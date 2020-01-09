@@ -1,33 +1,42 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProCode.EsDnevnik.Model.GeneratedGrades
 {
     public class Rootobject
     {
-        public GradesArray[] Grades { get; set; }
+        public CourseGrades[] Courses { get; set; }
     }
 
-    public class GradesArray
+    public class CourseGrades
     {
         public string Course { get; set; }
         public int ClassCourseId { get; set; }
         public int ClassCourseGradeTypeId { get; set; }
         public int Sequence { get; set; }
         public Parts Parts { get; set; }
+        [JsonIgnore]
+        public float AverageTotal
+        {
+            get
+            { 
+                return Parts.Part2.Average > 0 ? (Parts.Part1.Average + Parts.Part2.Average) / 2 : Parts.Part1.Average; 
+            }
+        }
     }
 
     public class Parts
     {
         // Semester 1
         [JsonProperty("1")]
-        public Part Part1Value { get; set; }
-        
+        public Part Part1 { get; set; }
+
         // Semester 1
         [JsonProperty("2")]
-        public Part Part2Value { get; set; }
+        public Part Part2 { get; set; }
     }
 
     // Polugođe
@@ -36,6 +45,14 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public Grade[] Grades { get; set; }
         public object Final { get; set; }
         public float Average { get; set; }
+        [JsonIgnore]
+        public string GradesString
+        {
+            get
+            {
+                return string.Join(", ", Grades.Where(g => g.GradeValue > 0).Select(g => g.GradeValue).ToArray());
+            }
+        }
     }
 
     public class Grade

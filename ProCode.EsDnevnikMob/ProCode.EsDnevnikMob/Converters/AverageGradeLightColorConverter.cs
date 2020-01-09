@@ -4,22 +4,22 @@ using Xamarin.Forms;
 
 namespace ProCode.EsDnevnikMob.Converters
 {
-    class AverageGradeLightColorConverter : IValueConverter
+    class AverageGradeColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Color color = Color.FromHex("#fafafa");   // light gray
+            Color color = Color.Gray;
             if (value is float grade && grade > 0)
                 if (grade < 1.5f)
-                    color = Color.FromHex("#ffebee");   // light red
+                    color = Color.Red;
                 else if (grade < 2.5f)
-                    color = Color.FromHex("#fff3e0");   // light orange
+                    color = Color.Orange;
                 else if (grade < 3.5f)
-                    color = Color.FromHex("#f3e5f5");   // light purple
+                    color = Color.Purple;
                 else if (grade < 4.5f)
-                    color = Color.FromHex("#e3f2fd");   // light blue
+                    color = Color.Blue;
                 else
-                    color = Color.FromHex("#e8f5e9");   // light green
+                    color = Color.Green;
 
             return color;
         }

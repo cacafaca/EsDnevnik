@@ -422,7 +422,7 @@ namespace ProCode.EsDnevnik.Service
                 gradesResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 return new Model.GeneratedGrades.Rootobject()
                 {
-                    Grades = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.GradesArray[]>(gradesResponseCache)
+                    Courses = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.CourseGrades[]>(gradesResponseCache)
                 };
             }
             else
@@ -432,9 +432,9 @@ namespace ProCode.EsDnevnik.Service
         {
             return new Model.GeneratedGrades.Rootobject
             {
-                Grades = new Model.GeneratedGrades.GradesArray[]
+                Courses = new Model.GeneratedGrades.CourseGrades[]
                 {
-                    new Model.GeneratedGrades.GradesArray
+                    new Model.GeneratedGrades.CourseGrades
                     {
                         Course = "Srpski",
                         ClassCourseId = 12345,
@@ -442,7 +442,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part
+                            Part1 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -473,7 +473,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 4.5f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part
+                            Part2 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -506,7 +506,7 @@ namespace ProCode.EsDnevnik.Service
                             },
                         }
                     },
-                    new Model.GeneratedGrades.GradesArray
+                    new Model.GeneratedGrades.CourseGrades
                     {
                         Course = "Математика",
                         ClassCourseId = 12345,
@@ -514,7 +514,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part
+                            Part1 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -533,7 +533,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 4.4f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part
+                            Part2 = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -541,7 +541,7 @@ namespace ProCode.EsDnevnik.Service
                             }
                         }
                     },
-                    new Model.GeneratedGrades.GradesArray
+                    new Model.GeneratedGrades.CourseGrades
                     {
                         Course = "Природа и друштво",
                         ClassCourseId = 12345,
@@ -549,7 +549,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part
+                            Part1 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -568,7 +568,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 3.4f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part
+                            Part2 = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -576,7 +576,7 @@ namespace ProCode.EsDnevnik.Service
                             }
                         }
                     },
-                    new Model.GeneratedGrades.GradesArray
+                    new Model.GeneratedGrades.CourseGrades
                     {
                         Course = "Физичко васпитање",
                         ClassCourseId = 12345,
@@ -584,7 +584,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part
+                            Part1 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -603,7 +603,7 @@ namespace ProCode.EsDnevnik.Service
                                 },
                                 Average = 1.5f
                             },
-                            Part2Value = new Model.GeneratedGrades.Part
+                            Part2 = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,
@@ -611,7 +611,7 @@ namespace ProCode.EsDnevnik.Service
                             }
                         }
                     },
-                    new Model.GeneratedGrades.GradesArray
+                    new Model.GeneratedGrades.CourseGrades
                     {
                         Course = "Наука о Стефану Немањи",
                         ClassCourseId = 12345,
@@ -619,7 +619,7 @@ namespace ProCode.EsDnevnik.Service
                         Sequence = 10,
                         Parts = new Model.GeneratedGrades.Parts
                         {
-                            Part1Value = new Model.GeneratedGrades.Part
+                            Part1 = new Model.GeneratedGrades.Part
                             {
                                 Grades = new Model.GeneratedGrades.Grade[]
                                 {
@@ -639,7 +639,7 @@ namespace ProCode.EsDnevnik.Service
                                 Average = 1.4f,
                                 Final = null
                             },
-                            Part2Value = new Model.GeneratedGrades.Part
+                            Part2 = new Model.GeneratedGrades.Part
                             {
                                 Grades = null,
                                 Final = null,

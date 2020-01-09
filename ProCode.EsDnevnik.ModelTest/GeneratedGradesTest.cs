@@ -24,12 +24,12 @@ namespace ProCode.EsDnevnik.ModelTest
                 gradesJson = reader.ReadToEnd();
             }
 
-            Model.GeneratedGrades.GradesArray[] classArray = JsonConvert.DeserializeObject<Model.GeneratedGrades.GradesArray[]>(gradesJson);
+            Model.GeneratedGrades.CourseGrades[] classArray = JsonConvert.DeserializeObject<Model.GeneratedGrades.CourseGrades[]>(gradesJson);
             Assert.IsNotNull(classArray);
             Assert.AreNotSame(0, classArray.Length);
 
             Assert.AreEqual("Народна традиција (изборни)", classArray.First().Course);
-            Assert.AreEqual(5, classArray.First().Parts.Part1Value.Grades.First().GradeValue);
+            Assert.AreEqual(5, classArray.First().Parts.Part1.Grades.First().GradeValue);
         }
     }
 }

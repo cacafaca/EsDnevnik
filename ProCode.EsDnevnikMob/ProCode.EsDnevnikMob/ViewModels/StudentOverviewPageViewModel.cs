@@ -17,7 +17,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             Title = "Преглед за дете";
             timeLineEvents = new ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
-            grades = new ObservableCollection<GradesArray>();
+            coursesGrades = new ObservableCollection<CourseGrades>();
             this.dialogService = dialogService;
         }
 
@@ -99,17 +99,17 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
 
         #region Grades Tab
-        private ObservableCollection<ProCode.EsDnevnik.Model.GeneratedGrades.GradesArray> grades;
+        private ObservableCollection<CourseGrades> coursesGrades;
 
-        public ObservableCollection<ProCode.EsDnevnik.Model.GeneratedGrades.GradesArray> Grades
+        public ObservableCollection<CourseGrades> CoursesGrades
         {
-            get { return grades; }
-            set { SetProperty(ref grades, value); }
+            get { return coursesGrades; }
+            set { SetProperty(ref coursesGrades, value); }
         }
 
         public async Task LoadGrades(Student student)
         {
-            if (Grades.Count == 0)
+            if (CoursesGrades.Count == 0)
             {
                 EsDnevnik.Model.GeneratedGrades.Rootobject gradesRoot = null;
 #if !DEBUGFAKE
@@ -117,48 +117,9 @@ namespace ProCode.EsDnevnikMob.ViewModels
 #else
                 await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
 #endif
-                Grades.Clear();
-                foreach (var grade in gradesRoot.Grades.OrderByDescending(ev => ev.Course))
-                    Grades.Add(grade);
-                GeneratedGradesSimple = CalculateGeneratedGradesSimple(Grades);
-            }
-        }
-
-        private ObservableCollection<CourseGrades> CalculateGeneratedGradesSimple(ObservableCollection<GradesArray> grades)
-        {
-            ObservableCollection<CourseGrades> gradesSimple = new ObservableCollection<CourseGrades>();
-            foreach (var grade in grades)
-            {
-                foreach (var courseGrade in grade.Parts.Part1Value.Grades)
-                {
-                    gradesSimple.Add(new CourseGrades
-                    {
-                        Course = grade.Course,
-                        Date = courseGrade.Date,
-                        Grade = courseGrade.GradeValue,
-                        FullGrade = courseGrade.FullGrade,
-                        GradeCategory = courseGrade.GradeCategory,
-                        Note = courseGrade.Note,
-                        Average = grade.Parts.Part1Value.Average
-                    });
-                }
-            }
-            ObservableCollection<CourseGrades> gradesSimpleSorted = new ObservableCollection<CourseGrades>();
-            foreach (var grade in gradesSimple.OrderByDescending(gr => gr.Date))
-            {
-                gradesSimpleSorted.Add(grade);
-            }
-            return gradesSimpleSorted;
-        }
-
-        private ObservableCollection<CourseGrades> generatedGradesSimples;
-
-        public ObservableCollection<CourseGrades> GeneratedGradesSimple
-        {
-            get { return generatedGradesSimples; }
-            set
-            {
-                SetProperty(ref generatedGradesSimples, value);
+                CoursesGrades.Clear();
+                foreach (var courseGrade in gradesRoot.Courses.OrderBy(ev => ev, new GradesComparer<CourseGrades>()))
+                    CoursesGrades.Add(courseGrade);
             }
         }
 

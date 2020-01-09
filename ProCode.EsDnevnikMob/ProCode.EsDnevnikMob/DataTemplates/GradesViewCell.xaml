@@ -7,21 +7,74 @@
           x:Class="ProCode.EsDnevnikMob.DataTemplates.GradesViewCell"
           xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
     <ViewCell.View>
-        <Grid x:Name="mainGradesGrid">
-            <Grid.Resources>
-                <converters:GradeColorConverter x:Key="gradeColorConverter" />
-                <converters:AverageGradeConverter x:Key="averageGradeConverter" />
-                <converters:DateConverter x:Key="dateConverter" />
-                <converters:AverageGradeColorConverter x:Key="averageGradeColorConverter" />
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="5*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Label Text="xxx" />
-        </Grid>
+        <Frame BackgroundColor="White"
+               BorderColor="{Binding AverageTotal, Converter={StaticResource averageGradeLightColorConverter}}"
+               Margin="2"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="5">
+            <Frame.Resources>
+                <ResourceDictionary>
+                    <converters:GradeColorConverter x:Key="gradeColorConverter" />
+                    <converters:GradeLiteColorConverter x:Key="gradeLiteColorConverter" />
+                    <converters:DateConverter x:Key="dateConverter" />
+                    <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                    <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                    <converters:GradeValueConverter x:Key="gradeValueConverter" />
+                    <converters:AverageGradeColorConverter x:Key="averageGradeColorConverter" />
+                    <converters:AverageGradeLightColorConverter x:Key="averageGradeLightColorConverter" />
+                    <converters:AverageGradeConverter x:Key="averageGradeConverter" />
+                    <converters:AverageTotalGradeConverter x:Key="averageTotalGradeConverter" />
+                </ResourceDictionary>
+            </Frame.Resources>
+            <Grid x:Name="mainGradesGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Course}"
+                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                           FontSize="Medium"
+                           FontAttributes="Bold" LineBreakMode="WordWrap"                           
+                           Grid.Column="0" />
+                    <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
+                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                           Grid.Column="1"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           VerticalOptions="End"
+                           Padding="0,0,5,0" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="I Полугође"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           />
+                    <Label Text="II Полугође"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                            />
+                    <Label Text="{Binding Parts.Part1.GradesString}"
+                           Grid.Row="0"
+                           Grid.Column="1" />
+                    <Label Text="{Binding Parts.Part2.GradesString}"
+                           Grid.Row="1"
+                           Grid.Column="1" />
+                </Grid>
+            </Grid>
+        </Frame>
     </ViewCell.View>
 </ViewCell>
