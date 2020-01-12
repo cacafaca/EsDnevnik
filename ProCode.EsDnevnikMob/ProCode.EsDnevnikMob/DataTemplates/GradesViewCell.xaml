@@ -32,24 +32,24 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="{Binding Course}"
-                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
-                           FontSize="Medium"
-                           FontAttributes="Bold" LineBreakMode="WordWrap"                           
-                           Grid.Column="0" />
-                    <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
-                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
-                           Grid.Column="1"
-                           HorizontalTextAlignment="End"
-                           VerticalTextAlignment="Center"
-                           VerticalOptions="End"
-                           Padding="0,0,5,0" />
-                </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding Course}"
+                       TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       LineBreakMode="WordWrap"
+                       Grid.Column="0" Grid.Row="0" />                    
+                <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
+                        TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                        Grid.Row="0"
+                        Grid.Column="1"  Grid.RowSpan="2"
+                        HorizontalTextAlignment="End"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"
+                        Padding="0,0,5,0" />
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />

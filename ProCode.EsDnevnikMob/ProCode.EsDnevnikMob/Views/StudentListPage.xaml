@@ -4,14 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
-             xmlns:local="clr-namespace:ProCode.EsDnevnikMob.Converters"
+             xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
              Title="{Binding Title}">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:GenderConverter x:Key="genderConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
     <AbsoluteLayout>
         <StackLayout HorizontalOptions="CenterAndExpand"
                      VerticalOptions="StartAndExpand"
@@ -20,7 +14,8 @@
             <ListView ItemsSource="{Binding Students}"
                       SeparatorVisibility="Default"
                       SelectedItem="{Binding SelectedStudent}"
-                      x:Name="studentsList">
+                      x:Name="studentsList"
+                      HasUnevenRows="True">
                 <ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="ItemTapped"
                                                   Command="{Binding ItemTappedCommand}"
@@ -29,44 +24,62 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
+                            <Frame BackgroundColor="White"
+                                   BorderColor="LightBlue"
+                                   Margin="2"
+                                   CornerRadius="10"
+                                   HasShadow="True"
+                                   Padding="5">
+                                <Frame.Resources>
+                                    <ResourceDictionary>
+                                        <converters:GradeColorConverter x:Key="gradeColorConverter" />
+                                        <converters:GradeLiteColorConverter x:Key="gradeLiteColorConverter" />
+                                        <converters:DateConverter x:Key="dateConverter" />
+                                        <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                                        <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                                        <converters:GradeValueConverter x:Key="gradeValueConverter" />
+                                        <converters:GenderConverter x:Key="genderConverter" />
+                                    </ResourceDictionary>
+                                </Frame.Resources>
+                                <StackLayout Orientation="Vertical">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Ime:"
-                                               x:Name="labelNameText" />
-                                        <Label Text="{Binding FullName}"
-                                               x:Name="labelName" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Име:"
+                                                   x:Name="labelNameText" VerticalTextAlignment="End"/>
+                                            <Label Text="{Binding FullName}"
+                                                   x:Name="labelName" FontSize="Body" FontAttributes="Bold" LineBreakMode="WordWrap"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="EndAndExpand">
+                                            <Label Text="ЈМБГ:"
+                                                   x:Name="labelJmbgText" />
+                                            <Label Text="{Binding Jmbg}"
+                                                   x:Name="labelJmbg" />
+                                        </StackLayout>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal"
-                                                 HorizontalOptions="EndAndExpand">
-                                        <Label Text="JMBG:"
-                                               x:Name="labelJmbgText" />
-                                        <Label Text="{Binding Jmbg}"
-                                               x:Name="labelJmbg" />
-                                    </StackLayout>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Id:"
-                                               x:Name="labelIdText" />
-                                        <Label Text="{Binding Id}"
-                                               x:Name="labelId" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Ид:"
+                                                   x:Name="labelIdText" />
+                                            <Label Text="{Binding Id}"
+                                                   x:Name="labelId" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="EndAndExpand">
+                                            <Label Text="Пол:"
+                                                   x:Name="labelGenderText" />
+                                            <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}"
+                                                   x:Name="labelGender" />
+                                        </StackLayout>
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal"
-                                                 HorizontalOptions="EndAndExpand">
-                                        <Label Text="Pol:"
-                                               x:Name="labelGenderText" />
-                                        <Label Text="{Binding Gender, Converter={StaticResource genderConverter}}"
-                                               x:Name="labelGender" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Школа:"
+                                               x:Name="labelSchoolText" />
+                                        <Label Text="{Binding CurrentSchool.SchoolName}"
+                                               x:Name="labelSchool" />
                                     </StackLayout>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Škola:"
-                                           x:Name="labelSchoolText" />
-                                    <Label Text="{Binding CurrentSchool}"
-                                           x:Name="labelSchool" />
-                                </StackLayout>
-                            </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -74,7 +87,7 @@
         </StackLayout>
         <StackLayout x:Name="ActivityIndicatorLayout"
                      BackgroundColor="Gray"
-                     Opacity="0.5"
+                     Opacity="0.4"
                      AbsoluteLayout.LayoutBounds="0,0,1,1"
                      AbsoluteLayout.LayoutFlags="All"
                      IsVisible="{Binding IsBussy}">
