@@ -22,8 +22,18 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public float AverageTotal
         {
             get
-            { 
-                return Parts.Part2.Average > 0 ? (Parts.Part1.Average + Parts.Part2.Average) / 2 : Parts.Part1.Average; 
+            {
+                return Parts.Part2.Average > 0 ? (Parts.Part1.Average + Parts.Part2.Average) / 2 : Parts.Part1.Average;
+            }
+        }
+        [JsonIgnore]
+        public string Final
+        {
+            get
+            {
+                return Parts.Part1.Final != null  
+                    && Parts.Part2.Final != null ?
+                        Parts.Part1.Final.Value > 0 && Parts.Part2.Final.Value > 0 ? ((Parts.Part1.Final.Value + Parts.Part2.Final.Value) / 2).ToString() : Parts.Part2.Final.Name : string.Empty;
             }
         }
     }
@@ -43,7 +53,7 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
     public class Part
     {
         public Grade[] Grades { get; set; }
-        public object Final { get; set; }
+        public Final Final { get; set; }
         public float Average { get; set; }
         [JsonIgnore]
         public string GradesString
@@ -67,5 +77,14 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public string Note { get; set; }
         public object SchoolyearPartId { get; set; }
         public object EvaluationElement { get; set; }
+    }
+
+    public class Final
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+        [JsonProperty("schoolyear_part_id")]
+        public int SchoolYearPartId { get; set; }
+        public object Engagement { get; set; }
     }
 }

@@ -9,7 +9,10 @@ namespace ProCode.EsDnevnikMob.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is float average)
-                return average.ToString("0.00");
+                if (average > 0)
+                    return average.ToString("0.00");
+                else
+                    return string.Empty;
             else
                 return value;
         }

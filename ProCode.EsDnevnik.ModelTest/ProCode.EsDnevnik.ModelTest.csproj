@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ExampleGrades.json" />
+    <None Remove="Resources\ExampleGradesSemester1NotFinished.json" />
+    <None Remove="Resources\ExampleGradesSemester2Finished.json" />
     <None Remove="Resources\ExampleTimeLine.json" />
   </ItemGroup>
 
@@ -29,7 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ExampleGrades.json" />
+    <EmbeddedResource Include="Resources\ExampleGradesSemester1NotFinished.json" />
+    <EmbeddedResource Include="Resources\ExampleGradesSemester2Finished.json" />
     <EmbeddedResource Include="Resources\ExampleTimeLine.json" />
   </ItemGroup>
 

@@ -7,6 +7,7 @@ using System.Net;
 using ProCode.EsDnevnik.Model;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace ProCode.EsDnevnik.Service
 {
@@ -105,7 +106,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 5,
-                                    GradeTypeId = 5,
+                                    GradeTypeId = 1,
                                     Name = "Odlican",
                                     Value = 5,
                                     Sequence = 1
@@ -130,7 +131,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 5,
-                                    GradeTypeId = 5,
+                                    GradeTypeId = 1,
                                     Name = "Odlican",
                                     Value = 5,
                                     Sequence = 1
@@ -155,7 +156,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 5,
-                                    GradeTypeId = 5,
+                                    GradeTypeId = 1,
                                     Name = "Odlican",
                                     Value = 5,
                                     Sequence = 1
@@ -184,7 +185,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 4,
-                                    GradeTypeId = 4,
+                                    GradeTypeId = 1,
                                     Name = "Vrlo Dobar",
                                     Value = 4,
                                     Sequence = 1
@@ -208,7 +209,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 3,
-                                    GradeTypeId = 3,
+                                    GradeTypeId = 1,
                                     Name = "Dobar",
                                     Value = 3,
                                     Sequence = 1
@@ -229,7 +230,7 @@ namespace ProCode.EsDnevnik.Service
                                 Grade = new Model.GeneratedTimeLine.Grade
                                 {
                                     Id = 2,
-                                    GradeTypeId = 2,
+                                    GradeTypeId = 1,
                                     Name = "Dovoljan",
                                     Value = 2,
                                     Sequence = 1
@@ -256,6 +257,27 @@ namespace ProCode.EsDnevnik.Service
                                     Sequence = 1
                                 },
                                 Course = "Математика",
+                                ClassCourseId = 123,
+                                SchoolClass = "III 1",
+                                School = "Ђура",
+                                IopNote = null,
+                                EvaluationElementCourse = null
+                            },
+                            new Model.GeneratedTimeLine.TimeLineEvent
+                            {
+                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
+                                Date = "2019-12-26",
+                                CreateTime = "2019-12-26",
+                                FullGrade = "nedovoljan (1)",
+                                Grade = new Model.GeneratedTimeLine.Grade
+                                {
+                                    Id = 1,
+                                    GradeTypeId = 2,
+                                    Name = "истиче се",
+                                    Value = 1,
+                                    Sequence = 1
+                                },
+                                Course = "Изборни",
                                 ClassCourseId = 123,
                                 SchoolClass = "III 1",
                                 School = "Ђура",
@@ -430,225 +452,9 @@ namespace ProCode.EsDnevnik.Service
         }
         public Model.GeneratedGrades.Rootobject GetGradesFake()
         {
-            return new Model.GeneratedGrades.Rootobject
-            {
-                Courses = new Model.GeneratedGrades.CourseGrades[]
-                {
-                    new Model.GeneratedGrades.CourseGrades
-                    {
-                        Course = "Srpski",
-                        ClassCourseId = 12345,
-                        ClassCourseGradeTypeId = 1,
-                        Sequence = 10,
-                        Parts = new Model.GeneratedGrades.Parts
-                        {
-                            Part1 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Odlican (5)",
-                                        GradeValue = 5,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    },
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Odlican (5)",
-                                        GradeValue = 5,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Бешика.",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 4.5f
-                            },
-                            Part2 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Odlican (5)",
-                                        GradeValue = 5,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    },
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Odlican (5)",
-                                        GradeValue = 5,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Бешика.",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 4.5f
-                            },
-                        }
-                    },
-                    new Model.GeneratedGrades.CourseGrades
-                    {
-                        Course = "Математика",
-                        ClassCourseId = 12345,
-                        ClassCourseGradeTypeId = 1,
-                        Sequence = 10,
-                        Parts = new Model.GeneratedGrades.Parts
-                        {
-                            Part1 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Vrlodobar (4)",
-                                        GradeValue = 4,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska Beleska.",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 4.4f
-                            },
-                            Part2 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = null,
-                                Final = null,
-                                Average = 4.2f
-                            }
-                        }
-                    },
-                    new Model.GeneratedGrades.CourseGrades
-                    {
-                        Course = "Природа и друштво",
-                        ClassCourseId = 12345,
-                        ClassCourseGradeTypeId = 1,
-                        Sequence = 10,
-                        Parts = new Model.GeneratedGrades.Parts
-                        {
-                            Part1 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Dobar (3)",
-                                        GradeValue = 3,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 3.4f
-                            },
-                            Part2 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = null,
-                                Final = null,
-                                Average = 2.9f
-                            }
-                        }
-                    },
-                    new Model.GeneratedGrades.CourseGrades
-                    {
-                        Course = "Физичко васпитање",
-                        ClassCourseId = 12345,
-                        ClassCourseGradeTypeId = 1,
-                        Sequence = 10,
-                        Parts = new Model.GeneratedGrades.Parts
-                        {
-                            Part1 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Dovoljan (2)",
-                                        GradeValue = 2,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 1.5f
-                            },
-                            Part2 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = null,
-                                Final = null,
-                                Average = 2.1f
-                            }
-                        }
-                    },
-                    new Model.GeneratedGrades.CourseGrades
-                    {
-                        Course = "Наука о Стефану Немањи",
-                        ClassCourseId = 12345,
-                        ClassCourseGradeTypeId = 1,
-                        Sequence = 10,
-                        Parts = new Model.GeneratedGrades.Parts
-                        {
-                            Part1 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = new Model.GeneratedGrades.Grade[]
-                                {
-                                    new Model.GeneratedGrades.Grade
-                                    {
-                                        Descriptive = false,
-                                        Date = "28.12.2019",
-                                        CreateTime = "28.12.2019 10:00:00",
-                                        FullGrade = "Nedovoljan (1)",
-                                        GradeValue = 1,
-                                        GradeCategory = "praktican rad",
-                                        Note = "Beleska",
-                                        SchoolyearPartId = null,
-                                        EvaluationElement = null
-                                    }
-                                },
-                                Average = 1.4f,
-                                Final = null
-                            },
-                            Part2 = new Model.GeneratedGrades.Part
-                            {
-                                Grades = null,
-                                Final = null,
-                                Average = 1.4f
-                            }
-                        }
-                    }
-                }
-            };
+            string gradesJson = FakeData.GetFakeGradesJson();
+            Model.GeneratedGrades.CourseGrades[] courses = JsonConvert.DeserializeObject<Model.GeneratedGrades.CourseGrades[]>(gradesJson);
+            return new Model.GeneratedGrades.Rootobject { Courses = courses };
         }
 
         public bool IsLoggedIn()

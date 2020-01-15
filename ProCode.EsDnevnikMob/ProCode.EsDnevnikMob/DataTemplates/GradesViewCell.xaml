@@ -20,6 +20,7 @@
                     <converters:DateConverter x:Key="dateConverter" />
                     <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
                     <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                    <converters:FinalGradeFontSizeConverter x:Key="finalGradeFontSizeConverter" />
                     <converters:GradeValueConverter x:Key="gradeValueConverter" />
                     <converters:AverageGradeColorConverter x:Key="averageGradeColorConverter" />
                     <converters:AverageGradeLightColorConverter x:Key="averageGradeLightColorConverter" />
@@ -30,7 +31,7 @@
             <Grid x:Name="mainGradesGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
@@ -41,35 +42,52 @@
                        FontSize="Medium"
                        FontAttributes="Bold"
                        LineBreakMode="WordWrap"
-                       Grid.Column="0" Grid.Row="0" />                    
-                <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
-                        TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
-                        Grid.Row="0"
-                        Grid.Column="1"  Grid.RowSpan="2"
-                        HorizontalTextAlignment="End"
-                        VerticalTextAlignment="Center"
-                        VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"
-                        Padding="0,0,5,0" />
-                <Grid Grid.Row="1">
+                       Grid.Column="0"
+                       Grid.Row="0" />
+                <Grid Grid.Row="0"
+                      Grid.Column="1"
+                      Grid.RowSpan="2" >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding Final}"
+                           FontSize="{Binding Final, Converter={StaticResource finalGradeFontSizeConverter}}"
+                           Grid.Row="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"
+                           FontAttributes="Bold" Margin="0,0,0,-5" 
+                           TextColor="{Binding Final, Converter={StaticResource gradeColorConverter}}"/>
+                    <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
+                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                           Grid.Row="1"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Start"
+                           FontSize="Body"                           
+                           />
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Label Text="I Полугође"
                            Grid.Row="0"
-                           Grid.Column="0"
-                           />
-                    <Label Text="II Полугође"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                            />
+                           Grid.Column="0" />
                     <Label Text="{Binding Parts.Part1.GradesString}"
                            Grid.Row="0"
                            Grid.Column="1" />
+                    <Label Text="{Binding Parts.Part1.Final.Value}" Grid.Row="0" Grid.Column="2"/>
+                    <Label Text="{Binding Parts.Part1.Average, Converter={StaticResource averageGradeConverter}}"
+                           Grid.Row="0"
+                           Grid.Column="3" />
+                    <Label Text="II Полугође"
+                           Grid.Row="1"
+                           Grid.Column="0" />
                     <Label Text="{Binding Parts.Part2.GradesString}"
                            Grid.Row="1"
                            Grid.Column="1" />
