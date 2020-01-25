@@ -18,6 +18,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             Title = "Преглед за дете";
             timeLineEvents = new ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
             coursesGrades = new ObservableCollection<CourseGrades>();
+            absences = new ObservableCollection<EsDnevnik.Model.GeneratedAbsences.AbsenceSequence>();
             this.dialogService = dialogService;
         }
 
@@ -126,6 +127,29 @@ namespace ProCode.EsDnevnikMob.ViewModels
         #endregion
 
 
+        #region Absences tab
+        private ObservableCollection<EsDnevnik.Model.GeneratedAbsences.AbsenceSequence> absences;
+
+        public ObservableCollection<EsDnevnik.Model.GeneratedAbsences.AbsenceSequence> Absences
+        {
+            get { return absences; }
+            set { SetProperty(ref absences, value); }
+        }
+
+        private async Task LoadAbsences(Student student)
+        {
+            EsDnevnik.Model.GeneratedAbsences.Rootobject absencesRoot = null;
+#if !DEBUGFAKE
+            absencesRoot = await esdService.GetAbsencesAsync(Student);
+#else
+                await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
+#endif
+            Absences.Clear();
+            foreach (var absence in absencesRoot)
+                Absences.Add(absence.Value);
+        }
+        #endregion
+
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             // Validate params.
@@ -142,6 +166,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
             // Grades fetch
             await LoadGrades(Student);
+
+            await LoadAbsences(Student);
         }
     }
 

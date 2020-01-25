@@ -6,11 +6,11 @@ using System.Text;
 namespace ProCode.EsDnevnik.Model.GeneratedAbsences
 {
 
-    public class Rootobject : Dictionary<string, Sequence>
+    public class Rootobject : Dictionary<string, AbsenceSequence>
     {
     }
 
-    public class Sequence
+    public class AbsenceSequence
     {
         public int ClassCourseId { get; set; }
         public string Name { get; set; }
