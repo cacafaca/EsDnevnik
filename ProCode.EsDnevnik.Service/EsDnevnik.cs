@@ -23,6 +23,7 @@ namespace ProCode.EsDnevnik.Service
         private string studentsResponseCache;
         private string timeLineResponseCache;
         private string gradesResponseCache;
+        private string absencesResponseCache;
         #endregion
 
         #region Constructors
@@ -444,7 +445,7 @@ namespace ProCode.EsDnevnik.Service
                 gradesResponseCache = await responseMsg.Content.ReadAsStringAsync();
                 return new Model.GeneratedGrades.Rootobject()
                 {
-                    Courses = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedGrades.CourseGrades[]>(gradesResponseCache)
+                    Courses = JsonConvert.DeserializeObject<Model.GeneratedGrades.CourseGrades[]>(gradesResponseCache)
                 };
             }
             else
@@ -461,6 +462,19 @@ namespace ProCode.EsDnevnik.Service
         {
             return isLoggedIn;
         }
+
+        public async Task<Model.GeneratedAbsences.Rootobject> GetAbsencesAsync(Student student)
+        {
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetAbsenceUri(student));
+            if (responseMsg.StatusCode == HttpStatusCode.OK)
+            {
+                absencesResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Model.GeneratedAbsences.Rootobject>(absencesResponseCache);
+            }
+            else
+                return null;
+        }
+
         #endregion
 
         #region Private methods

@@ -114,5 +114,31 @@ namespace ProCode.EsDnevnik.ServiceTest
                 esd.LogoutAsync().Wait();
             }
         }
+
+        [TestMethod]
+        public void GetAbsences()
+        {
+            var userCredential = Config.GetUserCredentials();
+            Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
+
+            try
+            {
+                esd.LoginAsync().Wait();
+
+                // Get students.
+                IList<Student> students = esd.GetStudentsAsync().Result;
+                Assert.IsNotNull(students);
+                Assert.AreNotEqual(0, students.Count, "No students.");
+
+                // Get events.
+                Model.GeneratedAbsences.Rootobject absences = esd.GetAbsencesAsync(students.First()).Result;
+                Assert.IsNotNull(absences);
+                Assert.AreNotEqual(0, absences.Count);
+            }
+            finally
+            {
+                esd.LogoutAsync().Wait();
+            }
+        }
     }
 }

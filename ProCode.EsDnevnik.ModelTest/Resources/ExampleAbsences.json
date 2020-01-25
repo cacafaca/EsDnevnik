@@ -1,0 +1,442 @@
+{
+    "1_1_0":
+    {
+        "classCourseId": 1244249,
+        "name": "Српски језик",
+        "sequence": "1_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 60014571,
+                        "workHourId": 43995296,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "73. Исправак првог школског писменог задатка",
+                        "workdayDate": "2019-12-13"
+                    },
+                    {
+                        "id": 59942848,
+                        "workHourId": 43744426,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "72. Анализа првог школског писменог задатка",
+                        "workdayDate": "2019-12-12"
+                    },
+                    {
+                        "id": 59644328,
+                        "workHourId": 43743511,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "71. Управни говор",
+                        "workdayDate": "2019-12-11"
+                    },
+                    {
+                        "id": 56011835,
+                        "workHourId": 40976496,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "62. Придеви",
+                        "workdayDate": "2019-11-27"
+                    },
+                    {
+                        "id": 46291276,
+                        "workHourId": 34354452,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "36. Употреба великог слова у писању имена народа",
+                        "workdayDate": "2019-10-21"
+                    },
+                    {
+                        "id": 40431952,
+                        "workHourId": 29936247,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "18. Читање и провера наученог",
+                        "workdayDate": "2019-09-25"
+                    },
+                    {
+                        "id": 40112303,
+                        "workHourId": 29705114,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "17. ,,Вожња”, Десанка Максимовић",
+                        "workdayDate": "2019-09-24"
+                    },
+                    {
+                        "id": 37810282,
+                        "workHourId": 27749535,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "9. „Свитац тражи пријатеља” , Сун Ју Ђин",
+                        "workdayDate": "2019-09-12"
+                    }
+                ]
+            }
+        }
+    },
+    "2_1_0":
+    {
+        "classCourseId": 1244277,
+        "name": "Енглески језик (1. страни језик)",
+        "sequence": "2_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 59546474,
+                        "workHourId": 43667866,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "Practice",
+                        "workdayDate": "2019-12-11"
+                    },
+                    {
+                        "id": 46251971,
+                        "workHourId": 34325643,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "Exercises",
+                        "workdayDate": "2019-10-21"
+                    },
+                    {
+                        "id": 40434075,
+                        "workHourId": 29881113,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "Smart world   Smart time",
+                        "workdayDate": "2019-09-25"
+                    }
+                ]
+            }
+        }
+    },
+    "3_1_0":
+    {
+        "classCourseId": 1244305,
+        "name": "Математика",
+        "sequence": "3_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 60015660,
+                        "workHourId": 43995951,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "73. Зависност разлике од промене умањеника и умањиоца",
+                        "workdayDate": "2019-12-13"
+                    },
+                    {
+                        "id": 59942775,
+                        "workHourId": 43744368,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "72. Зависност разлике од промене умањиоца",
+                        "workdayDate": "2019-12-12"
+                    },
+                    {
+                        "id": 59644570,
+                        "workHourId": 43743750,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "71. Зависност разлике од промене умањеника",
+                        "workdayDate": "2019-12-11"
+                    },
+                    {
+                        "id": 56011859,
+                        "workHourId": 40976526,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "62. Одузимање троцифрених бројева (300 – 130; 310 – 180)",
+                        "workdayDate": "2019-11-27"
+                    },
+                    {
+                        "id": 46290615,
+                        "workHourId": 34353940,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "36. Мерење и мере",
+                        "workdayDate": "2019-10-21"
+                    },
+                    {
+                        "id": 40434022,
+                        "workHourId": 29937638,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "18. Упоређивање бројева до 1 000",
+                        "workdayDate": "2019-09-25"
+                    },
+                    {
+                        "id": 40111985,
+                        "workHourId": 29704912,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "17. Троцифрени бројеви",
+                        "workdayDate": "2019-09-24"
+                    },
+                    {
+                        "id": 37810081,
+                        "workHourId": 27749318,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "9. Стотине прве хиљаде. Упоређивање стотина прве хиљаде",
+                        "workdayDate": "2019-09-12"
+                    }
+                ]
+            }
+        }
+    },
+    "4_1_0":
+    {
+        "classCourseId": 1244331,
+        "name": "Природа и друштво",
+        "sequence": "4_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 59942892,
+                        "workHourId": 43744501,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "29. Испитујемо шта плута, а шта тоне. Магија растварања",
+                        "workdayDate": "2019-12-12"
+                    },
+                    {
+                        "id": 40112869,
+                        "workHourId": 29705512,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "7. Оријентација помоћу географске карте",
+                        "workdayDate": "2019-09-24"
+                    },
+                    {
+                        "id": 37811168,
+                        "workHourId": 27750509,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "4. Од цртежа до плана",
+                        "workdayDate": "2019-09-12"
+                    }
+                ]
+            }
+        }
+    },
+    "5_1_0":
+    {
+        "classCourseId": 1244388,
+        "name": "Ликовна култура",
+        "sequence": "5_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 59644651,
+                        "workHourId": 43743843,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "29-30. Од игре до орнамента – (рам за слику, шара на џемперу...)",
+                        "workdayDate": "2019-12-11"
+                    },
+                    {
+                        "id": 59644677,
+                        "workHourId": 43743856,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "29-30. Од игре до орнамента – (рам за слику, шара на џемперу...)",
+                        "workdayDate": "2019-12-11"
+                    },
+                    {
+                        "id": 40434736,
+                        "workHourId": 29938127,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "7-8. Ликовне поруке - естетска анализа и оцењивање радова",
+                        "workdayDate": "2019-09-25"
+                    },
+                    {
+                        "id": 40435286,
+                        "workHourId": 29938510,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "7-8. Ликовне поруке - естетска анализа и оцењивање радова",
+                        "workdayDate": "2019-09-25"
+                    }
+                ]
+            }
+        }
+    },
+    "6_1_0":
+    {
+        "classCourseId": 1244409,
+        "name": "Музичка култура",
+        "sequence": "6_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 46488496,
+                        "workHourId": 34353588,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "8. Тон и нота ДО",
+                        "workdayDate": "2019-10-21"
+                    }
+                ]
+            }
+        }
+    },
+    "7_1_0":
+    {
+        "classCourseId": 1244439,
+        "name": "Физичко васпитање",
+        "sequence": "7_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 60016724,
+                        "workHourId": 43996481,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "44. Додавање лопте у пару у трчању",
+                        "workdayDate": "2019-12-13"
+                    },
+                    {
+                        "id": 59942908,
+                        "workHourId": 43744531,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "43. Ходање и трчање по греди",
+                        "workdayDate": "2019-12-12"
+                    },
+                    {
+                        "id": 40112578,
+                        "workHourId": 29705339,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "10. Одбијање лопте одбојкашки у пару",
+                        "workdayDate": "2019-09-24"
+                    },
+                    {
+                        "id": 37811352,
+                        "workHourId": 27750673,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "5. Скок удаљ залетом",
+                        "workdayDate": "2019-09-12"
+                    }
+                ]
+            }
+        }
+    },
+    "8_2_0":
+    {
+        "classCourseId": 1244483,
+        "name": "Верска настава - православни катихизис (изборни)",
+        "sequence": "8_2_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 60252481,
+                        "workHourId": 44130991,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "Божићни весници",
+                        "workdayDate": "2019-12-13"
+                    }
+                ]
+            }
+        }
+    },
+    "10_2_0":
+    {
+        "classCourseId": 1244550,
+        "name": "Народна традиција (изборни)",
+        "sequence": "10_2_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 59942814,
+                        "workHourId": 43744339,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "15. Стари занати – кујунџија, бојаџија, ткач и абаџија (угледни час)",
+                        "workdayDate": "2019-12-12"
+                    },
+                    {
+                        "id": 46294223,
+                        "workHourId": 34356564,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "8. Ковач – поткивач, бравар",
+                        "workdayDate": "2019-10-21"
+                    }
+                ]
+            }
+        }
+    },
+    "11_1_0":
+    {
+        "classCourseId": 1244852,
+        "name": "ЧОС",
+        "sequence": "11_1_0",
+        "absentStatuses":
+        {
+            "2":
+            {
+                "statusId": 2,
+                "name": "оправдан",
+                "absents": [
+                    {
+                        "id": 60012390,
+                        "workHourId": 43994299,
+                        "teacherNote": null,
+                        "statusName": "оправдан",
+                        "workHourNote": "16. Предавање Црвеног крста „Смањење ризика и ублажавање последица од елементарних непогода и других опасности“",
+                        "workdayDate": "2019-12-11"
+                    }
+                ]
+            }
+        }
+    }
+}

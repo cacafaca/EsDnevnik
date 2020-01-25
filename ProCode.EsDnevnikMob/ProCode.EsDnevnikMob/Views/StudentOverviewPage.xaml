@@ -23,11 +23,12 @@
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
                       ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
-                      HasUnevenRows="True" SeparatorVisibility="None">
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None">
                 <ListView.Behaviors>
                     <prism:EventToCommandBehavior EventName="ItemAppearing"
                                                   Command="{Binding TimeLineItemAppearingCommand}"
-                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}" />  
+                                                  EventArgsConverter="{StaticResource itemAppearingEventArgsConverter}" />
                 </ListView.Behaviors>
             </ListView>
         </ContentPage.Content>
@@ -42,6 +43,21 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <dataTemplates:GradesViewCell />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentPage.Content>
+    </ContentPage>
+    <!-- Absence -->
+    <ContentPage Title="Изостанци"
+                 x:Name="tabAbsence">
+        <ContentPage.Content>
+            <ListView x:Name="absenceListView"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Absences}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <dataTemplates:AbsenceViewCell />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

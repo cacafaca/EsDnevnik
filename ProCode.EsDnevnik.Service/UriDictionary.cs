@@ -50,5 +50,10 @@ namespace ProCode.EsDnevnik.Service
         {
             return new Uri(baseUri, $"/api/grades/{student.GetLastStudentClassId()}");
         }
+
+        internal Uri GetAbsenceUri(Student student)
+        {
+            return new Uri(baseUri, $"/api/absents/{student.GetLastStudentClassId()}");
+        }
     }
 }

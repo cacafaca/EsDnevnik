@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+          x:Class="ProCode.EsDnevnikMob.DataTemplates.AbsenceViewCell"
+          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+  <ViewCell.View>
+        <Frame BackgroundColor="White"
+               BorderColor="{Binding AverageTotal, Converter={StaticResource averageGradeLightColorConverter}}"
+               Margin="2"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="5">
+            <Frame.Resources>
+                <ResourceDictionary>
+                    <converters:GradeColorConverter x:Key="gradeColorConverter" />
+                    <converters:GradeLiteColorConverter x:Key="gradeLiteColorConverter" />
+                    <converters:DateConverter x:Key="dateConverter" />
+                    <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                    <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                    <converters:FinalGradeFontSizeConverter x:Key="finalGradeFontSizeConverter" />
+                    <converters:GradeValueConverter x:Key="gradeValueConverter" />
+                    <converters:AverageGradeColorConverter x:Key="averageGradeColorConverter" />
+                    <converters:AverageGradeLightColorConverter x:Key="averageGradeLightColorConverter" />
+                    <converters:AverageGradeConverter x:Key="averageGradeConverter" />
+                    <converters:AverageTotalGradeConverter x:Key="averageTotalGradeConverter" />
+                </ResourceDictionary>
+            </Frame.Resources>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Label Text="{Binding Course}" />
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>
