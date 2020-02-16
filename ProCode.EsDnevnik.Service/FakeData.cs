@@ -1,11 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace ProCode.EsDnevnik.Service
 {
     public static class FakeData
     {
+        public static string GetFakeResource(string resourceName)
+        {
+            string absencesJson = null;
+            var assembly = Assembly.GetExecutingAssembly();
+            if (assembly != null)
+            {
+                var resourceFullName = $"{assembly.GetName().Name}.Resources.{resourceName}";
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceFullName))
+                {
+                    if (stream != null)
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            absencesJson = reader.ReadToEnd();
+                        }
+                }
+            }
+            return absencesJson;
+        }
+        public static string GetFakeTimeLineEvents()
+        {
+#if DEBUGFAKE
+            return GetFakeResource("FakeTimeLineEvents.json");
+#else
+            return string.Empty;
+#endif
+        }
+
         public static string GetFakeGradesJson()
         {
 #if DEBUGFAKE
@@ -1540,6 +1570,457 @@ namespace ProCode.EsDnevnik.Service
     }
   }
 ]
+";
+#else
+            return string.Empty;
+#endif
+        }
+
+        public static string GetFakeAbsencesJson()
+        {
+#if DEBUGFAKE
+            return @"
+{
+  ""1_1_0"": {
+    ""classCourseId"": 1092244,
+    ""name"": ""Српски језик"",
+    ""sequence"": ""1_1_0"",
+    ""absentStatuses"": {
+                ""1"": {
+                    ""statusId"": 1,
+        ""name"": ""нерегулисан"",
+        ""absents"": [
+          {
+            ""id"": 67628119,
+            ""workHourId"": 48444467,
+            ""teacherNote"": null,
+            ""statusName"": ""нерегулисан"",
+            ""workHourNote"": ""92. Припрема за контролни (врсте и служба речи)"",
+            ""workdayDate"": ""2020-01-20""
+          }
+        ]
+      },
+      ""2"": {
+        ""statusId"": 3,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 60439176,
+            ""workHourId"": 43301797,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""72. Читање и анализа домаћег задатка: Необично писмо"",
+            ""workdayDate"": ""2019-12-11""
+          },
+          {
+            ""id"": 53461053,
+            ""workHourId"": 39609791,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""54. Ерик Најт, Леси се враћа кући"",
+            ""workdayDate"": ""2019-11-15""
+          },
+          {
+            ""id"": 53460244,
+            ""workHourId"": 39609379,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""53. Изражајно читање прозних текстова"",
+            ""workdayDate"": ""2019-11-14""
+          },
+          {
+            ""id"": 53459437,
+            ""workHourId"": 39608715,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""52. Придеви"",
+            ""workdayDate"": ""2019-11-13""
+          },
+          {
+            ""id"": 37401972,
+            ""workHourId"": 27304222,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""7. Синтаксичке и стилске вежбе"",
+            ""workdayDate"": ""2019-09-10""
+          },
+          {
+            ""id"": 37380179,
+            ""workHourId"": 27035590,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""6. Јанко Веселиновић: Град"",
+            ""workdayDate"": ""2019-09-09""
+          }
+        ]
+      },
+      ""3"": {
+        ""statusId"": 3,
+        ""name"": ""неоправдан"",
+        ""absents"": [
+          {
+            ""id"": 60439176,
+            ""workHourId"": 43301797,
+            ""teacherNote"": null,
+            ""statusName"": ""неоправдан"",
+            ""workHourNote"": ""72. Читање и анализа домаћег задатка: Необично писмо"",
+            ""workdayDate"": ""2019-12-11""
+          },
+          {
+            ""id"": 53461053,
+            ""workHourId"": 39609791,
+            ""teacherNote"": null,
+            ""statusName"": ""неоправдан"",
+            ""workHourNote"": ""54. Ерик Најт, Леси се враћа кући"",
+            ""workdayDate"": ""2019-11-15""
+          }
+        ]
+      }
+    }
+  },
+  ""2_1_0"": {
+    ""classCourseId"": 1092382,
+    ""name"": ""Енглески језик (1. страни језик)"",
+    ""sequence"": ""2_1_0"",
+    ""absentStatuses"": {
+      ""1"": {
+        ""statusId"": 1,
+        ""name"": ""нерегулисан"",
+        ""absents"": [
+          {
+            ""id"": 67531941,
+            ""workHourId"": 48546553,
+            ""teacherNote"": null,
+            ""statusName"": ""нерегулисан"",
+            ""workHourNote"": ""37 Исправак теста"",
+            ""workdayDate"": ""2020-01-20""
+          }
+        ]
+      },
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 59408021,
+            ""workHourId"": 43575599,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""29.Unit 6- Lessons 5&6- Developing, listening, reading,speaking and writing skills- слушање,читање, говорне вежбе и вежбе писања"",
+            ""workdayDate"": ""2019-12-11""
+          },
+          {
+            ""id"": 51900744,
+            ""workHourId"": 38477345,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""21. Unit 4 - Lessons 5 and 6 -Developing listening, reading, speaking and writing skills.\n                                                   Развијамо способности слушања, говора ,читања и писања."",
+            ""workdayDate"": ""2019-11-13""
+          },
+          {
+            ""id"": 37380295,
+            ""workHourId"": 27112434,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""3. Starter unit -Lessons 3 and 4  Поздрави, дани у недељи , обнавњаље вокабулара везаног за играчке и обнављање бројева."",
+            ""workdayDate"": ""2019-09-09""
+          }
+        ]
+      }
+    }
+  },
+  ""3_1_0"": {
+    ""classCourseId"": 1092277,
+    ""name"": ""Математика"",
+    ""sequence"": ""3_1_0"",
+    ""absentStatuses"": {
+      ""1"": {
+        ""statusId"": 1,
+        ""name"": ""нерегулисан"",
+        ""absents"": [
+          {
+            ""id"": 67634903,
+            ""workHourId"": 48584065,
+            ""teacherNote"": null,
+            ""statusName"": ""нерегулисан"",
+            ""workHourNote"": ""92. Дељење вишецифреног броја једноцифреним бројем"",
+            ""workdayDate"": ""2020-01-20""
+          }
+        ]
+      },
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 60439161,
+            ""workHourId"": 43302875,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""72.  Једначине са сабирањем и одузимањем"",
+            ""workdayDate"": ""2019-12-11""
+          },
+          {
+            ""id"": 53455810,
+            ""workHourId"": 39605981,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""54. Јединице мере за површину веће од m2"",
+            ""workdayDate"": ""2019-11-15""
+          },
+          {
+            ""id"": 53455315,
+            ""workHourId"": 39605628,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""53. Јединице мере за површину m2, dm2,cm2, mm2"",
+            ""workdayDate"": ""2019-11-14""
+          },
+          {
+            ""id"": 53454250,
+            ""workHourId"": 39604753,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""52.  Јединице мере за површину m2, dm2,cm2, mm2"",
+            ""workdayDate"": ""2019-11-13""
+          },
+          {
+            ""id"": 37400180,
+            ""workHourId"": 27302211,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""7. Бројеви до десет хиљада. Читање и писање бројева до десет хиљада"",
+            ""workdayDate"": ""2019-09-10""
+          },
+          {
+            ""id"": 37380208,
+            ""workHourId"": 27035899,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""6. Хиљаде до десет хиљада. Упоређивање хиљада"",
+            ""workdayDate"": ""2019-09-09""
+          }
+        ]
+      }
+    }
+  },
+  ""4_1_0"": {
+    ""classCourseId"": 1092294,
+    ""name"": ""Природа и друштво"",
+    ""sequence"": ""4_1_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 53466033,
+            ""workHourId"": 39613341,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""22. Настанак српске државе и династија Немањића"",
+            ""workdayDate"": ""2019-11-14""
+          },
+          {
+            ""id"": 37403272,
+            ""workHourId"": 27305501,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""3. Становништво Србије"",
+            ""workdayDate"": ""2019-09-10""
+          }
+        ]
+      }
+    }
+  },
+  ""5_1_0"": {
+    ""classCourseId"": 1092449,
+    ""name"": ""Ликовна култура"",
+    ""sequence"": ""5_1_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 53472543,
+            ""workHourId"": 39618058,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""21-22. Колаж и деколаж – Које су боје моја осећања"",
+            ""workdayDate"": ""2019-11-15""
+          },
+          {
+            ""id"": 53472544,
+            ""workHourId"": 39618060,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""21-22. Колаж и деколаж – Које су боје моја осећања"",
+            ""workdayDate"": ""2019-11-15""
+          }
+        ]
+      }
+    }
+  },
+  ""6_1_0"": {
+    ""classCourseId"": 1092467,
+    ""name"": ""Музичка култура"",
+    ""sequence"": ""6_1_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 37380242,
+            ""workHourId"": 27036594,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""2. „Моја диридика”,   народна \n „Адађо”,  Томазо Албинони Темпо"",
+            ""workdayDate"": ""2019-09-09""
+          }
+        ]
+      }
+    }
+  },
+  ""7_1_0"": {
+    ""classCourseId"": 1092505,
+    ""name"": ""Физичко васпитање"",
+    ""sequence"": ""7_1_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 60439104,
+            ""workHourId"": 43348291,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""43. Српско коло „Моравац“"",
+            ""workdayDate"": ""2019-12-11""
+          },
+          {
+            ""id"": 53468818,
+            ""workHourId"": 39615397,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""32.\tСтав о шакама"",
+            ""workdayDate"": ""2019-11-14""
+          },
+          {
+            ""id"": 53468557,
+            ""workHourId"": 39615237,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""31. Основне технике одбојке-игра две екипе"",
+            ""workdayDate"": ""2019-11-13""
+          },
+          {
+            ""id"": 37403933,
+            ""workHourId"": 27306209,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""4. Додавање лопте разним деловима стопала"",
+            ""workdayDate"": ""2019-09-10""
+          }
+        ]
+      }
+    }
+  },
+  ""8_2_0"": {
+    ""classCourseId"": 1092632,
+    ""name"": ""Чувари природе (изборни)"",
+    ""sequence"": ""8_2_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 53473066,
+            ""workHourId"": 39618386,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""11. Белоглави суп"",
+            ""workdayDate"": ""2019-11-14""
+          }
+        ]
+      }
+    }
+  },
+  ""9_2_0"": {
+    ""classCourseId"": 1092710,
+    ""name"": ""Грађанско васпитање (изборни)"",
+    ""sequence"": ""9_2_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 37380127,
+            ""workHourId"": 27034987,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""2. Шта нас чека у четвртом разреду"",
+            ""workdayDate"": ""2019-09-09""
+          }
+        ]
+      }
+    }
+  },
+  ""11_1_0"": {
+    ""classCourseId"": 1092902,
+    ""name"": ""ЧОС"",
+    ""sequence"": ""11_1_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 54184439,
+            ""workHourId"": 40067851,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""11. Стрес - извори,  утицај и механизми превазилажења"",
+            ""workdayDate"": ""2019-11-15""
+          },
+          {
+            ""id"": 39565979,
+            ""workHourId"": 28103391,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""3. Безбедно кретање у саобраћају"",
+            ""workdayDate"": ""2019-09-20""
+          }
+        ]
+      }
+    }
+  },
+  ""12_12_0"": {
+    ""classCourseId"": 1391263,
+    ""name"": ""Ликовна култура (слободна наставна активност)"",
+    ""sequence"": ""12_12_0"",
+    ""absentStatuses"": {
+      ""2"": {
+        ""statusId"": 2,
+        ""name"": ""оправдан"",
+        ""absents"": [
+          {
+            ""id"": 54171094,
+            ""workHourId"": 40062942,
+            ""teacherNote"": null,
+            ""statusName"": ""оправдан"",
+            ""workHourNote"": ""11. Опрема радова и постављање изложбе"",
+            ""workdayDate"": ""2019-11-13""
+          }
+        ]
+      }
+    }
+  }
+}
 ";
 #else
             return string.Empty;

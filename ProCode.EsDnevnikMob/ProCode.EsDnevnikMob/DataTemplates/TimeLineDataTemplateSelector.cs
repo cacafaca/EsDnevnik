@@ -15,14 +15,16 @@ namespace ProCode.EsDnevnikMob.DataTemplates
                 case EsDnevnik.Model.GeneratedTimeLine.EventType.Absent:
                     return timeLineAbsenceDataTemplate;
                 case EsDnevnik.Model.GeneratedTimeLine.EventType.Grade:
+                    return timeLineGradeRegularDataTemplate;
                 case EsDnevnik.Model.GeneratedTimeLine.EventType.FinalGrade:
-                    return timeLineGradeDataTemplate;
+                    return timeLineGradeFinalDataTemplate;
                 default:
                     return timeLineLoadingViewCell;
             }
         }
         private readonly DataTemplate timeLineAbsenceDataTemplate = new DataTemplate(typeof(TimeLineAbsenceViewCell));
-        private readonly DataTemplate timeLineGradeDataTemplate = new DataTemplate(typeof(TimeLineGradeViewCell));
+        private readonly DataTemplate timeLineGradeRegularDataTemplate = new DataTemplate(typeof(TimeLineGradeRegularViewCell));
+        private readonly DataTemplate timeLineGradeFinalDataTemplate = new DataTemplate(typeof(TimeLineGradeFinalViewCell));
         private readonly DataTemplate timeLineLoadingViewCell = new DataTemplate(typeof(TimeLineLoadingViewCell));
     }
 }

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ProCode.EsDnevnikMob.DataTemplates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimeLineGradeViewCell : ViewCell
+    public partial class TimeLineGradeFinalViewCell : ViewCell
     {
-        public TimeLineGradeViewCell()
+        public TimeLineGradeFinalViewCell()
         {
             InitializeComponent();
         }

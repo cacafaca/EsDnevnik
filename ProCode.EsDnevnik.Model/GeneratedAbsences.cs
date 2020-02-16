@@ -6,7 +6,7 @@ using System.Text;
 namespace ProCode.EsDnevnik.Model.GeneratedAbsences
 {
 
-    public class Rootobject : Dictionary<string, AbsenceSequence>
+    public class AbsencesRoot : Dictionary<string, AbsenceSequence>
     {
     }
 
@@ -21,8 +21,12 @@ namespace ProCode.EsDnevnik.Model.GeneratedAbsences
 
     public class AbsentStatuses
     {
+        [JsonProperty("1")]
+        public AbsentStatus Unregulated { get; set; }
         [JsonProperty("2")]
-        public AbsentStatus AbsentStatusId2 { get; set; }
+        public AbsentStatus Justified { get; set; }
+        [JsonProperty("3")]
+        public AbsentStatus Unjustified { get; set; }
     }
 
     public class AbsentStatus

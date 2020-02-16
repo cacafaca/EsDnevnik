@@ -6,6 +6,14 @@
     <Application.Resources>
         <!-- Application resource dictionary -->
         <ResourceDictionary>
+            <!-- Common -->
+            <Style x:Key="courseLabelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="Medium" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+            </Style>
             <!-- Main page -->
             <Style x:Key="mainPageLabelStyle"
                    TargetType="Label">

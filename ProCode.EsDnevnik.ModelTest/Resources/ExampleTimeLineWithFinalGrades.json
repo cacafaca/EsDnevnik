@@ -1,0 +1,626 @@
+{
+    "data":
+    {
+        "2020-01-28": [
+            {
+                "type": "absent",
+                "date": "2020-01-28",
+                "createTime": "2020-01-28 00:23:32",
+                "schoolHour": 4,
+                "workHourNote": "39. Временске прилике",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "нерегулисан",
+                "status": "нерегулисан",
+                "statusId": 1,
+                "course": "Природа и друштво",
+                "classCourseId": 1244331,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2020-01-28",
+                "createTime": "2020-01-28 00:22:46",
+                "schoolHour": 3,
+                "workHourNote": "59. Елементарне игре по избору ученика",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "нерегулисан",
+                "status": "нерегулисан",
+                "statusId": 1,
+                "course": "Физичко васпитање",
+                "classCourseId": 1244439,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2020-01-28",
+                "createTime": "2020-01-28 00:22:09",
+                "schoolHour": 2,
+                "workHourNote": "97. „Свети Сава и сељак без среће”",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "нерегулисан",
+                "status": "нерегулисан",
+                "statusId": 1,
+                "course": "Српски језик",
+                "classCourseId": 1244249,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2020-01-28",
+                "createTime": "2020-01-28 00:21:36",
+                "schoolHour": 1,
+                "workHourNote": "97. Множење (4 · 30)",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "нерегулисан",
+                "status": "нерегулисан",
+                "statusId": 1,
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "grade",
+                "date": "2020-01-28",
+                "createTime": "2020-01-26 08:58:13",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "47/52 бода\nГрадиво првог полугодишта је успешно савладано. Браво! Нису обновљене мерне јединице.",
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-24": [
+            {
+                "type": "grade",
+                "date": "2020-01-24",
+                "createTime": "2020-01-24 16:57:44",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "практичан рад",
+                "note": null,
+                "course": "Физичко васпитање",
+                "classCourseId": 1244439,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2020-01-24 20:44:17",
+                "date": "2020-01-24",
+                "engagement": null,
+                "schoolyearPart": "прво полугодиште",
+                "course": "Верска настава - православни катихизис (изборни)",
+                "school": "Ђура Даничић",
+                "schoolClass": "III 1"
+            },
+            {
+                "type": "grade",
+                "date": "2020-01-24",
+                "createTime": "2020-01-24 20:44:12",
+                "fullGrade": "истиче се",
+                "grade":
+                {
+                    "id": 6,
+                    "grade_type_id": 2,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1
+                },
+                "gradeCategory": "описна",
+                "note": null,
+                "course": "Верска настава - православни катихизис (изборни)",
+                "classCourseId": 1244483,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-23": [
+            {
+                "type": "grade",
+                "date": "2020-01-23",
+                "createTime": "2020-01-23 08:26:14",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "66,5/70 бодова
+                Веома успешно савладани садржаји из граматике и правописа у првом полугодишту.",
+                "course": "Српски језик",
+                "classCourseId": 1244249,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2020-01-23",
+                "createTime": "2020-01-26 09:40:58",
+                "fullGrade": "истиче се",
+                "grade":
+                {
+                    "id": 6,
+                    "grade_type_id": 2,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1
+                },
+                "gradeCategory": "описна",
+                "note": null,
+                "course": "Фолклорна секција (секција)",
+                "classCourseId": 1244613,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-22": [
+            {
+                "type": "grade",
+                "date": "2020-01-22",
+                "createTime": "2020-01-26 09:26:51",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "практичан рад",
+                "note": null,
+                "course": "Ликовна култура",
+                "classCourseId": 1244388,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-20": [
+            {
+                "type": "grade",
+                "date": "2020-01-20",
+                "createTime": "2020-01-20 17:13:53",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "вежбе",
+                "note": null,
+                "course": "Музичка култура",
+                "classCourseId": 1244409,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2020-01-20",
+                "createTime": "2020-01-20 17:33:22",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "вежбе",
+                "note": null,
+                "course": "Народна традиција (изборни)",
+                "classCourseId": 1244550,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-16": [
+            {
+                "type": "grade",
+                "date": "2020-01-16",
+                "createTime": "2020-01-15 16:36:52",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "47,5/50 бодова
+                Успешно савладано градиво о једначинама и неједначинама са сабирањем и одузимањем до 1000.",
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2020-01-16",
+                "createTime": "2020-01-16 20:16:02",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "практичан рад",
+                "note": "Својства ваздуха.",
+                "course": "Природа и друштво",
+                "classCourseId": 1244331,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-15": [
+            {
+                "type": "grade",
+                "date": "2020-01-15",
+                "createTime": "2020-01-15 12:37:17",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "практичан рад",
+                "note": null,
+                "course": "Ликовна култура",
+                "classCourseId": 1244388,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2020-01-13": [
+            {
+                "type": "grade",
+                "date": "2020-01-13",
+                "createTime": "2020-01-26 09:25:51",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "практичан рад",
+                "note": null,
+                "course": "Народна традиција (изборни)",
+                "classCourseId": 1244550,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-12-27": [
+            {
+                "type": "grade",
+                "date": "2019-12-27",
+                "createTime": "2019-12-29 10:30:49",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "40,5/45 бодова
+                Успешно савладано градиво о води и другим течностима. Пазити у формулацији промена стања воде загревањем или хлађењем (вода није само течно стање).",
+                "course": "Природа и друштво",
+                "classCourseId": 1244331,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-12-26": [
+            {
+                "type": "grade",
+                "date": "2019-12-26",
+                "createTime": "2019-12-26 09:01:50",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "55,75/60 бодова
+                Наставни садржаји из граматике и правописа су савладани!
+                Стављати упитник на крају упитне реченице.",
+                "course": "Српски језик",
+                "classCourseId": 1244249,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2019-12-26",
+                "createTime": "2019-12-27 08:23:23",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "вежбе",
+                "note": "Једначине са сабирањем и одузимањем - рад на задацима.",
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-12-18": [
+            {
+                "type": "grade",
+                "date": "2019-12-18",
+                "createTime": "2019-12-20 19:30:10",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "53,5/55 бодова
+                Успешно савладани садржаји о сабирању и одузимању троцифрених бројева (усмено).",
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-12-13": [
+            {
+                "type": "absent",
+                "date": "2019-12-13",
+                "createTime": "2019-12-13 08:14:11",
+                "schoolHour": 1,
+                "workHourNote": "73. Исправак првог школског писменог задатка",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Српски језик",
+                "classCourseId": 1244249,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-13",
+                "createTime": "2019-12-13 15:41:57",
+                "schoolHour": 4,
+                "workHourNote": "Божићни весници",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Верска настава - православни катихизис (изборни)",
+                "classCourseId": 1244483,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-13",
+                "createTime": "2019-12-13 08:15:39",
+                "schoolHour": 2,
+                "workHourNote": "73. Зависност разлике од промене умањеника и умањиоца",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-13",
+                "createTime": "2019-12-13 08:17:09",
+                "schoolHour": 3,
+                "workHourNote": "44. Додавање лопте у пару у трчању",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Физичко васпитање",
+                "classCourseId": 1244439,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            }
+        ],
+        "2019-12-12": [
+            {
+                "type": "absent",
+                "date": "2019-12-12",
+                "createTime": "2019-12-12 18:38:23",
+                "schoolHour": 1,
+                "workHourNote": "72. Зависност разлике од промене умањиоца",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-12",
+                "createTime": "2019-12-12 18:38:36",
+                "schoolHour": 2,
+                "workHourNote": "72. Анализа првог школског писменог задатка",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Српски језик",
+                "classCourseId": 1244249,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "grade",
+                "date": "2019-12-12",
+                "createTime": "2019-12-12 18:37:29",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "остало",
+                "note": "Учешће на општинском такмичењу из Математике;
+                (освојена 1. награда). Уједно је ученица и победница такмичења на нивоу општине Вождовац.",
+                "course": "Математика",
+                "classCourseId": 1244305,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-12",
+                "createTime": "2019-12-12 18:38:42",
+                "schoolHour": 3,
+                "workHourNote": "29. Испитујемо шта плута, а шта тоне. Магија растварања",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Природа и друштво",
+                "classCourseId": 1244331,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            },
+            {
+                "type": "absent",
+                "date": "2019-12-12",
+                "createTime": "2019-12-12 18:38:29",
+                "schoolHour": 0,
+                "workHourNote": "15. Стари занати – кујунџија, бојаџија, ткач и абаџија (угледни час)",
+                "teacherNote": null,
+                "classmasterNote": null,
+                "absentType": "болест - потврда лекара",
+                "status": "оправдан",
+                "statusId": 2,
+                "course": "Народна традиција (изборни)",
+                "classCourseId": 1244550,
+                "schoolClass": "III 1",
+                "school": "Ђура Даничић"
+            }
+        ]
+    },
+    "meta":
+    {
+        "total": 86
+    }
+}

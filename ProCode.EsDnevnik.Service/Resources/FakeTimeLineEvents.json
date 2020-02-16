@@ -1,0 +1,589 @@
+{
+    "data":
+    {
+        "2019-06-13": [
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 14:32:05",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Математика",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 08:01:20",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Физичко васпитање",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 08:01:20",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Физичко васпитање",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-13",
+                "createTime": "2019-06-13 07:52:58",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "77,75/80 бодова",
+                "course": "Математика",
+                "classCourseId": 266635,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-13 20:49:39",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Математичка секција (слободна наставна активност)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-13 20:49:39",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Математичка секција (слободна наставна активност)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-13",
+                "createTime": "2019-06-13 14:31:25",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "активност на часу",
+                "note": null,
+                "course": "Математика",
+                "classCourseId": 266635,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-13 20:30:52",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "ЧОС",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-13 20:30:52",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "ЧОС",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 20:19:13",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Народна традиција (изборни)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 20:19:13",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Народна традиција (изборни)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 19:59:31",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Музичка култура",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 19:59:30",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Музичка култура",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 14:32:05",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Математика",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 08:06:41",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Ликовна култура",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-13 08:06:41",
+                "date": "2019-06-13",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Ликовна култура",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            }
+        ],
+        "2019-06-12": [
+            {
+                "type": "grade",
+                "date": "2019-06-12",
+                "createTime": "2019-06-13 08:11:49",
+                "fullGrade": "истиче се",
+                "grade":
+                {
+                    "id": 6,
+                    "grade_type_id": 2,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1
+                },
+                "gradeCategory": "описна",
+                "note": null,
+                "course": "ЧОС",
+                "classCourseId": 266951,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-12 17:14:08",
+                "date": "2019-06-12",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Свет око нас",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-12 17:31:16",
+                "date": "2019-06-12",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Српски језик",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-12 17:31:16",
+                "date": "2019-06-12",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Српски језик",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-12 17:14:08",
+                "date": "2019-06-12",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Свет око нас",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-12",
+                "createTime": "2019-06-10 21:25:26",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "контролни задатак",
+                "note": "68/70 бодова",
+                "course": "Свет око нас",
+                "classCourseId": 266669,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-12",
+                "createTime": "2019-06-12 17:31:04",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "активност на часу",
+                "note": null,
+                "course": "Српски језик",
+                "classCourseId": 266651,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-06-11": [
+            {
+                "type": "grade",
+                "date": "2019-06-11",
+                "createTime": "2019-06-13 19:59:26",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "вежбе",
+                "note": null,
+                "course": "Музичка култура",
+                "classCourseId": 266677,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-11",
+                "createTime": "2019-06-11 13:49:12",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "вежбе",
+                "note": null,
+                "course": "Народна традиција (изборни)",
+                "classCourseId": 266783,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ],
+        "2019-06-10": [
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-10 20:54:24",
+                "date": "2019-06-10",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Верска настава - православни катихизис (изборни)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-10",
+                "createTime": "2019-06-10 14:10:22",
+                "fullGrade": "одличан (5)",
+                "grade":
+                {
+                    "id": 5,
+                    "grade_type_id": 1,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5
+                },
+                "gradeCategory": "усмено одговарање",
+                "note": null,
+                "course": "Енглески језик (1. страни језик)",
+                "classCourseId": 266662,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 6,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1,
+                    "grade_type_id": 2
+                },
+                "createTime": "2019-06-10 20:54:24",
+                "date": "2019-06-10",
+                "engagement": null,
+                "schoolyearPart": "друго полугодиште",
+                "course": "Верска настава - православни катихизис (изборни)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "final-grade",
+                "grade":
+                {
+                    "id": 5,
+                    "name": "одличан",
+                    "value": 5,
+                    "sequence": 5,
+                    "grade_type_id": 1
+                },
+                "createTime": "2019-06-10 14:10:27",
+                "date": "2019-06-10",
+                "engagement": null,
+                "schoolyearPart": null,
+                "course": "Енглески језик (1. страни језик)",
+                "school": "Ђура Даничић",
+                "schoolClass": "II 1"
+            },
+            {
+                "type": "grade",
+                "date": "2019-06-10",
+                "createTime": "2019-06-10 20:54:19",
+                "fullGrade": "истиче се",
+                "grade":
+                {
+                    "id": 6,
+                    "grade_type_id": 2,
+                    "name": "истиче се",
+                    "value": 0,
+                    "sequence": 1
+                },
+                "gradeCategory": "описна",
+                "note": null,
+                "course": "Верска настава - православни катихизис (изборни)",
+                "classCourseId": 266757,
+                "schoolClass": "II 1",
+                "school": "Ђура Даничић",
+                "iopNote": null,
+                "evaluationElementCourse": null
+            }
+        ]
+    }
+}

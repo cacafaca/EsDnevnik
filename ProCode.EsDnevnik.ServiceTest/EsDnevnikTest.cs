@@ -131,7 +131,7 @@ namespace ProCode.EsDnevnik.ServiceTest
                 Assert.AreNotEqual(0, students.Count, "No students.");
 
                 // Get events.
-                Model.GeneratedAbsences.Rootobject absences = esd.GetAbsencesAsync(students.First()).Result;
+                Model.GeneratedAbsences.AbsencesRoot absences = esd.GetAbsencesAsync(students.First()).Result;
                 Assert.IsNotNull(absences);
                 Assert.AreNotEqual(0, absences.Count);
             }

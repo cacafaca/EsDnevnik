@@ -29,14 +29,14 @@ namespace ProCode.EsDnevnikMob
                     var cgx = x as EsDnevnik.Model.GeneratedGrades.CourseGrades;
                     var cgy = y as EsDnevnik.Model.GeneratedGrades.CourseGrades;
 
-                    if (cgx.AverageTotal == 0 && cgy.AverageTotal > 0)
+                    if (cgx.Average == 0 && cgy.Average > 0)
                         return 1;
-                    else if (cgx.AverageTotal == 0 && cgy.AverageTotal == 0)
+                    else if (cgx.Average == 0 && cgy.Average == 0)
                         return 0;
-                    else if (cgx.AverageTotal > 0 && cgy.AverageTotal == 0)
+                    else if (cgx.Average > 0 && cgy.Average == 0)
                         return -1;
                     else
-                        return (int)((cgx.AverageTotal - cgy.AverageTotal) / Math.Abs(cgx.AverageTotal - cgy.AverageTotal));
+                        return (int)((cgx.Average - cgy.Average) / Math.Abs(cgx.Average - cgy.Average));
                 }
             }
         }

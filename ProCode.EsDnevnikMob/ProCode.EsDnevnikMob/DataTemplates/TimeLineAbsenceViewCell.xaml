@@ -73,8 +73,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Text="{Binding Course}"
                                Grid.Column="0"
-                               FontSize="Medium"
-                               FontAttributes="Bold"
+                               Style="{StaticResource courseLabelStyle}"
                                TextColor="{Binding StatusId, Converter={StaticResource absenceColorConverter}}"
                                HorizontalOptions="FillAndExpand" />
                         <StackLayout Orientation="Horizontal"

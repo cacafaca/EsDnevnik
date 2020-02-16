@@ -5,6 +5,7 @@
     <Configurations>Debug;Release;DebugFake;ReleaseInstant;DebugPhoneConnected</Configurations>
     <AssemblyName>ProCode.EsDnevnikMob</AssemblyName>
     <RootNamespace>ProCode.EsDnevnikMob</RootNamespace>
+    <ApplicationIcon>Resources\BaseIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,8 +22,16 @@
     <Compile Update="DataTemplates\TimeLineAbsenceViewCell.xaml.cs">
       <DependentUpon>TimeLineAbsenceViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="DataTemplates\TimeLineGradeViewCell.xaml.cs">
-      <DependentUpon>TimeLineGradeViewCell.xaml</DependentUpon>
+    <Compile Update="DataTemplates\TimeLineGradeFinalViewCell.xaml.cs">
+      <DependentUpon>TimeLineGradeFinalViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="DataTemplates\TimeLineGradeRegularViewCell.xaml.cs">
+      <DependentUpon>TimeLineGradeRegularViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Views\StudentOverviewPage.xaml.cs">
       <DependentUpon>StudentOverviewPage.xaml</DependentUpon>
@@ -36,11 +45,15 @@
     <EmbeddedResource Update="DataTemplates\GradesViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="DataTemplates\TimeLineGradeViewCell.xaml">
+    <EmbeddedResource Update="DataTemplates\TimeLineGradeRegularViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="DataTemplates\TimeLineLoadingViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentOverviewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -48,6 +61,10 @@
     <EmbeddedResource Update="Views\StudentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

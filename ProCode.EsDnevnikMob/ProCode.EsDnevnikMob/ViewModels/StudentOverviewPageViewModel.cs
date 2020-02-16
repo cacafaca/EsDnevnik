@@ -8,6 +8,7 @@ using Prism.Commands;
 using Xamarin.Forms;
 using System;
 using Prism.Services;
+using System.Collections.Generic;
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
@@ -57,9 +58,23 @@ namespace ProCode.EsDnevnikMob.ViewModels
 #endif
                     if (newRootTimeLine != null && newRootTimeLine.Data != null)
                     {
+                        IList<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> tempTimeLineEvents = new List<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
                         foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
                             foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
-                                TimeLineEvents.Add(timeLineEvent);
+                                tempTimeLineEvents.Add(timeLineEvent);
+
+                        //// Add final grades on top because they are important.
+                        //foreach (var timeLineEvent in tempTimeLineEvents.Where(e => e.Type == EsDnevnik.Model.GeneratedTimeLine.EventType.FinalGrade)
+                        //    .OrderBy(e => e.Grade.Value > 0 ? e.Grade.Value : int.MaxValue))
+                        //    TimeLineEvents.Add(timeLineEvent);
+                        //// Non final grades are added as they are already sorted.
+                        //foreach (var timeLineEvent in tempTimeLineEvents.Where(e => e.Type != EsDnevnik.Model.GeneratedTimeLine.EventType.FinalGrade))
+                        //    TimeLineEvents.Add(timeLineEvent);
+
+                        // Not sure what to do with this, still? That's why I kept temporary variable.
+                        foreach (var timeLineEvent in tempTimeLineEvents.OrderByDescending(e => e.CreateTime))
+                            TimeLineEvents.Add(timeLineEvent);
+
                         timeLineEventsPopulated = newRootTimeLine.Data.Count == 0; // If no elements are returned it means that complete list is retrieved.
                     }
                 }
@@ -138,15 +153,17 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private async Task LoadAbsences(Student student)
         {
-            EsDnevnik.Model.GeneratedAbsences.Rootobject absencesRoot = null;
+            EsDnevnik.Model.GeneratedAbsences.AbsencesRoot absencesRoot = null;
 #if !DEBUGFAKE
             absencesRoot = await esdService.GetAbsencesAsync(Student);
 #else
-                await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
+                await Task.Run(() => { absencesRoot = esdService.GetAbsencesFake(); });
 #endif
             Absences.Clear();
-            foreach (var absence in absencesRoot)
-                Absences.Add(absence.Value);
+            foreach (var absence in absencesRoot.Values.OrderByDescending(a => a.AbsentStatuses.Unregulated?.Absents.Length).
+                ThenByDescending(a => a.AbsentStatuses.Unjustified?.Absents.Length).
+                ThenByDescending(a => a.AbsentStatuses.Justified?.Absents.Length))
+                Absences.Add(absence);
         }
         #endregion
 

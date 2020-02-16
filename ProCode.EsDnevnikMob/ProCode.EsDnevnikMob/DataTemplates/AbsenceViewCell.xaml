@@ -26,6 +26,20 @@
                     <converters:AverageGradeLightColorConverter x:Key="averageGradeLightColorConverter" />
                     <converters:AverageGradeConverter x:Key="averageGradeConverter" />
                     <converters:AverageTotalGradeConverter x:Key="averageTotalGradeConverter" />
+                    <Style x:Key="absenceNumberStyle" TargetType="Label">
+                        <Setter Property="FontSize"
+                                Value="Title" />
+                        <Setter Property="FontAttributes"
+                                Value="Bold" />
+                        <Setter Property="TextColor"
+                                Value="White" />
+                        <Setter Property="Padding"
+                                Value="10" />
+                        <Setter Property="HorizontalTextAlignment"
+                                Value="Center" />
+                        <Setter Property="HorizontalOptions"
+                                Value="Center" />
+                    </Style>
                 </ResourceDictionary>
             </Frame.Resources>
             <Grid>
@@ -33,21 +47,39 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Label Text="{Binding Name}" FontSize="Body" FontAttributes="Bold"
-                       Grid.Row="0" />
+                <Label Text="{Binding Name}"
+                       Style="{StaticResource courseLabelStyle}"
+                       Grid.Row="0"/>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <!-- Justified absence on the left -->
-                    <StackLayout Orientation="Horizontal" Grid.Column="0">
-                        <Label Text="{Binding AbsentStatuses.AbsentStatusId2.Absents.Length}" FontSize="Title" FontAttributes="Bold"
-                               BackgroundColor="Green" TextColor="White"/>
+                    <StackLayout Orientation="Vertical" Grid.Column="0">
+                        <Label Text="{Binding AbsentStatuses.Justified.Absents.Length}"
+                               Style="{StaticResource absenceNumberStyle}"
+                               TextColor="Green"/>
+                        <Label Text="Оправдани" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                    <!-- Not justified absence on the left -->
-                    <StackLayout Orientation="Horizontal" Grid.Column="1">
-                        <Label Text="{Binding Name}" />
+                    <!-- Pending absence in the middle-->
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Column="1"
+                                 >
+                        <Label Text="{Binding AbsentStatuses.Unregulated.Absents.Length}"
+                               TextColor="Gray"
+                               Style="{StaticResource absenceNumberStyle}"/>
+                        <Label Text="Нерегулисани"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                    <!-- Unjustified absence on the left -->
+                    <StackLayout Orientation="Vertical" Grid.Column="2" >
+                        <Label Text="{Binding AbsentStatuses.Unjustified.Absents.Length}"
+                               TextColor="Red"
+                               Style="{StaticResource absenceNumberStyle}"/>
+                        <Label Text="Неоправдани"
+                               HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Grid>
             </Grid>

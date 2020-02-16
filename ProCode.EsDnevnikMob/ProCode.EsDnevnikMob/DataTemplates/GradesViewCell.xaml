@@ -26,6 +26,7 @@
                     <converters:AverageGradeLightColorConverter x:Key="averageGradeLightColorConverter" />
                     <converters:AverageGradeConverter x:Key="averageGradeConverter" />
                     <converters:AverageTotalGradeConverter x:Key="averageTotalGradeConverter" />
+                    <converters:GradeFinalVisibleFlagConverter x:Key="gradeFinalVisibleFlagConverter" />
                 </ResourceDictionary>
             </Frame.Resources>
             <Grid x:Name="mainGradesGrid">
@@ -37,61 +38,105 @@
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <!-- Course name (big) -->
                 <Label Text="{Binding Course}"
                        TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
+                       Style="{StaticResource courseLabelStyle}"
                        FontSize="Medium"
                        FontAttributes="Bold"
                        LineBreakMode="WordWrap"
                        Grid.Column="0"
-                       Grid.Row="0" />
-                <Grid Grid.Row="0"
-                      Grid.Column="1"
-                      Grid.RowSpan="2" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Label Text="{Binding Final}"
-                           FontSize="{Binding Final, Converter={StaticResource finalGradeFontSizeConverter}}"
-                           Grid.Row="0" VerticalTextAlignment="Start" HorizontalTextAlignment="Center"
-                           FontAttributes="Bold" Margin="0,0,0,-5" 
-                           TextColor="{Binding Final, Converter={StaticResource gradeColorConverter}}"/>
-                    <Label Text="{Binding AverageTotal, Converter={StaticResource averageTotalGradeConverter}}"
-                           TextColor="{Binding AverageTotal, Converter={StaticResource averageGradeColorConverter}}"
-                           Grid.Row="1"
-                           HorizontalTextAlignment="Center"
-                           VerticalOptions="Start"
-                           FontSize="Body"                           
-                           />
-                </Grid>
-                <Grid Grid.Row="1" Grid.Column="0" >
+                       Grid.Row="0"
+                       Grid.ColumnSpan="2" />
+                <Grid Grid.Row="1"
+                      Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="I Полугође"
+                    <!-- *** First semester (I) *** -->
+                    <Label Text="I"
                            Grid.Row="0"
                            Grid.Column="0" />
                     <Label Text="{Binding Parts.Part1.GradesString}"
                            Grid.Row="0"
                            Grid.Column="1" />
-                    <Label Text="{Binding Parts.Part1.Final.Value}" Grid.Row="0" Grid.Column="2"/>
-                    <Label Text="{Binding Parts.Part1.Average, Converter={StaticResource averageGradeConverter}}"
-                           Grid.Row="0"
-                           Grid.Column="3" />
-                    <Label Text="II Полугође"
+                    <!-- Average grade -->
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="0"
+                                 Grid.Column="2">
+                        <Label Text="Pr="
+                               HorizontalOptions="Start" />
+                        <Label Text="{Binding Parts.Part1.Average, Converter={StaticResource averageGradeConverter}}"
+                               HorizontalOptions="Start" />
+                    </StackLayout>
+                    <!-- Final grade -->
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="0"
+                                 Grid.Column="3"
+                                 IsVisible="{Binding Parts.Part1, Converter={StaticResource gradeFinalVisibleFlagConverter}}">
+                        <Label Text="{Binding Parts.Part1.Final.Value}"
+                               Grid.Row="0"
+                               Grid.Column="3"
+                               HorizontalTextAlignment="End"
+                               FontAttributes="Bold" />
+                        <Label Text="&#x1f512;" />
+                    </StackLayout>
+                    <!-- *** Second semester (I) *** -->
+                    <Label Text="II"
                            Grid.Row="1"
                            Grid.Column="0" />
                     <Label Text="{Binding Parts.Part2.GradesString}"
                            Grid.Row="1"
                            Grid.Column="1" />
+                    <!-- Average grade -->
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="1"
+                                 Grid.Column="2">
+                        <Label Text="Pr="
+                               HorizontalOptions="Start" />
+                        <Label Text="{Binding Parts.Part2.Average, Converter={StaticResource averageGradeConverter}}"
+                               HorizontalOptions="Start" />
+                    </StackLayout>
+                    <!-- Final grade -->
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="1"
+                                 Grid.Column="3"
+                                 IsVisible="{Binding Parts.Part2, Converter={StaticResource gradeFinalVisibleFlagConverter}}">
+                        <Label Text="{Binding Parts.Part2.Final.Value}"
+                               Grid.Row="0"
+                               Grid.Column="3"
+                               HorizontalTextAlignment="End" />
+                        <Label Text="&#x1f512;" />
+                    </StackLayout>
                 </Grid>
+                <!-- Big final grade at the right -->
+                <AbsoluteLayout Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.RowSpan="2">
+                    <Label Text="{Binding Final}"
+                           FontSize="{Binding Final, Converter={StaticResource finalGradeFontSizeConverter}}"
+                           FontAttributes="Bold"
+                           TextColor="{Binding Final, Converter={StaticResource gradeColorConverter}}"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Start"
+                           VerticalOptions="Center"
+                           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                           AbsoluteLayout.LayoutBounds=".5,.5,1,1" />
+                    <!-- Lock sign -->
+                    <Label Text="&#x1f512;"
+                           TextColor="Gray"
+                           FontSize="16"
+                           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                           AbsoluteLayout.LayoutBounds=".8,1,.33,.5"
+                           HorizontalTextAlignment="End" />
+                </AbsoluteLayout>
             </Grid>
         </Frame>
     </ViewCell.View>

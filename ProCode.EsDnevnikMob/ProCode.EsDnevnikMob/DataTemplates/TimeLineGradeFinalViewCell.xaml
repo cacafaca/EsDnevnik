@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          mc:Ignorable="d"
+          x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineGradeFinalViewCell"
+          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+    <ViewCell.View>
+        <Frame BackgroundColor="White"
+               BorderColor="{Binding Grade.Value, Converter={StaticResource gradeLiteColorConverter}}"
+               Margin="2"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="5">
+            <Frame.Resources>
+                <ResourceDictionary>
+                    <converters:GradeColorConverter x:Key="gradeColorConverter" />
+                    <converters:GradeLiteColorConverter x:Key="gradeLiteColorConverter" />
+                    <converters:DateConverter x:Key="dateConverter" />
+                    <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                    <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
+                    <converters:GradeValueConverter x:Key="gradeValueConverter" />
+                    <converters:TimeLineEventFinalGradeVisibleFlagConverter x:Key="timeLineEventFinalGradeVisibleFlagConverter" />
+                </ResourceDictionary>
+            </Frame.Resources>
+            <Grid x:Name="timeLineMainGradesGrid"
+                  Padding="0,0,2,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="timeLineLeftGradeGrid"
+                      Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <AbsoluteLayout Grid.Row="0"
+                                    >
+                        <Label Text="{Binding Grade, Converter={StaticResource gradeValueConverter}}"
+                               x:Name="timeLineLeftGradeBigLabel"
+                               FontSize="{Binding Grade, Converter={StaticResource gradeFontSizeConverter}}"
+                               FontAttributes="Bold"
+                               TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Start"
+                               VerticalOptions="Center"
+                               AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                               AbsoluteLayout.LayoutBounds=".5,.5,1,1" 
+                               />
+                        <!-- Lock sign -->
+                        <Label Text="&#x1f512;"
+                               TextColor="Gray"
+                               FontSize="20"
+                               IsVisible="{Binding Converter={StaticResource timeLineEventFinalGradeVisibleFlagConverter}}"
+                               AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                               AbsoluteLayout.LayoutBounds=".7,1,.33,.5"
+                               HorizontalTextAlignment="End"/>
+                    </AbsoluteLayout>
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Row="1"
+                                 Spacing="-5">
+                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Date, Converter={StaticResource dateToWeekDayConverter}}"
+                               Grid.Row="1"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Column="1"
+                      x:Name="timeLineRightGradeGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding Course}"
+                           Style="{StaticResource courseLabelStyle}"
+                           Grid.Row="0"
+                           TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}" />
+                    <Label Text="{Binding Note}"
+                           x:Name="timeLineGradeNoteLabel"
+                           LineBreakMode="WordWrap"
+                           Grid.Row="1"
+                           FontSize="Default" />
+                </Grid>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>

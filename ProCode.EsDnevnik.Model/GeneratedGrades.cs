@@ -19,21 +19,25 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         public int Sequence { get; set; }
         public Parts Parts { get; set; }
         [JsonIgnore]
-        public float AverageTotal
-        {
-            get
-            {
-                return Parts.Part2.Average > 0 ? (Parts.Part1.Average + Parts.Part2.Average) / 2 : Parts.Part1.Average;
-            }
-        }
-        [JsonIgnore]
         public string Final
         {
             get
             {
-                return Parts.Part1.Final != null  
-                    && Parts.Part2.Final != null ?
-                        Parts.Part1.Final.Value > 0 && Parts.Part2.Final.Value > 0 ? ((Parts.Part1.Final.Value + Parts.Part2.Final.Value) / 2).ToString() : Parts.Part2.Final.Name : string.Empty;
+                return Parts.Part2.Final != null ? Parts.Part2.Final.Value.ToString() :
+                    Parts.Part1.Final != null ? Parts.Part1.Final.Value.ToString() : string.Empty;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"Предмет:{Course}, <Прво полугође:{Parts.Part1?.GradesString}, Просек:{Parts.Part1?.Average}, Закључна:{Parts.Part1?.Final?.Value}>, <Друго полугође:{Parts.Part2?.GradesString}, Просек:{Parts.Part2?.Average}, Закључна:{Parts.Part2?.Final?.Value}>";
+        }
+        [JsonIgnore]
+        public float Average
+        {
+            get
+            {
+                return Parts.Part2.Average > 0 ? Parts.Part2.Average : Parts.Part1.Average;
             }
         }
     }

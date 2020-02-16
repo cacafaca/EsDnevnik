@@ -8,6 +8,7 @@ using ProCode.EsDnevnik.Model;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using ProCode.EsDnevnik.Model.GeneratedAbsences;
 
 namespace ProCode.EsDnevnik.Service
 {
@@ -89,208 +90,7 @@ namespace ProCode.EsDnevnik.Service
             }
 
         }
-        public Model.GeneratedTimeLine.Rootobject GetTimeLineEventsFake()
-        {
-            return new Model.GeneratedTimeLine.Rootobject
-            {
-                Data = new Dictionary<string, Model.GeneratedTimeLine.TimeLineEvent[]>
-                {
-                    {   "2019-12-27",
-                        new Model.GeneratedTimeLine.TimeLineEvent[]
-                        {
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.Absent,
-                                Date = "2019-01-01",
-                                CreateTime = "2019-01-01",
-                                FullGrade = "odlican (5)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 5,
-                                    GradeTypeId = 1,
-                                    Name = "Odlican",
-                                    Value = 5,
-                                    Sequence = 1
-                                },
-                                Course = "Математика",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null,
-                                Status = "неоправдан",
-                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.NotJustified,
-                                WorkHourNote = "Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška. Radna beleška.",
-                                SchoolHour = 1
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.Absent,
-                                Date = "2019-01-01",
-                                CreateTime = "2019-01-01",
-                                FullGrade = "odlican (5)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 5,
-                                    GradeTypeId = 1,
-                                    Name = "Odlican",
-                                    Value = 5,
-                                    Sequence = 1
-                                },
-                                Course = "Верска настава - православни катихизис (изборни)",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null,
-                                Status = "оправдан",
-                                StatusId = Model.GeneratedTimeLine.AbsenceStatusIdType.Justified,
-                                WorkHourNote = "Лепо писање.",
-                                SchoolHour = 2
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.Grade,
-                                Date = "2019-01-02",
-                                CreateTime = "2019-01-01",
-                                FullGrade = "Odlican (5)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 5,
-                                    GradeTypeId = 1,
-                                    Name = "Odlican",
-                                    Value = 5,
-                                    Sequence = 1
-                                },
-                                Course = "Математика",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null,
-                                Note = @"40,5/45 бодова
-Успешно савладано градиво о води и другим течностима. Пазити у формулацији промена стања воде загревањем или хлађењем (вода није само течно стање).",
-                                SchoolHour = 3
-                            }
-                        }
-                    },
-                    {   "2019-12-26",
-                        new Model.GeneratedTimeLine.TimeLineEvent[]
-                        {
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
-                                Date = "2019-12-26",
-                                CreateTime = "2019-12-26",
-                                FullGrade = "Vrlo dobar (4)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 4,
-                                    GradeTypeId = 1,
-                                    Name = "Vrlo Dobar",
-                                    Value = 4,
-                                    Sequence = 1
-                                },
-                                Course = "Верска настава - православни катихизис (изборни)",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null,
-                                Note = @"53,5/55 бодова 
-Успешно савладани садржаји о сабирању и одузимању троцифрених бројева (усмено).",
-                                SchoolHour = 4
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.Grade,
-                                Date = "2019-12-26",
-                                CreateTime = "2019-12-26",
-                                FullGrade = "dobar (3)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 3,
-                                    GradeTypeId = 1,
-                                    Name = "Dobar",
-                                    Value = 3,
-                                    Sequence = 1
-                                },
-                                Course = "Математика",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
-                                Date = "2019-12-26",
-                                CreateTime = "2019-12-26",
-                                FullGrade = "dovoljan (2)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 2,
-                                    GradeTypeId = 1,
-                                    Name = "Dovoljan",
-                                    Value = 2,
-                                    Sequence = 1
-                                },
-                                Course = "Математика",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
-                                Date = "2019-12-26",
-                                CreateTime = "2019-12-26",
-                                FullGrade = "nedovoljan (1)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 1,
-                                    GradeTypeId = 1,
-                                    Name = "Nedovoljan",
-                                    Value = 1,
-                                    Sequence = 1
-                                },
-                                Course = "Математика",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null
-                            },
-                            new Model.GeneratedTimeLine.TimeLineEvent
-                            {
-                                Type = Model.GeneratedTimeLine.EventType.FinalGrade,
-                                Date = "2019-12-26",
-                                CreateTime = "2019-12-26",
-                                FullGrade = "nedovoljan (1)",
-                                Grade = new Model.GeneratedTimeLine.Grade
-                                {
-                                    Id = 1,
-                                    GradeTypeId = 2,
-                                    Name = "истиче се",
-                                    Value = 1,
-                                    Sequence = 1
-                                },
-                                Course = "Изборни",
-                                ClassCourseId = 123,
-                                SchoolClass = "III 1",
-                                School = "Ђура",
-                                IopNote = null,
-                                EvaluationElementCourse = null
-                            }
-                        }
-                    }
-                }
-            };
-        }
-
+        
         /// <summary>
         /// Get students for logged parent.
         /// </summary>
@@ -437,6 +237,12 @@ namespace ProCode.EsDnevnik.Service
             return rootTimeLineSorted;
         }
 
+        public Model.GeneratedTimeLine.Rootobject GetTimeLineEventsFake()
+        {
+            string timeLineEventsJson = FakeData.GetFakeTimeLineEvents();
+            return JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineEventsJson);
+        }
+
         public async Task<Model.GeneratedGrades.Rootobject> GetGradesAsync(Student student)
         {
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetGradesUri(student));
@@ -463,16 +269,26 @@ namespace ProCode.EsDnevnik.Service
             return isLoggedIn;
         }
 
-        public async Task<Model.GeneratedAbsences.Rootobject> GetAbsencesAsync(Student student)
+        public async Task<Model.GeneratedAbsences.AbsencesRoot> GetAbsencesAsync(Student student)
         {
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetAbsenceUri(student));
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
                 absencesResponseCache = await responseMsg.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Model.GeneratedAbsences.Rootobject>(absencesResponseCache);
+                return JsonConvert.DeserializeObject<Model.GeneratedAbsences.AbsencesRoot>(absencesResponseCache);
             }
             else
                 return null;
+        }
+
+        /// <summary>
+        /// Returns hard-coded json.
+        /// </summary>
+        /// <returns></returns>
+        public AbsencesRoot GetAbsencesFake()
+        {
+            string gradesJson = FakeData.GetFakeAbsencesJson();
+            return JsonConvert.DeserializeObject<AbsencesRoot>(gradesJson);
         }
 
         #endregion

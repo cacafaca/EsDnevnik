@@ -4,7 +4,7 @@
           xmlns:d="http://xamarin.com/schemas/2014/forms/design"
           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           mc:Ignorable="d"
-          x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineGradeViewCell"
+          x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineGradeRegularViewCell"
           xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
     <ViewCell.View>
         <Frame BackgroundColor="White"
@@ -21,6 +21,7 @@
                     <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
                     <converters:GradeFontSizeConverter x:Key="gradeFontSizeConverter" />
                     <converters:GradeValueConverter x:Key="gradeValueConverter" />
+                    <converters:TimeLineEventFinalGradeVisibleFlagConverter x:Key="timeLineEventFinalGradeVisibleFlagConverter" />
                 </ResourceDictionary>
             </Frame.Resources>
             <Grid x:Name="timeLineMainGradesGrid"
@@ -36,14 +37,14 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label Text="{Binding Grade, Converter={StaticResource gradeValueConverter}}"
+                           Grid.Row="0"
+                           VerticalOptions="Start"
                            x:Name="timeLineLeftGradeBigLabel"
                            FontSize="{Binding Grade, Converter={StaticResource gradeFontSizeConverter}}"
                            FontAttributes="Bold"
                            TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}"
-                           Grid.Row="0"
                            HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Start"
-                           VerticalOptions="Start" />
+                           VerticalTextAlignment="Start" />
                     <StackLayout Orientation="Vertical"
                                  Grid.Row="1"
                                  Spacing="-5">
@@ -61,10 +62,9 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label Text="{Binding Course}"
-                            FontSize="Medium"
-                            FontAttributes="Bold"
-                            Grid.Row="0" 
-                            TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}" />                        
+                           Style="{StaticResource courseLabelStyle}"
+                           Grid.Row="0"
+                           TextColor="{Binding Grade.Value, Converter={StaticResource gradeColorConverter}}" />
                     <Label Text="{Binding Note}"
                            x:Name="timeLineGradeNoteLabel"
                            LineBreakMode="WordWrap"
