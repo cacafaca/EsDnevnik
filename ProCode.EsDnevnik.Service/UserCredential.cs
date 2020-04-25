@@ -10,7 +10,7 @@ namespace ProCode.EsDnevnik.Service
     {
         public UserCredential(string username, SecureString password)
         {
-            this.username = username;
+            this.username = username.Trim();
             this.password = password;
         }
         private string username;
