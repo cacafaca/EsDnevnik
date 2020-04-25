@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -42,6 +43,12 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         public string Status { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AbsenceStatusIdType StatusId { get; set; }
+        public string FaClass { get; set; }
+        public string CssClass { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ActivityType ActivityType { get; set; }
+
+        // Ignored properties and utility methods.
 
         [JsonIgnore]
         public string Summary
@@ -89,6 +96,17 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         /// Flag for new event since last update.
         /// </summary>
         public bool IsNew { get; set; }
+
+        [JsonIgnore]
+        public string ActivityTypeText
+        {
+            get
+            {
+                return (ActivityType.GetType().GetMember(ActivityType.ToString())
+                    .FirstOrDefault(member => member.DeclaringType == ActivityType.GetType()).GetCustomAttributes(typeof(EnumMemberAttribute), false)[0] 
+                    as EnumMemberAttribute).Value;
+            }
+        }
     }
 
     public class Grade
@@ -118,6 +136,8 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         Absent,
         [EnumMember(Value = "final-grade")]
         FinalGrade,
+        [EnumMember(Value = "activity")]
+        Activity,
         [JsonIgnore]
         Loading
     }
@@ -130,5 +150,19 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         NotJustified,
         [EnumMember(Value = "2")]
         Justified
+    }
+
+    public enum ActivityType
+    {
+        [EnumMember(Value = "")]
+        Unknown,
+        [EnumMember(Value = "Успешан")]
+        Successful,
+        [EnumMember(Value = "Задовољава")]
+        Satisfy,
+        [EnumMember(Value = "Неуспешан")]
+        Unsuccessful,
+        [EnumMember(Value = "Незадовољава")]
+        NotSatisfy
     }
 }

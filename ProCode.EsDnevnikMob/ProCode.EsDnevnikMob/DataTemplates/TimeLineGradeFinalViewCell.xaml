@@ -5,7 +5,8 @@
           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           mc:Ignorable="d"
           x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineGradeFinalViewCell"
-          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
+          xmlns:uc="clr-namespace:ProCode.EsDnevnikMob.UserControls">
     <ViewCell.View>
         <Frame BackgroundColor="White"
                BorderColor="{Binding Grade.Value, Converter={StaticResource gradeLiteColorConverter}}"
@@ -36,8 +37,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <AbsoluteLayout Grid.Row="0"
-                                    >
+                    <!--<uc:BigGradeUserView GradeObject="{Binding}" />-->
+                    <AbsoluteLayout Grid.Row="0">
                         <Label Text="{Binding Grade, Converter={StaticResource gradeValueConverter}}"
                                x:Name="timeLineLeftGradeBigLabel"
                                FontSize="{Binding Grade, Converter={StaticResource gradeFontSizeConverter}}"
@@ -47,16 +48,15 @@
                                VerticalTextAlignment="Start"
                                VerticalOptions="Center"
                                AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
-                               AbsoluteLayout.LayoutBounds=".5,.5,1,1" 
-                               />
-                        <!-- Lock sign -->
+                               AbsoluteLayout.LayoutBounds=".5,.5,1,1" />
+                        <!--Lock sign-->
                         <Label Text="&#x1f512;"
                                TextColor="Gray"
                                FontSize="20"
                                IsVisible="{Binding Converter={StaticResource timeLineEventFinalGradeVisibleFlagConverter}}"
                                AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
                                AbsoluteLayout.LayoutBounds=".7,1,.33,.5"
-                               HorizontalTextAlignment="End"/>
+                               HorizontalTextAlignment="End" />
                     </AbsoluteLayout>
                     <StackLayout Orientation="Vertical"
                                  Grid.Row="1"

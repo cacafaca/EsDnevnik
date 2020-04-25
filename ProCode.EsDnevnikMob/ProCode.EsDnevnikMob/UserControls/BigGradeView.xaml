@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AbsoluteLayout xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d"
+                x:Class="ProCode.EsDnevnikMob.UserControls.BigGradeUserView"
+                xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+    <AbsoluteLayout.Resources>
+        <ResourceDictionary>
+            <converters:GradeColorConverter x:Key="gradeColorConverter" />
+            <converters:GradeValueConverter x:Key="gradeValueConverter" />
+        </ResourceDictionary>
+    </AbsoluteLayout.Resources>
+    <Label Text="0"
+           x:Name="timeLineLeftGradeBigLabel"
+           FontSize="50"
+           FontAttributes="Bold"
+           TextColor="Green"
+           HorizontalTextAlignment="Center"
+           VerticalTextAlignment="Start"
+           VerticalOptions="Center"
+           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+           AbsoluteLayout.LayoutBounds=".5,.5,1,1" />
+    <!-- Lock sign -->
+    <Label Text="&#x1f512;"
+           TextColor="Gray"
+           FontSize="20"
+           IsVisible="True"
+           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+           AbsoluteLayout.LayoutBounds=".7,1,.33,.5"
+           HorizontalTextAlignment="End" />
+</AbsoluteLayout>

@@ -216,7 +216,7 @@ namespace ProCode.EsDnevnik.Service
                 var data = timelineResponseObj.SelectToken("$.data", true);
                 if (data != null && data.Children().Count() > 0)
                 {
-                    rootTimeLine = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
+                    rootTimeLine = JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
                     rootTimeLineSorted.Meta = rootTimeLine.Meta;
                     foreach (var dateItem in rootTimeLine.Data.OrderByDescending(item => item.Key))
                     {

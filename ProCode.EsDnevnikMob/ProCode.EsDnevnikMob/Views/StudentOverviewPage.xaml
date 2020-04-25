@@ -12,7 +12,7 @@
             <converters:DateConverter x:Key="dateConverter" />
             <converters:AverageGradeConverter x:Key="averageGradeConverter" />
             <converters:GradeColorConverter x:Key="gradeColorConverter" />
-            <dataTemplates:TimeLineDataTemplateSelector x:Key="TimeLineDataTemplateSelector" />
+            <dataTemplates:TimeLineDataTemplateSelector x:Key="timeLineDataTemplateSelector" />
             <converters:ItemAppearingEventArgsConverter x:Key="itemAppearingEventArgsConverter" />
         </ResourceDictionary>
     </TabbedPage.Resources>
@@ -22,7 +22,7 @@
         <ContentPage.Content>
             <ListView x:Name="timeLineListView"
                       ItemsSource="{Binding TimeLineEvents}"
-                      ItemTemplate="{StaticResource TimeLineDataTemplateSelector}"
+                      ItemTemplate="{StaticResource timeLineDataTemplateSelector}"
                       HasUnevenRows="True"
                       SeparatorVisibility="None">
                 <ListView.Behaviors>

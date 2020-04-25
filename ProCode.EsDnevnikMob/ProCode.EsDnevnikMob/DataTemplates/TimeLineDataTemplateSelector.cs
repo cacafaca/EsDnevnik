@@ -18,6 +18,8 @@ namespace ProCode.EsDnevnikMob.DataTemplates
                     return timeLineGradeRegularDataTemplate;
                 case EsDnevnik.Model.GeneratedTimeLine.EventType.FinalGrade:
                     return timeLineGradeFinalDataTemplate;
+                case EsDnevnik.Model.GeneratedTimeLine.EventType.Activity:          // 25.04.2020: I recently discovered this type. 
+                    return timeLineActivityDataTemplate;
                 default:
                     return timeLineLoadingViewCell;
             }
@@ -26,5 +28,6 @@ namespace ProCode.EsDnevnikMob.DataTemplates
         private readonly DataTemplate timeLineGradeRegularDataTemplate = new DataTemplate(typeof(TimeLineGradeRegularViewCell));
         private readonly DataTemplate timeLineGradeFinalDataTemplate = new DataTemplate(typeof(TimeLineGradeFinalViewCell));
         private readonly DataTemplate timeLineLoadingViewCell = new DataTemplate(typeof(TimeLineLoadingViewCell));
+        private readonly DataTemplate timeLineActivityDataTemplate = new DataTemplate(typeof(TimeLineActivityViewCell));
     }
 }

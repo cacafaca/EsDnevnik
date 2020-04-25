@@ -29,6 +29,12 @@
                 <Setter Property="FontSize"
                         Value="Body" />
             </Style>
+            
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="FontAwesomeRegular">
+                <On Platform="Android"
+                    Value="Font Awesome 5 Free-Regular-400.otf#Regular" />
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

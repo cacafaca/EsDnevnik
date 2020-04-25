@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+**********  Activity  **********
+-->
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          mc:Ignorable="d"
+          x:Class="ProCode.EsDnevnikMob.DataTemplates.TimeLineActivityViewCell"
+          xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters">
+    <ViewCell.View>
+        <!--
+        BorderColor="{Binding ActivityType, Converter={StaticResource timeLineEventActivityLiteColorConverter}}"
+        -->
+        <Frame BackgroundColor="White"
+               BorderColor="{Binding ActivityType, Converter={StaticResource timeLineEventActivityLiteColorConverter}}"
+               Margin="2"
+               CornerRadius="10"
+               HasShadow="True"
+               Padding="5">
+            <Frame.Resources>
+                <ResourceDictionary>
+                    <converters:TimeLineEventActivityLiteColorConverter x:Key="timeLineEventActivityLiteColorConverter" />
+                    <converters:TimeLineEventActivityColorConverter x:Key="timeLineEventActivityColorConverter" />
+                    <converters:AbsenceLiteColorConverter x:Key="absenceLiteColorConverter" />
+                    <converters:DateConverter x:Key="dateConverter" />
+                    <converters:DateToWeekDayConverter x:Key="dateToWeekDayConverter" />
+                    <converters:TimeLineEventActivityTypeConverter x:Key="timeLineEventActivityTypeConverter" />
+                </ResourceDictionary>
+            </Frame.Resources>
+            <Grid Padding="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Column="0"
+                                 VerticalOptions="Center"
+                                 Padding="0,5,0,5">
+                        <!-- Activity Emoji -->
+                        <Label Text="{Binding ActivityType, Converter={StaticResource timeLineEventActivityTypeConverter}}"
+                               HorizontalTextAlignment="Center"
+                               FontAttributes="Bold"
+                               TextColor="{Binding ActivityType, Converter={StaticResource timeLineEventActivityColorConverter}}"
+                               FontSize="40"
+                               FontFamily="{StaticResource FontAwesomeRegular}"
+                               VerticalOptions="End" />
+                        <!-- Activity text -->
+                        <Label Text="{Binding ActivityTypeText}"
+                               FontSize="Caption"
+                               TextColor="{Binding ActivityType, Converter={StaticResource timeLineEventActivityColorConverter}}"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical"
+                                 Grid.Row="1"
+                                 Spacing="-5">
+                        <Label Text="{Binding Date, Converter={StaticResource dateConverter}}"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Date, Converter={StaticResource dateToWeekDayConverter}}"
+                               Grid.Row="1"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding Course}"
+                           TextColor="{Binding ActivityType, Converter={StaticResource timeLineEventActivityColorConverter}}"
+                           Grid.Row="0"
+                           Style="{StaticResource courseLabelStyle}"
+                           HorizontalOptions="FillAndExpand" />
+                    <Label Text="{Binding Note}"
+                           Grid.Row="1" />
+                </Grid>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>
