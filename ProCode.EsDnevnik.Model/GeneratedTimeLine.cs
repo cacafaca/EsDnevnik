@@ -11,14 +11,22 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
     public class Rootobject
     {
         public Dictionary<string, TimeLineEvent[]> Data { get; set; }
+        //public DataArray Data { get; set; }
         public Meta Meta { get; set; }
 
         public Rootobject()
         {
             Data = new Dictionary<string, TimeLineEvent[]>();
+            //Data = new DataArray();
             Meta = new Meta();
         }
     }
+
+    //[JsonArray(AllowNullItems = true)]
+    //public class DataArray: Dictionary<string, TimeLineEvent[]>
+    //{
+
+    //}
 
     public class TimeLineEvent
     {
@@ -59,13 +67,13 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
                 switch (Type)
                 {
                     case EventType.Absent:
-                        summary = $"Изостанак дана {GetDate().ToString("dd.MM.yy")} са предмета {Course}. Број часа {SchoolHour}. Статус: {Status}.";
+                        summary = $"Изостанак дана {GetDate():dd.MM.yy} са предмета {Course}. Број часа {SchoolHour}. Статус: {Status}.";
                         break;
                     case EventType.Grade:
-                        summary = $"Унета оцена {FullGrade} из предмета {Course} дана {GetDate().ToString("dd.MM.yy")}.";
+                        summary = $"Унета оцена {FullGrade} из предмета {Course} дана {GetDate():dd.MM.yy}.";
                         break;
                     case EventType.FinalGrade:
-                        summary = $"Закључена оцена {FullGrade} из предмета {Course} дана {GetDate().ToString("dd.MM.yy")}.";
+                        summary = $"Закључена оцена {FullGrade} из предмета {Course} дана {GetDate():dd.MM.yy}.";
                         break;
                     default:
                         summary = string.Empty;
@@ -160,9 +168,7 @@ namespace ProCode.EsDnevnik.Model.GeneratedTimeLine
         Successful,
         [EnumMember(Value = "Задовољава")]
         Satisfy,
-        [EnumMember(Value = "Неуспешан")]
-        Unsuccessful,
-        [EnumMember(Value = "Незадовољава")]
-        NotSatisfy
+        [EnumMember(Value = "Не задовољава")]
+        NotSatisfying
     }
 }

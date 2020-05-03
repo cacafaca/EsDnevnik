@@ -10,12 +10,11 @@ namespace ProCode.EsDnevnikMob.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string activityTypeSign = null;
+            string activityTypeSign;
             if (value is ActivityType activityType)
                 switch (activityType)
                 {
-                    case ActivityType.Unsuccessful:
-                    case ActivityType.NotSatisfy:
+                    case ActivityType.NotSatisfying:
                         activityTypeSign = "\uf119";
                         break;
                     case ActivityType.Satisfy:

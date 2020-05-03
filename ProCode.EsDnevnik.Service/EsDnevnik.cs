@@ -22,7 +22,7 @@ namespace ProCode.EsDnevnik.Service
 
         // Cached vars.
         private string studentsResponseCache;
-        private string timeLineResponseCache;
+        private readonly IList<string> timeLineResponseCache = new List<string>();
         private string gradesResponseCache;
         private string absencesResponseCache;
         #endregion
@@ -48,7 +48,7 @@ namespace ProCode.EsDnevnik.Service
         {
             // Get token id, to compose login content.
             string token = await GetTokenAsync();
-            string content = $"_token={token}&username={Uri.EscapeDataString(userCredential.GetUsername())}&password={userCredential.GetPassword().ToString()}";
+            string content = $"_token={token}&username={Uri.EscapeDataString(userCredential.GetUsername())}&password={userCredential.GetPassword()}";
             HttpContent loginContent = new StringContent(content);
             loginContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");   // This is important!
 
@@ -90,7 +90,7 @@ namespace ProCode.EsDnevnik.Service
             }
 
         }
-        
+
         /// <summary>
         /// Get students for logged parent.
         /// </summary>
@@ -200,7 +200,10 @@ namespace ProCode.EsDnevnik.Service
         public async Task<Model.GeneratedTimeLine.Rootobject> GetTimeLineEventsAsync(Student student, bool resetTimleLineEventPage = false)
         {
             if (resetTimleLineEventPage)
+            {
                 timeLineEventsPage = timeLineEventFirstPage;
+                timeLineResponseCache.Clear();
+            }
 
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref timeLineEventsPage));
 
@@ -209,14 +212,14 @@ namespace ProCode.EsDnevnik.Service
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
                 timeLineEventsPage++;
-                timeLineResponseCache = await responseMsg.Content.ReadAsStringAsync();
+                timeLineResponseCache.Add(await responseMsg.Content.ReadAsStringAsync());
 
                 // Check if reached end of data                
-                var timelineResponseObj = JObject.Parse(timeLineResponseCache);
+                var timelineResponseObj = JObject.Parse(timeLineResponseCache.Last());
                 var data = timelineResponseObj.SelectToken("$.data", true);
                 if (data != null && data.Children().Count() > 0)
                 {
-                    rootTimeLine = JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache);
+                    rootTimeLine = JsonConvert.DeserializeObject<Model.GeneratedTimeLine.Rootobject>(timeLineResponseCache.Last());
                     rootTimeLineSorted.Meta = rootTimeLine.Meta;
                     foreach (var dateItem in rootTimeLine.Data.OrderByDescending(item => item.Key))
                     {
@@ -233,7 +236,6 @@ namespace ProCode.EsDnevnik.Service
             {
                 throw new Exception("Can't read time line.");
             }
-
             return rootTimeLineSorted;
         }
 

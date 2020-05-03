@@ -14,8 +14,7 @@ namespace ProCode.EsDnevnikMob.Converters
             if(value is ActivityType activityType)
                 switch(activityType)
                 {
-                    case ActivityType.Unsuccessful:
-                    case ActivityType.NotSatisfy:
+                    case ActivityType.NotSatisfying:
                         color = Color.Red;          // light red = Unsuccessful
                         break;
                     case ActivityType.Satisfy:
