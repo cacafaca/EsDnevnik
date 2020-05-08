@@ -70,22 +70,30 @@
                     <!-- Average grade -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="0"
-                                 Grid.Column="2">
-                        <Label Text="Pr="
-                               HorizontalOptions="Start" />
+                                 Grid.Column="2"
+                                 Padding="0"
+                                 Margin="0">
+                        <Label Text="μ="
+                               HorizontalOptions="Start"
+                               LineBreakMode="NoWrap"
+                               Padding="0,0,-3,0"
+                               Margin="0" />
                         <Label Text="{Binding Parts.Part1.Average, Converter={StaticResource averageGradeConverter}}"
-                               HorizontalOptions="Start" />
+                               HorizontalOptions="Start"
+                               LineBreakMode="NoWrap" />
                     </StackLayout>
                     <!-- Final grade -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="0"
                                  Grid.Column="3"
-                                 IsVisible="{Binding Parts.Part1, Converter={StaticResource gradeFinalVisibleFlagConverter}}">
+                                 IsVisible="{Binding Parts.Part1, Converter={StaticResource gradeFinalVisibleFlagConverter}}"
+                                 HorizontalOptions="EndAndExpand">
                         <Label Text="{Binding Parts.Part1.Final.Value}"
                                Grid.Row="0"
                                Grid.Column="3"
                                HorizontalTextAlignment="End"
-                               FontAttributes="Bold" />
+                               FontAttributes="Bold"
+                               Padding="0,0,-5,0" />
                         <Label Text="&#x1f512;" />
                     </StackLayout>
                     <!-- *** Second semester (I) *** -->
@@ -99,10 +107,13 @@
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="1"
                                  Grid.Column="2">
-                        <Label Text="Pr="
-                               HorizontalOptions="Start" />
+                        <Label Text="μ="
+                               HorizontalOptions="Start"
+                               LineBreakMode="NoWrap"
+                               Padding="0,0,-3,0" />
                         <Label Text="{Binding Parts.Part2.Average, Converter={StaticResource averageGradeConverter}}"
-                               HorizontalOptions="Start" />
+                               HorizontalOptions="Start"
+                               LineBreakMode="NoWrap" />
                     </StackLayout>
                     <!-- Final grade -->
                     <StackLayout Orientation="Horizontal"
