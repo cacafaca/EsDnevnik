@@ -58,19 +58,16 @@ namespace ProCode.EsDnevnikMob.ViewModels
 #endif
                     if (newRootTimeLine != null && newRootTimeLine.Data != null)
                     {
-                        IList<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> tempTimeLineEvents = new List<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
-                        foreach (var timeLineDate in newRootTimeLine.Data.OrderByDescending(date => date.Key))
-                            foreach (var timeLineEvent in timeLineDate.Value.OrderByDescending(ev => ev.SchoolHour))
-                                tempTimeLineEvents.Add(timeLineEvent);
+                        IList<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> newTimeLineEvents = new List<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
+                        foreach (var timeLineDate in newRootTimeLine.Data)
+                            foreach (var timeLineEvent in timeLineDate.Value)
+                                newTimeLineEvents.Add(timeLineEvent);
 
-                        foreach (var timeLineEvent in tempTimeLineEvents.OrderByDescending(e => e.CreateTime))
-                            TimeLineEvents.Add(timeLineEvent);
-
-                        // Sort complete list, because chunks contain events outside of its scope.
-                        var tempEventsDesc = TimeLineEvents.OrderByDescending(e => e.CreateTime).ToList();
+                        var allTimeLineEvents = TimeLineEvents.Union(newTimeLineEvents).ToList();
                         TimeLineEvents.Clear();
-                        foreach (var timeLineEvent in tempEventsDesc)
+                        foreach (var timeLineEvent in allTimeLineEvents.OrderByDescending(e => e.Date).ThenByDescending(e => e.SchoolHour))
                             TimeLineEvents.Add(timeLineEvent);
+                        
 
                         timeLineEventsPopulated = newRootTimeLine.Data.Count == 0; // If no elements are returned it means that complete list is retrieved.
                     }

@@ -191,7 +191,7 @@ namespace ProCode.EsDnevnik.Service
         }
 
         private const int timeLineEventFirstPage = 1;
-        private int timeLineEventsPage = timeLineEventFirstPage;
+        private int nextTimeLineEventsPage = timeLineEventFirstPage;
 
         /// <summary>
         /// Get time line.
@@ -201,17 +201,17 @@ namespace ProCode.EsDnevnik.Service
         {
             if (resetTimleLineEventPage)
             {
-                timeLineEventsPage = timeLineEventFirstPage;
+                nextTimeLineEventsPage = timeLineEventFirstPage;
                 timeLineResponseCache.Clear();
             }
 
-            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref timeLineEventsPage));
+            HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetTimeLineEventsUri(student, ref nextTimeLineEventsPage));
 
             Model.GeneratedTimeLine.Rootobject rootTimeLine;
             Model.GeneratedTimeLine.Rootobject rootTimeLineSorted = new Model.GeneratedTimeLine.Rootobject();
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
-                timeLineEventsPage++;
+                nextTimeLineEventsPage++;
                 timeLineResponseCache.Add(await responseMsg.Content.ReadAsStringAsync());
 
                 // Check if reached end of data                

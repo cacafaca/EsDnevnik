@@ -20,8 +20,16 @@ namespace ProCode.EsDnevnikMob.ViewModels
             this.dialogService = dialogService;
 
             IsLogging = false;
-            Username = userSettings.GetUsernameAsync().Result;
-            Password = userSettings.GetPasswordAsync().Result;
+
+            try
+            {
+                Username = userSettings.GetUsernameAsync().Result;
+                Password = userSettings.GetPasswordAsync().Result;
+            }
+            catch(Exception ex)
+            {
+                dialogService.DisplayAlertAsync("Greška?", ex.Message, "Uredu");
+            }
         }
 
         private readonly IPageDialogService dialogService;
@@ -65,11 +73,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 securePassword.AppendChar(c);
             }
 
-            if (esdService == null)
-                esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
-
             try
             {
+                if (esdService == null)
+                    esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
+
                 IsLogging = true;
 #if !DEBUGFAKE
                 await esdService.LoginAsync();
