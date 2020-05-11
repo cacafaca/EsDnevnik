@@ -27,6 +27,34 @@
                     <converters:AverageGradeConverter x:Key="averageGradeConverter" />
                     <converters:AverageTotalGradeConverter x:Key="averageTotalGradeConverter" />
                     <converters:GradeFinalVisibleFlagConverter x:Key="gradeFinalVisibleFlagConverter" />
+                    <!-- Styles -->
+                    <Style x:Key="averageSignStyle"
+                           TargetType="Label">
+                        <Setter Property="HorizontalOptions"
+                                Value="Start" />
+                        <Setter Property="LineBreakMode"
+                                Value="NoWrap" />
+                        <Setter Property="Padding"
+                                Value="0,0,-5,0" />
+                        <Setter Property="Margin"
+                                Value="0" />
+                    </Style>
+                    <Style x:Key="averageSemesterGradeStyle"
+                           TargetType="Label">
+                        <Setter Property="HorizontalOptions"
+                                Value="Start" />
+                        <Setter Property="LineBreakMode"
+                                Value="NoWrap" />
+                    </Style>
+                    <Style x:Key="finalSemesterGradeStyle"
+                           TargetType="Label">
+                        <Setter Property="HorizontalTextAlignment"
+                                Value="End" />
+                        <Setter Property="FontAttributes"
+                                Value="Bold" />
+                        <Setter Property="Padding"
+                                Value="0,0,-5,0" />
+                    </Style>
                 </ResourceDictionary>
             </Frame.Resources>
             <Grid x:Name="mainGradesGrid">
@@ -67,22 +95,17 @@
                     <Label Text="{Binding Parts.Part1.GradesString}"
                            Grid.Row="0"
                            Grid.Column="1" />
-                    <!-- Average grade -->
+                    <!-- Average grade I -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="0"
                                  Grid.Column="2"
-                                 Padding="0"
-                                 Margin="0">
+                                 IsVisible="{Binding IsNumerical}">
                         <Label Text="μ="
-                               HorizontalOptions="Start"
-                               LineBreakMode="NoWrap"
-                               Padding="0,0,-3,0"
-                               Margin="0" />
+                               Style="{StaticResource averageSignStyle}" />
                         <Label Text="{Binding Parts.Part1.Average, Converter={StaticResource averageGradeConverter}}"
-                               HorizontalOptions="Start"
-                               LineBreakMode="NoWrap" />
+                               Style="{StaticResource averageSemesterGradeStyle}" />
                     </StackLayout>
-                    <!-- Final grade -->
+                    <!-- Final grade I -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="0"
                                  Grid.Column="3"
@@ -91,31 +114,27 @@
                         <Label Text="{Binding Parts.Part1.Final.Value}"
                                Grid.Row="0"
                                Grid.Column="3"
-                               HorizontalTextAlignment="End"
-                               FontAttributes="Bold"
-                               Padding="0,0,-5,0" />
+                               Style="{StaticResource finalSemesterGradeStyle}" />
                         <Label Text="&#x1f512;" />
                     </StackLayout>
-                    <!-- *** Second semester (I) *** -->
+                    <!-- *** Second semester (II) *** -->
                     <Label Text="II"
                            Grid.Row="1"
                            Grid.Column="0" />
                     <Label Text="{Binding Parts.Part2.GradesString}"
                            Grid.Row="1"
                            Grid.Column="1" />
-                    <!-- Average grade -->
+                    <!-- Average grade II -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="1"
-                                 Grid.Column="2">
+                                 Grid.Column="2"
+                                 IsVisible="{Binding IsNumerical}">
                         <Label Text="μ="
-                               HorizontalOptions="Start"
-                               LineBreakMode="NoWrap"
-                               Padding="0,0,-3,0" />
+                               Style="{StaticResource averageSignStyle}" />
                         <Label Text="{Binding Parts.Part2.Average, Converter={StaticResource averageGradeConverter}}"
-                               HorizontalOptions="Start"
-                               LineBreakMode="NoWrap" />
+                               Style="{StaticResource averageSemesterGradeStyle}" />
                     </StackLayout>
-                    <!-- Final grade -->
+                    <!-- Final grade II -->
                     <StackLayout Orientation="Horizontal"
                                  Grid.Row="1"
                                  Grid.Column="3"
@@ -123,31 +142,44 @@
                         <Label Text="{Binding Parts.Part2.Final.Value}"
                                Grid.Row="0"
                                Grid.Column="3"
-                               HorizontalTextAlignment="End" />
+                               Style="{StaticResource finalSemesterGradeStyle}" />
                         <Label Text="&#x1f512;" />
                     </StackLayout>
                 </Grid>
-                <!-- Big final grade at the right -->
-                <AbsoluteLayout Grid.Row="0"
-                                Grid.Column="1"
-                                Grid.RowSpan="2">
-                    <Label Text="{Binding Final}"
-                           FontSize="{Binding Final, Converter={StaticResource finalGradeFontSizeConverter}}"
-                           FontAttributes="Bold"
-                           TextColor="{Binding Final, Converter={StaticResource gradeColorConverter}}"
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Start"
-                           VerticalOptions="Center"
-                           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
-                           AbsoluteLayout.LayoutBounds=".5,.5,1,1" />
-                    <!-- Lock sign -->
-                    <Label Text="&#x1f512;"
-                           TextColor="Gray"
-                           FontSize="16"
-                           AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
-                           AbsoluteLayout.LayoutBounds=".8,1,.33,.5"
-                           HorizontalTextAlignment="End" />
-                </AbsoluteLayout>
+                <StackLayout Orientation="Vertical"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             Grid.RowSpan="2">
+                    <!-- Big final grade at the right -->
+                    <AbsoluteLayout>
+                        <Label Text="{Binding Final}"
+                               FontSize="{Binding Final, Converter={StaticResource finalGradeFontSizeConverter}}"
+                               FontAttributes="Bold"
+                               TextColor="{Binding Final, Converter={StaticResource gradeColorConverter}}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Start"
+                               VerticalOptions="Center"
+                               AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                               AbsoluteLayout.LayoutBounds=".5,.5,1,1" />
+                        <!-- Lock sign -->
+                        <Label Text="&#x1f512;"
+                               TextColor="Gray"
+                               FontSize="16"
+                               AbsoluteLayout.LayoutFlags="PositionProportional, SizeProportional"
+                               AbsoluteLayout.LayoutBounds=".8,1,.33,.5"
+                               HorizontalTextAlignment="End" />
+                    </AbsoluteLayout>
+                    <!-- Average final -->
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="Center"
+                                 IsVisible="{Binding IsNumerical}">
+                        <Label Text="μ="
+                               Style="{StaticResource averageSignStyle}"
+                               TextColor="LightGray" />
+                        <Label Text="{Binding AverageCalculated, Converter={StaticResource averageGradeConverter}}"
+                               TextColor="LightGray" />
+                    </StackLayout>
+                </StackLayout>
             </Grid>
         </Frame>
     </ViewCell.View>

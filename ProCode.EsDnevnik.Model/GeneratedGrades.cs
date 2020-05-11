@@ -32,14 +32,46 @@ namespace ProCode.EsDnevnik.Model.GeneratedGrades
         {
             return $"Предмет:{Course}, <Прво полугође:{Parts.Part1?.GradesString}, Просек:{Parts.Part1?.Average}, Закључна:{Parts.Part1?.Final?.Value}>, <Друго полугође:{Parts.Part2?.GradesString}, Просек:{Parts.Part2?.Average}, Закључна:{Parts.Part2?.Final?.Value}>";
         }
+
+        /// <summary>
+        /// Calculated average value. Not taken from data.
+        /// </summary>
         [JsonIgnore]
-        public float Average
+        public float AverageCalculated
         {
             get
             {
-                return Parts.Part2.Average > 0 ? Parts.Part2.Average : Parts.Part1.Average;
+                if (Parts != null)
+                {
+                    if (Parts.Part1 != null && Parts.Part1.Grades != null)
+                    {
+                        var part1 = Parts.Part1.Grades.Where(g => g.GradeValue > 0).Select(g => g.GradeValue);
+                        if (part1.Count() > 0)
+                        {
+                            if (Parts.Part2 != null && Parts.Part2.Grades != null)
+                            {
+                                var part2 = Parts.Part2.Grades.Where(g => g.GradeValue > 0).Select(g => g.GradeValue);
+                                if (part2.Count() > 0)
+                                    return ((float)(part1.Sum() + part2.Sum())) / (part1.Count() + part2.Count());
+                                else
+                                    return (float)part1.Sum() / part1.Count();
+                            }
+                            else
+                                return (float)part1.Sum() / part1.Count();
+                        }
+                        else
+                            return 0;
+                    }
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
             }
         }
+
+        [JsonIgnore]
+        public bool IsNumerical { get { return ClassCourseGradeTypeId == 1; } }
     }
 
     public class Parts
