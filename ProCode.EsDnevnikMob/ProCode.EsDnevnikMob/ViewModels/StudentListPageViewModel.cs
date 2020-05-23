@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Prism.Services;
 using ProCode.EsDnevnik.Model;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
 {
     public class StudentListPageViewModel : ViewModelBase, INavigatedAware
     {
-        public StudentListPageViewModel(INavigationService navigationService) : base(navigationService)
+        public StudentListPageViewModel(INavigationService navigationService, IPageDialogService dialogService) :
+            base(navigationService, dialogService)
         {
             Title = "Моја деца";
             students = new ObservableCollection<Student>();
@@ -24,31 +26,38 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (esdService == null)
+            try
             {
-                esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
-            }
+                if (esdService == null)
+                {
+                    esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>("esdService");
+                }
 
-            // Skip if already fetched.
-            if (Students.Count == 0)
-            {
-                IList<Student> students = null;
-                IsBussy = true;
+                // Skip if already fetched.
+                if (Students.Count == 0)
+                {
+                    IList<Student> students = null;
+                    IsBussy = true;
 #if !DEBUGFAKE
-                students = await esdService.GetStudentsAsync();
+                    students = await esdService.GetStudentsAsync();
 #else
                 await Task.Run(() => { students = esdService.GetStudentsFake(); });
 #endif
-                IsBussy = false;
-                foreach (var stud in students)
-                {
-                    Students.Add(stud);
+                    IsBussy = false;
+                    foreach (var stud in students)
+                    {
+                        Students.Add(stud);
+                    }
+                    if (Students.Count == 1)
+                    {
+                        SelectedStudent = Students.First();
+                        ExecuteItemTappedCommand();
+                    }
                 }
-                if (Students.Count == 1)
-                {
-                    SelectedStudent = Students.First();
-                    ExecuteItemTappedCommand();
-                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlertAsync(ex);
             }
         }
 
@@ -72,12 +81,19 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private async void ExecuteItemTappedCommand()
         {
-            var param = new NavigationParameters
+            try
             {
-                { nameof(esdService), esdService },
-                { nameof(SelectedStudent), SelectedStudent }
-            };
-            await NavigationService.NavigateAsync(nameof(Views.StudentOverviewPage), param);
+                var param = new NavigationParameters
+                {
+                    { nameof(esdService), esdService },
+                    { nameof(SelectedStudent), SelectedStudent }
+                };
+                await NavigationService.NavigateAsync(nameof(Views.StudentOverviewPage), param);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlertAsync(ex);
+            }
         }
 
         public static string GetEsdServiceParamName()

@@ -1,23 +1,17 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 using ProCode.EsDnevnik.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xamarin.Essentials;
 
 namespace ProCode.EsDnevnikMob.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
         public MainPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
-            : base(navigationService)
+            : base(navigationService, dialogService)
         {
             Title = "Електронски дневник";
-            this.dialogService = dialogService;
 
             IsLogging = false;
 
@@ -26,16 +20,15 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 Username = userSettings.GetUsernameAsync().Result;
                 Password = userSettings.GetPasswordAsync().Result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                dialogService.DisplayAlertAsync("Greška?", ex.Message, "Uredu");
+                DisplayAlertAsync(ex).Wait();
             }
         }
 
-        private readonly IPageDialogService dialogService;
         private readonly UserSettings userSettings = new UserSettings();
         private EsDnevnik.Service.EsDnevnik esdService;
-        private bool firstAppaerance = true;
+        private bool autoLoginFlag = true;
 
         private string username;
         public string Username
@@ -55,26 +48,25 @@ namespace ProCode.EsDnevnikMob.ViewModels
         public DelegateCommand LoginNavigateCommand => loginNavigateCommand ?? (loginNavigateCommand = new DelegateCommand(ExecuteLoginNavigateCommand));
         async void ExecuteLoginNavigateCommand()
         {
-
-            if (string.IsNullOrWhiteSpace(Username))
-            {
-                await dialogService.DisplayAlertAsync("Greška?", "Unesi korisničko ime.", "Uredu");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(Password))
-            {
-                await dialogService.DisplayAlertAsync("Greška?", "Unesi lozinku.", "Uredu");
-                return;
-            }
-
-            var securePassword = new System.Security.SecureString();
-            foreach (var c in Password)
-            {
-                securePassword.AppendChar(c);
-            }
-
             try
             {
+                if (string.IsNullOrWhiteSpace(Username))
+                {
+                    await DialogService.DisplayAlertAsync("Грешка?", "Унеси корисничко име.", "У реду");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(Password))
+                {
+                    await DialogService.DisplayAlertAsync("Грешка?", "Унеси лозинку.", "У реду");
+                    return;
+                }
+
+                var securePassword = new System.Security.SecureString();
+                foreach (var c in Password)
+                {
+                    securePassword.AppendChar(c);
+                }
+
                 if (esdService == null)
                     esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
 
@@ -96,7 +88,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
             catch (Exception ex)
             {
-                await dialogService.DisplayAlertAsync("Greška?", ex.Message, "Uredu");
+                await DisplayAlertAsync(ex);
             }
             finally
             {
@@ -133,10 +125,17 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
         private void ExecuteAppearingCommand()
         {
-            if (firstAppaerance && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
+            try
             {
-                firstAppaerance = false;
-                ExecuteLoginNavigateCommand();
+                if (autoLoginFlag && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
+                {
+                    autoLoginFlag = false;
+                    ExecuteLoginNavigateCommand();
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayAlertAsync(ex).Wait();
             }
         }
 

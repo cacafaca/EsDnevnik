@@ -226,6 +226,7 @@ namespace ProCode.EsDnevnik.Service
                         List<Model.GeneratedTimeLine.TimeLineEvent> newTimeLineEventList = new List<Model.GeneratedTimeLine.TimeLineEvent>();
                         foreach (var timeLineEvent in dateItem.Value.OrderByDescending(item => item.Date))
                         {
+                            timeLineEvent.Note = System.Web.HttpUtility.HtmlDecode(timeLineEvent.Note);
                             newTimeLineEventList.Add(timeLineEvent);
                         }
                         rootTimeLineSorted.Data.Add(dateItem.Key, newTimeLineEventList.ToArray());

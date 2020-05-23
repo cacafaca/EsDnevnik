@@ -29,6 +29,7 @@
                     <converters:TimeLineEventActivityTypeConverter x:Key="timeLineEventActivityTypeConverter" />
                 </ResourceDictionary>
             </Frame.Resources>
+            <!-- First level split: Left and Right. Left is grade, right is course/class info. -->
             <Grid Padding="5,0,5,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -37,6 +38,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
+                <!-- Grades, activities, ... -->
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -71,6 +73,7 @@
                                HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>
+                <!-- Course/class info -->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

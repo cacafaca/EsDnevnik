@@ -14,19 +14,16 @@ namespace ProCode.EsDnevnikMob.ViewModels
 {
     public class StudentOverviewPageViewModel : ViewModelBase, INavigatedAware
     {
-        public StudentOverviewPageViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService)
+        public StudentOverviewPageViewModel(INavigationService navigationService, IPageDialogService dialogService) : base(navigationService, dialogService)
         {
             Title = "Преглед за дете";
             timeLineEvents = new ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent>();
             coursesGrades = new ObservableCollection<CourseGrades>();
             absences = new ObservableCollection<EsDnevnik.Model.GeneratedAbsences.AbsenceSequence>();
-            this.dialogService = dialogService;
         }
 
         EsDnevnik.Service.EsDnevnik esdService;
         Student Student;
-        private readonly IPageDialogService dialogService;
-
 
         #region Time Line Events tab
         private ObservableCollection<EsDnevnik.Model.GeneratedTimeLine.TimeLineEvent> timeLineEvents;
@@ -37,7 +34,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         }
         private bool timeLineEventsPopulated = false;
 
-        private async Task LoadTimeLine(TimeLineLoadType loadType)
+        private async Task LoadTimeLineAsync(TimeLineLoadType loadType)
         {
             EsDnevnik.Model.GeneratedTimeLine.Rootobject newRootTimeLine = null;
             bool resetTimleLineEventPage = loadType == TimeLineLoadType.Refresh;
@@ -54,7 +51,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
 #if !DEBUGFAKE
                     newRootTimeLine = await esdService.GetTimeLineEventsAsync(Student, resetTimleLineEventPage);
 #else
-                await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
+                    await Task.Run(() => { newRootTimeLine = esdService.GetTimeLineEventsFake(); });
 #endif
                     if (newRootTimeLine != null && newRootTimeLine.Data != null)
                     {
@@ -67,14 +64,14 @@ namespace ProCode.EsDnevnikMob.ViewModels
                         TimeLineEvents.Clear();
                         foreach (var timeLineEvent in allTimeLineEvents.OrderByDescending(e => e.Date).ThenByDescending(e => e.SchoolHour))
                             TimeLineEvents.Add(timeLineEvent);
-                        
+
 
                         timeLineEventsPopulated = newRootTimeLine.Data.Count == 0; // If no elements are returned it means that complete list is retrieved.
                     }
                 }
                 catch (Exception ex)
                 {
-                    await dialogService.DisplayAlertAsync("Грешка?", ex.Message, "Уреду");
+                    await DisplayAlertAsync(ex);
                 }
                 finally
                 {
@@ -102,7 +99,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
         {
             if (!TimeLineEvents.Any(tle => tle.Type == EsDnevnik.Model.GeneratedTimeLine.EventType.Loading) && timeLineEvent != null && timeLineEvent == TimeLineEvents.LastOrDefault())
             {
-                _ = LoadTimeLine(TimeLineLoadType.NextPage);
+                _ = LoadTimeLineAsync(TimeLineLoadType.NextPage);
             }
         }
         #endregion
@@ -117,19 +114,26 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref coursesGrades, value); }
         }
 
-        public async Task LoadGrades(Student student)
+        public async Task LoadGradesAsync(Student student)
         {
             if (CoursesGrades.Count == 0)
             {
-                EsDnevnik.Model.GeneratedGrades.Rootobject gradesRoot = null;
+                Rootobject gradesRoot = null;
+                try
+                {
 #if !DEBUGFAKE
-                gradesRoot = await esdService.GetGradesAsync(Student);
+                    gradesRoot = await esdService.GetGradesAsync(Student);
 #else
-                await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
+                    await Task.Run(() => { gradesRoot = esdService.GetGradesFake(); });
 #endif
-                CoursesGrades.Clear();
-                foreach (var courseGrade in gradesRoot.Courses.OrderBy(ev => ev, new GradesComparer<CourseGrades>()))
-                    CoursesGrades.Add(courseGrade);
+                    CoursesGrades.Clear();
+                    foreach (var courseGrade in gradesRoot.Courses.OrderBy(ev => ev, new GradesComparer<CourseGrades>()))
+                        CoursesGrades.Add(courseGrade);
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlertAsync(ex);
+                }
             }
         }
 
@@ -145,25 +149,32 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref absences, value); }
         }
 
-        private async Task LoadAbsences(Student student)
+        private async Task LoadAbsencesAsync(Student student)
         {
             EsDnevnik.Model.GeneratedAbsences.AbsencesRoot absencesRoot = null;
+            try
+            {
 #if !DEBUGFAKE
-            absencesRoot = await esdService.GetAbsencesAsync(Student);
+                absencesRoot = await esdService.GetAbsencesAsync(Student);
 #else
                 await Task.Run(() => { absencesRoot = esdService.GetAbsencesFake(); });
 #endif
-            Absences.Clear();
-            foreach (var absence in absencesRoot.Values.OrderByDescending(a => a.AbsentStatuses.Unregulated?.Absents.Length).
-                ThenByDescending(a => a.AbsentStatuses.Unjustified?.Absents.Length).
-                ThenByDescending(a => a.AbsentStatuses.Justified?.Absents.Length))
-                Absences.Add(absence);
+                Absences.Clear();
+                foreach (var absence in absencesRoot.Values.OrderByDescending(a => a.AbsentStatuses.Unregulated?.Absents.Length).
+                    ThenByDescending(a => a.AbsentStatuses.Unjustified?.Absents.Length).
+                    ThenByDescending(a => a.AbsentStatuses.Justified?.Absents.Length))
+                    Absences.Add(absence);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlertAsync(ex);
+            }
         }
         #endregion
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            // Validate params.
+            // Validate parameters.
             if (esdService == null)
                 esdService = parameters.GetValue<EsDnevnik.Service.EsDnevnik>(StudentListPageViewModel.GetEsdServiceParamName());
             if (Student == null)
@@ -173,12 +184,13 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
 
             // Time line data fetch 
-            await LoadTimeLine(TimeLineLoadType.Refresh);
+            await LoadTimeLineAsync(TimeLineLoadType.Refresh);
 
-            // Grades fetch
-            await LoadGrades(Student);
+            // Grades data fetch.
+            await LoadGradesAsync(Student);
 
-            await LoadAbsences(Student);
+            // Absences data fetch.
+            await LoadAbsencesAsync(Student);
         }
     }
 

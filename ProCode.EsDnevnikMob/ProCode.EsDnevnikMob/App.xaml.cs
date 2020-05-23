@@ -21,9 +21,17 @@ namespace ProCode.EsDnevnikMob
 
         protected override async void OnInitialized()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+                await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            }
+            catch (System.Exception ex)
+            {
+                MainPage = new ErrorPage();
+                ((ErrorPageViewModel)MainPage.BindingContext).Message = ex.Message;
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -32,6 +40,7 @@ namespace ProCode.EsDnevnikMob
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<StudentListPage, StudentListPageViewModel>();
             containerRegistry.RegisterForNavigation<StudentOverviewPage, StudentOverviewPageViewModel>();
+            containerRegistry.RegisterForNavigation<ErrorPage, ErrorPageViewModel>();
         }
     }
 }
