@@ -13,8 +13,8 @@ namespace ProCode.EsDnevnik.Service
             this.username = username.Trim();
             this.password = password;
         }
-        private string username;
-        private SecureString password;
+        private readonly string username;
+        private readonly SecureString password;
         public string GetUsername()
         {
             return username;

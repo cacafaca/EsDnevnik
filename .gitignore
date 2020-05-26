@@ -340,3 +340,5 @@ ASALocalRun/
 healthchecksdb
 /ProCode.EsDnevnik.ServiceTest/LoginDetails.config
 /ProCode.EsDnevnik.ServiceTest/LoginDetails.json
+/ProCode.EsDnevnik.ServiceTest/ResetPasswordDetails.json
+/ProCode.EsDnevnik.ServiceTest/EmailDetails.json

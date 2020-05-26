@@ -15,7 +15,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void Load_Login_Data()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
 
             string username = userCredential.GetUsername();
             Assert.IsNotNull(username, "Can''t read username.");
@@ -29,7 +29,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void Login_And_Logout()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
 
             try
@@ -45,7 +45,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void Login_Get_Students_Logout()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
 
             try
@@ -64,7 +64,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void Login_GetTimeLineEvents_Logout()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
 
             try
@@ -91,7 +91,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void GetGrades()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
 
             try
@@ -118,7 +118,7 @@ namespace ProCode.EsDnevnik.ServiceTest
         [TestMethod]
         public void GetAbsences()
         {
-            var userCredential = Config.GetUserCredentials();
+            var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
 
             try
@@ -139,6 +139,23 @@ namespace ProCode.EsDnevnik.ServiceTest
             {
                 esd.LogoutAsync().Wait();
             }
+        }
+
+        [TestMethod]
+        public void Send_Reset_Password_Request()
+        {
+            var resetPasswordCredential = Config.GetResetPaswordEmail();
+            Service.EsDnevnik esd = new Service.EsDnevnik(resetPasswordCredential);
+
+            try
+            {
+                esd.ResetPasswordRequestAsync().Wait();
+            }
+            finally
+            {
+                esd.LogoutAsync().Wait();
+            }
+
         }
     }
 }

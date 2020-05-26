@@ -13,12 +13,12 @@ namespace ProCode.EsDnevnik.Service
         {
             baseUri = new Uri("https://moj.esdnevnik.rs");
         }
-        public Uri GetLoginUri()
+        internal Uri GetLoginUri()
         {
             return new Uri(baseUri, "/login");
         }
 
-        public Uri GetLogoutUri()
+        internal Uri GetLogoutUri()
         {
             return new Uri(baseUri, "/logout");
         }
@@ -55,5 +55,14 @@ namespace ProCode.EsDnevnik.Service
         {
             return new Uri(baseUri, $"/api/absents/{student.GetLastStudentClassId()}");
         }
+        internal Uri GetResetPasswordUri()
+        {
+            return new Uri(baseUri, $"/auth/reset-password");
+        }
+        internal Uri GetResetPasswordRequestUri()
+        {
+            return new Uri(baseUri, $"/auth/reset-password/request");
+        }
+        
     }
 }

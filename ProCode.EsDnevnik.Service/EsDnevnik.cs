@@ -44,6 +44,10 @@ namespace ProCode.EsDnevnik.Service
 
         #region Public methods
 
+        /// <summary>
+        /// Login to system using username and password.
+        /// </summary>
+        /// <returns></returns>
         public async Task LoginAsync()
         {
             // Get token id, to compose login content.
@@ -77,6 +81,10 @@ namespace ProCode.EsDnevnik.Service
             }
         }
 
+        /// <summary>
+        /// Logout from the system.
+        /// </summary>
+        /// <returns></returns>
         public async Task LogoutAsync()
         {
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetLogoutUri());
@@ -92,7 +100,7 @@ namespace ProCode.EsDnevnik.Service
         }
 
         /// <summary>
-        /// Get students for logged parent.
+        /// Get students for logged parent/user.
         /// </summary>
         /// <returns></returns>
         public async Task<IList<Student>> GetStudentsAsync()
@@ -292,6 +300,33 @@ namespace ProCode.EsDnevnik.Service
         {
             string gradesJson = FakeData.GetFakeAbsencesJson();
             return JsonConvert.DeserializeObject<AbsencesRoot>(gradesJson);
+        }
+
+        /// <summary>
+        /// Send request to reset password.
+        /// </summary>
+        /// <returns></returns>
+        public async Task ResetPasswordRequestAsync()
+        {
+            // Get token id, to compose login content.
+            string token = await GetTokenAsync();
+            string content = $"_token={token}&email={Uri.EscapeDataString(userCredential.GetUsername())}";
+            HttpContent resetPasswordRequestContent = new StringContent(content);
+            resetPasswordRequestContent.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");   // This is important!
+
+            // Send POST command.
+            HttpResponseMessage responseMsg = await client.PostAsync(uriDictionary.GetResetPasswordRequestUri(), resetPasswordRequestContent);
+
+            if (responseMsg.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string responseContent = await responseMsg.Content.ReadAsStringAsync();
+                if (!responseContent.Contains("Захтев за ресетовање лозинке је послат на Ваш имејл."))
+                    throw new Exception("Неуспешно слање захтева за поништење лозинке.");
+            }
+            else
+            {
+                throw new LoginException(responseMsg.StatusCode, "Не могу да се пријавим на moj.esdnevnik.rs. Грешка: " + responseMsg.ReasonPhrase);
+            }
         }
 
         #endregion
