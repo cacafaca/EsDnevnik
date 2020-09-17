@@ -160,10 +160,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 await Task.Run(() => { absencesRoot = esdService.GetAbsencesFake(); });
 #endif
                 Absences.Clear();
-                foreach (var absence in absencesRoot.Values.OrderByDescending(a => a.AbsentStatuses.Unregulated?.Absents.Length).
-                    ThenByDescending(a => a.AbsentStatuses.Unjustified?.Absents.Length).
-                    ThenByDescending(a => a.AbsentStatuses.Justified?.Absents.Length))
-                    Absences.Add(absence);
+                if (absencesRoot != null)
+                    foreach (var absence in absencesRoot.Values.OrderByDescending(a => a.AbsentStatuses.Unregulated?.Absents.Length).
+                        ThenByDescending(a => a.AbsentStatuses.Unjustified?.Absents.Length).
+                        ThenByDescending(a => a.AbsentStatuses.Justified?.Absents.Length))
+                        Absences.Add(absence);
             }
             catch (Exception ex)
             {

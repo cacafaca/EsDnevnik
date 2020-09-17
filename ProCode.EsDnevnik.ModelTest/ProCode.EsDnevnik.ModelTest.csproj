@@ -34,6 +34,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\ExampleAbsenceNotConfirmed.json" />
     <EmbeddedResource Include="Resources\ExampleAbsences.json" />
+    <EmbeddedResource Include="Resources\ExampleAbsencesEmpty.json" />
     <EmbeddedResource Include="Resources\ExampleGradesSemester1NotFinished.json" />
     <EmbeddedResource Include="Resources\ExampleGradesSemester2Finished.json" />
     <EmbeddedResource Include="Resources\ExampleTimeLine.json" />

@@ -50,5 +50,21 @@ namespace ProCode.EsDnevnik.ModelTest
             Assert.AreEqual("Српски језик", absences.FirstOrDefault().Value.Name);
             Assert.AreEqual("2020-01-20", absences.FirstOrDefault().Value.AbsentStatuses.Unregulated.Absents[0].WorkdayDate);
         }
+
+        [TestMethod]
+        public void Load_Absences_Empty_List()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "ProCode.EsDnevnik.ModelTest.Resources.ExampleAbsencesEmpty.json";
+
+            string absencesJson = string.Empty;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                absencesJson = reader.ReadToEnd();
+            }
+
+            Model.GeneratedAbsences.AbsencesRoot absences = JsonConvert.DeserializeObject<Model.GeneratedAbsences.AbsencesRoot>(absencesJson);
+        }
     }
 }

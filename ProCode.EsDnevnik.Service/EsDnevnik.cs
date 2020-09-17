@@ -280,13 +280,16 @@ namespace ProCode.EsDnevnik.Service
             return isLoggedIn;
         }
 
-        public async Task<Model.GeneratedAbsences.AbsencesRoot> GetAbsencesAsync(Student student)
+        public async Task<AbsencesRoot> GetAbsencesAsync(Student student)
         {
             HttpResponseMessage responseMsg = await client.GetAsync(uriDictionary.GetAbsenceUri(student));
             if (responseMsg.StatusCode == HttpStatusCode.OK)
             {
                 absencesResponseCache = await responseMsg.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Model.GeneratedAbsences.AbsencesRoot>(absencesResponseCache);
+                if (absencesResponseCache.Trim() != "[]")   // Protect from empty lists, until I figure out correct set of structures.
+                    return JsonConvert.DeserializeObject<AbsencesRoot>(absencesResponseCache);
+                else
+                    return null;
             }
             else
                 return null;
