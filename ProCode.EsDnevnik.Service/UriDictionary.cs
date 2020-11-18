@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProCode.EsDnevnik.Service
 {
-    class UriDictionary
+    public class UriDictionary
     {
         readonly Uri baseUri;
         public UriDictionary()
@@ -23,7 +23,7 @@ namespace ProCode.EsDnevnik.Service
             return new Uri(baseUri, "/logout");
         }
 
-        internal Uri GetBase()
+        public Uri GetBase()
         {
             return baseUri;
         }

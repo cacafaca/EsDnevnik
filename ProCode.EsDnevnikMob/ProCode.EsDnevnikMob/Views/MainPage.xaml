@@ -9,6 +9,17 @@
         <prism:EventToCommandBehavior EventName="Appearing"
                                       Command="{Binding AppearingCommand}" />
     </ContentPage.Behaviors>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Претраживач"
+                     Order="Primary"
+                     Command="{Binding OpenBrowserCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource FontAwesomeRegular}"
+                                 Glyph="&#xf1d8;"
+                                 Size="Large" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <StackLayout HorizontalOptions="Fill"
                  VerticalOptions="StartAndExpand"
                  Orientation="Vertical">
@@ -49,5 +60,15 @@
                HorizontalTextAlignment="Center"
                TextColor="PaleVioletRed"
                FontSize="Default" />
+        <Label IsVisible="{Binding IsVisibleFailedLoginInstruction}"
+               FontFamily="{StaticResource FontAwesomeRegular}"
+               Text="ВАЖНО!&#13;Ако сте заборавили лозинку можете притиснути авион ( &#xf1d8; ) на врху екрана који ће Вас одвести до званичног сајта."
+               x:Name="failedLoginInstructionLabel"
+               VerticalOptions="EndAndExpand"
+               VerticalTextAlignment="End"
+               HorizontalTextAlignment="Center"
+               TextColor="#FF3E3E"
+               FontSize="Medium"
+               Padding="5" />
     </StackLayout>
 </ContentPage>

@@ -44,9 +44,53 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { SetProperty(ref password, value); }
         }
 
+        private bool isLogging;
+        public bool IsLogging
+        {
+            get { return isLogging; }
+            set
+            {
+                SetProperty(ref isLogging, value);
+                if (isNotLogging == isLogging)
+                    IsNotLogging = !isLogging;
+            }
+        }
+
+        private bool isNotLogging;
+        public bool IsNotLogging
+        {
+            get { return isNotLogging; }
+            set
+            {
+                SetProperty(ref isNotLogging, value);
+                if (isLogging == isNotLogging)
+                    IsLogging = !isNotLogging;
+            }
+        }
+
+        int failedLoginAttempts = 0;
+        private int FailedLoginAttempts
+        {
+            get { return failedLoginAttempts; }
+            set
+            {
+                failedLoginAttempts = value;
+                IsVisibleFailedLoginInstruction = failedLoginAttempts > 0;
+            }
+        }
+
+        bool isVisibleFailedLoginInstruction;
+        public bool IsVisibleFailedLoginInstruction
+        {
+            get { return isVisibleFailedLoginInstruction; }
+            private set { SetProperty(ref isVisibleFailedLoginInstruction, value); }
+        }
+
+        #region Commands
+
         private DelegateCommand loginNavigateCommand;
-        public DelegateCommand LoginNavigateCommand => loginNavigateCommand ?? (loginNavigateCommand = new DelegateCommand(ExecuteLoginNavigateCommand));
-        async void ExecuteLoginNavigateCommand()
+        public DelegateCommand LoginNavigateCommand => loginNavigateCommand ?? (loginNavigateCommand = new DelegateCommand(ExecuteLoginNavigateCommandAsync));
+        async void ExecuteLoginNavigateCommandAsync()
         {
             try
             {
@@ -77,6 +121,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 await esdService.LoginAsync();
 #else
 #endif
+                FailedLoginAttempts = 0;
+
                 // Store user credentials.
                 await userSettings.SetUsernameAsync(Username);
                 await userSettings.SetPasswordAsync(Password);
@@ -91,34 +137,11 @@ namespace ProCode.EsDnevnikMob.ViewModels
             catch (Exception ex)
             {
                 await DisplayAlertAsync(ex);
+                FailedLoginAttempts++;
             }
             finally
             {
                 IsLogging = false;
-            }
-        }
-
-        private bool isLogging;
-        public bool IsLogging
-        {
-            get { return isLogging; }
-            set
-            {
-                SetProperty(ref isLogging, value);
-                if (isNotLogging == isLogging)
-                    IsNotLogging = !isLogging;
-            }
-        }
-
-        private bool isNotLogging;
-        public bool IsNotLogging
-        {
-            get { return isNotLogging; }
-            set
-            {
-                SetProperty(ref isNotLogging, value);
-                if (isLogging == isNotLogging)
-                    IsLogging = !isNotLogging;
             }
         }
 
@@ -132,7 +155,7 @@ namespace ProCode.EsDnevnikMob.ViewModels
                 if (autoLoginFlag && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
                 {
                     autoLoginFlag = false;
-                    ExecuteLoginNavigateCommand();
+                    ExecuteLoginNavigateCommandAsync();
                 }
             }
             catch (Exception ex)
@@ -141,5 +164,13 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
         }
 
+        private DelegateCommand openBrowserCommand;
+        public DelegateCommand OpenBrowserCommand => openBrowserCommand ?? (openBrowserCommand = new DelegateCommand(ExecuteOpenBrowserCommandAsync));
+        async void ExecuteOpenBrowserCommandAsync()
+        {
+            await Xamarin.Essentials.Browser.OpenAsync(new EsDnevnik.Service.UriDictionary().GetBase(), Xamarin.Essentials.BrowserLaunchMode.SystemPreferred);
+        }
+
+        #endregion
     }
 }
