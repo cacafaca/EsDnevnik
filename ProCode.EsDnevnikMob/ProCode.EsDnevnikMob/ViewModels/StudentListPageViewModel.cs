@@ -76,6 +76,20 @@ namespace ProCode.EsDnevnikMob.ViewModels
             set { selectedStudent = value; }
         }
 
+        public static string GetEsdServiceParamName()
+        {
+            return nameof(esdService);
+        }
+
+        private bool isBussy;
+
+        public bool IsBussy
+        {
+            get { return isBussy; }
+            set { SetProperty(ref isBussy, value); }
+        }
+
+        #region Commands
         private DelegateCommand itemTappedCommand;
         public DelegateCommand ItemTappedCommand => itemTappedCommand ?? (itemTappedCommand = new DelegateCommand(ExecuteItemTappedCommand));
 
@@ -96,18 +110,16 @@ namespace ProCode.EsDnevnikMob.ViewModels
             }
         }
 
-        public static string GetEsdServiceParamName()
+        DelegateCommand studentListMenuCommand;
+        DelegateCommand StudentListMenuCommand => studentListMenuCommand ?? (studentListMenuCommand = new DelegateCommand(ExecuteMenuCommand));
+        private void ExecuteMenuCommand()
         {
-            return nameof(esdService);
+            //ToolbarItem. ().Add(new Menu() { Text = "Test" });
+
+            //await NavigationService.NavigateAsync(nameof(Views.StudentOverviewPage), param);
         }
 
-        private bool isBussy;
-
-        public bool IsBussy
-        {
-            get { return isBussy; }
-            set { SetProperty(ref isBussy, value); }
-        }
+        #endregion
 
     }
 }

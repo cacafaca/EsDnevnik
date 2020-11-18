@@ -15,7 +15,7 @@ namespace ProCode.EsDnevnik.Service
     public class EsDnevnik
     {
         #region Private Properties
-        readonly UserCredential userCredential;
+        UserCredential userCredential;
         HttpClient client;
         private readonly UriDictionary uriDictionary;
         private bool isLoggedIn;
@@ -52,7 +52,7 @@ namespace ProCode.EsDnevnik.Service
         {
             // Get token id, to compose login content.
             string token = await GetTokenAsync();
-            string content = $"_token={token}&username={Uri.EscapeDataString(userCredential.GetUsername())}&password={userCredential.GetPassword()}";
+            string content = $"_token={token}&username={Uri.EscapeDataString(userCredential.GetUsername().Trim())}&password={userCredential.GetPassword().Trim()}";
             HttpContent loginContent = new StringContent(content);
             loginContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/x-www-form-urlencoded");   // This is important!
 
@@ -72,7 +72,18 @@ namespace ProCode.EsDnevnik.Service
                 }
                 else
                 {
-                    throw new LoginException(responseMsg.StatusCode, "Can't log in.");
+                    var badLoginParams = doc.DocumentNode.SelectNodes("//*[text()[contains(.,'Унети подаци нису тачни')]]");
+                    if (badLoginParams != null)
+                        throw new LoginException(responseMsg.StatusCode, badLoginParams.FirstOrDefault().InnerText);
+                    else
+                    {
+                        var form = doc.DocumentNode.SelectSingleNode("//form[@method='POST' and @action='https://moj.esdnevnik.rs/login']");
+                        if (form != null)
+                            throw new LoginException(responseMsg.StatusCode, form.ChildNodes.Select(node=>node.InnerText.Trim())
+                                .Aggregate((nodeText1, nodeText2)=>(nodeText1 + "\n" + nodeText2)));
+                        else
+                            throw new LoginException(responseMsg.StatusCode, "Непозната грешка приликом пријаве.");
+                    }
                 }
             }
             else
@@ -330,6 +341,11 @@ namespace ProCode.EsDnevnik.Service
             {
                 throw new LoginException(responseMsg.StatusCode, "Не могу да се пријавим на moj.esdnevnik.rs. Грешка: " + responseMsg.ReasonPhrase);
             }
+        }
+
+        public void SetUserCredentials(UserCredential userCredential)
+        {
+            this.userCredential = userCredential;
         }
 
         #endregion

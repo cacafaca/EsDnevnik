@@ -6,6 +6,20 @@
              x:Class="ProCode.EsDnevnikMob.Views.StudentListPage"
              xmlns:converters="clr-namespace:ProCode.EsDnevnikMob.Converters"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <!-- Hospital &#x1f3e5; -->
+        <!--
+        <ToolbarItem Text="Пошаљи програмеру"
+                     Order="Secondary"
+                     Priority="0"
+                     Command="{Binding StudentListMenuCommand}" />
+        <ToolbarItem Text="Пошаљи програмеру2"
+                     Order="Secondary"
+                     Priority="0"
+                     Command="{Binding StudentListMenuCommand}">            
+        </ToolbarItem>
+        -->
+    </ContentPage.ToolbarItems>
     <AbsoluteLayout>
         <StackLayout HorizontalOptions="CenterAndExpand"
                      VerticalOptions="StartAndExpand"

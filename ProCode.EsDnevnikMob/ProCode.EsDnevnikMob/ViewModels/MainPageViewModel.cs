@@ -69,6 +69,8 @@ namespace ProCode.EsDnevnikMob.ViewModels
 
                 if (esdService == null)
                     esdService = new EsDnevnik.Service.EsDnevnik(new UserCredential(username, securePassword));
+                else
+                    esdService.SetUserCredentials(new UserCredential(username, securePassword));
 
                 IsLogging = true;
 #if !DEBUGFAKE

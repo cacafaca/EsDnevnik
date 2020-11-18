@@ -31,15 +31,8 @@ namespace ProCode.EsDnevnik.ServiceTest
         {
             var userCredential = Config.GetLoginUserCredentials();
             Service.EsDnevnik esd = new Service.EsDnevnik(userCredential);
-
-            try
-            {
-                esd.LoginAsync().Wait();
-            }
-            finally
-            {
-                esd.LogoutAsync().Wait();
-            }
+            esd.LoginAsync().Wait();
+            esd.LogoutAsync().Wait();
         }
 
         [TestMethod]
