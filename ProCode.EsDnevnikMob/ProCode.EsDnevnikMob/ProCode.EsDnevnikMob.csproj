@@ -6,6 +6,9 @@
     <AssemblyName>ProCode.EsDnevnikMob</AssemblyName>
     <RootNamespace>ProCode.EsDnevnikMob</RootNamespace>
     <ApplicationIcon>Resources\BaseIcon.ico</ApplicationIcon>
+    <Authors>ProCode.EsDnevnikMob</Authors>
+    <Company>ProCode.EsDnevnikMob</Company>
+    <Product>ProCode.EsDnevnikMob</Product>
   </PropertyGroup>
 
   <ItemGroup>
