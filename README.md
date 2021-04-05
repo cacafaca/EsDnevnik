@@ -1,5 +1,5 @@
 # EsDnevnik
-Get your childrens grades on android mobile, in Serbia.
+Get your children grades on android mobile, in Serbia.
 Mobile app for https://moj.esdnevnik.rs
 
 ## Little more detail
