@@ -16,7 +16,7 @@ namespace ProCode.EsDnevnik.Service
     {
         #region Private Properties
         UserCredential userCredential;
-        HttpClient client;
+        readonly HttpClient client;
         private readonly UriDictionary uriDictionary;
         private bool isLoggedIn;
 
@@ -380,7 +380,8 @@ namespace ProCode.EsDnevnik.Service
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                 CookieContainer = new CookieContainer()
             };
-            client = new HttpClient(handler);
+            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            HttpClient client = new HttpClient(handler);
 
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
