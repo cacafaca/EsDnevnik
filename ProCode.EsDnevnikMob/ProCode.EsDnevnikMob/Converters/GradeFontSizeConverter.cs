@@ -10,7 +10,7 @@ namespace ProCode.EsDnevnikMob.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Grade grade)
-                if (grade.GradeTypeId == 1) 
+                if (grade.GradeTypeId != null && grade.GradeTypeId == 1)
                     return 50;  // size for number grade
                 else
                     return 20;  // size for descriptive grade
